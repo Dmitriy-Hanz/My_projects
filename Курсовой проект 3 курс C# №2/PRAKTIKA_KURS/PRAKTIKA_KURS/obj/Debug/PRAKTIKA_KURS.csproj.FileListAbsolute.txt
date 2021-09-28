@@ -1,0 +1,42 @@
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\bin\Debug\PRAKTIKA_KURS.exe.config
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\bin\Debug\PRAKTIKA_KURS.exe
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\bin\Debug\PRAKTIKA_KURS.pdb
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS.csprojAssemblyReference.cache
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\MainWindow.g.cs
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\App.g.cs
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS_MarkupCompile.cache
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS_MarkupCompile.lref
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\MainWindow.baml
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS.g.resources
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS.Properties.Resources.resources
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS.csproj.GenerateResource.cache
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS.exe
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS.pdb
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\CreatePasWin_F.g.cs
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\CreatePasWin_F.baml
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\ExportWin.g.cs
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\ExportWin.baml
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\Manual.g.cs
+C:\Users\User\source\repos\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\Manual.baml
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\bin\Debug\PRAKTIKA_KURS.exe.config
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\bin\Debug\PRAKTIKA_KURS.exe
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\bin\Debug\PRAKTIKA_KURS.pdb
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS.csprojAssemblyReference.cache
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\CreatePasWin_F.g.cs
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\ExportWin.g.cs
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\MainWindow.g.cs
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\Manual.g.cs
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\App.g.cs
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS_MarkupCompile.cache
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS_MarkupCompile.lref
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\CreatePasWin_F.baml
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\ExportWin.baml
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\MainWindow.baml
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\Manual.baml
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS.g.resources
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS.Properties.Resources.resources
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS.csproj.GenerateResource.cache
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS.csproj.CoreCompileInputs.cache
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS.exe
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №2\PRAKTIKA_KURS\PRAKTIKA_KURS\obj\Debug\PRAKTIKA_KURS.pdb
