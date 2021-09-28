@@ -1,0 +1,37 @@
+﻿<Window x:Class="БД_Курсач_4курс.AnketDeallerForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:БД_Курсач_4курс"
+        mc:Ignorable="d"
+        Title="AnketDeallerForm" Height="439" Width="924" Background="#FFE0E0E0">
+    <Grid>
+        <DataGrid x:Name="Ankets_DG" HorizontalAlignment="Left" Margin="10,10,0,0" Width="581" Background="White" Height="333" VerticalAlignment="Top"/>
+        <Label Content="Ваши анкеты" HorizontalAlignment="Left" Margin="609,10,0,0" VerticalAlignment="Top" Height="32" Width="297" FontSize="14" FontWeight="Bold" FontFamily="Arial Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFD2FFD0"/>
+        <ListBox x:Name="Ankets_LB" HorizontalAlignment="Left" Height="204" Margin="609,47,0,0" VerticalAlignment="Top" Width="297"/>
+        <Button Content="Поиск подходящих &#xD;&#xA;            анкет" x:Name="FindAnkets_B" HorizontalAlignment="Left" Margin="609,256,0,0" VerticalAlignment="Top" Width="146" Height="49" FontSize="14" Click="FindAnkets_B_Click" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button x:Name="CreateNew_B" Content="Создать новую анкету" HorizontalAlignment="Left" Margin="609,310,0,0" VerticalAlignment="Top" Width="297" Height="33" FontSize="14" Background="White" Click="CreateNew_B_Click"/>
+        <Button x:Name="MakeDeal_B" Content="Заключить сделку" HorizontalAlignment="Left" Margin="609,0,0,16" Width="297" FontSize="14" Background="White" Height="33" VerticalAlignment="Bottom" Click="MakeDeal_B_Click"/>
+        <Rectangle Margin="396,198,0,0" Stroke="#FFFFD100" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="408" Height="12" VerticalAlignment="Top">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="Red" Offset="0.512"/>
+                    <GradientStop Color="#FF130000" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Button x:Name="Back_B" Content="Выйти в главное меню" HorizontalAlignment="Left" Margin="10,0,0,16" Width="167" FontSize="14" Background="White" Height="33" VerticalAlignment="Bottom" Click="Back_B_Click"/>
+        <Button x:Name="ShowAll_B" HorizontalAlignment="Left" Margin="760,256,0,0" VerticalAlignment="Top" Width="146" Height="49" FontSize="14" Background="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="ShowAll_B_Click" Content="Показать все &#xD;&#xA;     анкеты"/>
+
+    </Grid>
+</Window>
