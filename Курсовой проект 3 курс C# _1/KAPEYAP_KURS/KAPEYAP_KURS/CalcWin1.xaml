@@ -1,0 +1,87 @@
+﻿<Window x:Class="KAPEYAP_KURS.CalcWin1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KAPEYAP_KURS"
+        mc:Ignorable="d"
+        Title="CalcWin1" Height="472" Width="889.125">
+    <Grid RenderTransformOrigin="0.743,0.608">
+        <GridSplitter HorizontalAlignment="Stretch" Background="#FF6D7AFF" BorderBrush="#FF009FFF" Padding="0" BorderThickness="0,1" Margin="437,384,0,0"/>
+        <GridSplitter HorizontalAlignment="Left" Height="388" Margin="431,54,0,-1" VerticalAlignment="Top" Width="6" BorderBrush="Black" BorderThickness="1,0" RenderTransformOrigin="0.5,0.5" Background="White" Padding="10,0"/>
+        <DataGrid x:Name="WorkersGrid" HorizontalAlignment="Left" Height="315" Margin="10,116,0,0" VerticalAlignment="Top" Width="416" CanUserReorderColumns="False" SelectedCellsChanged="GridRowHandler" IsReadOnly="True"/>
+        <Label Content="Список рабочих (выберите нужного)" HorizontalAlignment="Left" Margin="0,54,0,0" VerticalAlignment="Top" Width="431" FontSize="14" Height="30" BorderThickness="0,0,0,1" BorderBrush="Black"/>
+        <ComboBox x:Name="SearchMode" HorizontalAlignment="Left" Margin="65,89,0,0" VerticalAlignment="Top" Width="120" Height="22" FontSize="11" SelectionChanged="SearchMode_SelectionChanged">
+            <ComboBoxItem Content="Имя" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Фамилия" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Отчество" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Должность" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Личный номер" HorizontalAlignment="Left" Width="118"/>
+        </ComboBox>
+        <Label Content="Найти по:" HorizontalAlignment="Left" Margin="5,89,0,0" VerticalAlignment="Top" Padding="0,3,0,0" Width="55" Height="22"/>
+        <TextBox x:Name="SearchPole" HorizontalAlignment="Left" Height="22" Margin="190,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="166" FontSize="11"/>
+        <Button x:Name="SearchButton" Content="" HorizontalAlignment="Left" Margin="356,89,0,0" VerticalAlignment="Top" Width="22" Height="22" Click="SearchButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource ="search_icon1.png"/>
+            </Button.Background>
+        </Button>
+        <GridSplitter HorizontalAlignment="Stretch" Height="54" VerticalAlignment="Top" Background="#FFFFD76D" BorderBrush="Black" Padding="0" BorderThickness="0,1"/>
+        <Button x:Name="BackToMenuB" Content="В главное меню" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="187" Height="33" FontSize="14" Click="BackToMenuB_Click"/>
+
+
+        <Label Content="Табельный ID:" HorizontalAlignment="Left" Margin="448,61,0,0" VerticalAlignment="Top" Width="84" Height="23" Padding="0,5,5,5"/>
+        <TextBox Name="ТабельныйID_TB" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="532,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <Label Content="Ф. И. О." HorizontalAlignment="Left" Margin="448,87,0,0" VerticalAlignment="Top" Width="48" Height="23" Padding="0,5,5,5"/>
+        <TextBox Name="Фамилия_TB" HorizontalAlignment="Left" Height="23" Margin="496,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <TextBox Name="Имя_TB" HorizontalAlignment="Left" Height="23" Margin="626,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="Отчество_TB" HorizontalAlignment="Left" Height="23" Margin="751,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Должность:" HorizontalAlignment="Left" Margin="448,115,0,0" VerticalAlignment="Top" Width="68" Height="23" Padding="0" VerticalContentAlignment="Center"/>
+        <TextBox Name="Должность_TB" HorizontalAlignment="Left" Height="23" Margin="516,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="355"/>
+        <Label Content="Дата принятия:" HorizontalAlignment="Left" Margin="448,143,0,0" VerticalAlignment="Top" Width="89" Height="23" Padding="0" VerticalContentAlignment="Center"/>
+        <TextBox Name="ДатаПринятия_TB" HorizontalAlignment="Left" Height="23" Margin="537,143,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <GroupBox Header="Форма оплаты" HorizontalAlignment="Left" Height="180" Margin="442,171,0,0" VerticalAlignment="Top" Width="429" BorderBrush="#FF009FFF" Padding="0" BorderThickness="2">
+            <Grid HorizontalAlignment="Left" Height="144" Margin="10,10,0,0" VerticalAlignment="Top" Width="394">
+                <Label Content="Форма труда:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Height="23" Padding="0,0,0,1" VerticalContentAlignment="Center"/>
+                <ComboBox Name="ФормаТруда_CB" HorizontalAlignment="Left" Margin="76,0,0,0" VerticalAlignment="Top" Width="103" Padding="0,3,5,3" Height="23">
+                    <ComboBoxItem x:Name="ПовременнаяItemB" Content="Повременная" HorizontalAlignment="Left" Width="118"/>
+                </ComboBox>
+                <Label Content="Оклад:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="41" Height="23" Padding="0,0,0,1" VerticalContentAlignment="Center" Margin="266,93,0,0" RenderTransformOrigin="0.366,0.565"/>
+                <TextBox Name="Оклад_TB" HorizontalAlignment="Left" Height="23" Margin="307,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="70"/>
+                <Label Content="Норма времени(дн.)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" Height="23" Padding="0,0,0,1" VerticalContentAlignment="Center" Margin="215,35,0,0"/>
+                <TextBox Name="НормаВремени_TB" HorizontalAlignment="Left" Height="23" Margin="330,35,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="47"/>
+                <Label Content="Кол-во отр. дней" HorizontalAlignment="Left" VerticalAlignment="Top" Width="98" Height="23" Padding="0,0,0,1" VerticalContentAlignment="Center" Margin="232,63,0,0"/>
+                <TextBox Name="КолВоОтрДней_TB" HorizontalAlignment="Left" Height="23" Margin="330,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="47"/>
+                <Label Content="Доплата" HorizontalAlignment="Left" VerticalAlignment="Top" Width="49" Height="23" Padding="0,0,0,1" VerticalContentAlignment="Center" Margin="0,56,0,0"/>
+                <TextBox Name="Доплата_TB" HorizontalAlignment="Left" Height="23" Margin="49,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="77"/>
+                <Label Content="Надбавка" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Height="23" Padding="0,0,0,1" VerticalContentAlignment="Center" Margin="0,28,0,0"/>
+                <TextBox Name="Надбавка_TB" HorizontalAlignment="Left" Height="23" Margin="58,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="68"/>
+                <TextBox Name="Премия_TB" HorizontalAlignment="Left" Height="23" Margin="49,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="77"/>
+                <Label Content="Премия" HorizontalAlignment="Left" VerticalAlignment="Top" Width="49" Height="23" Padding="0,0,0,1" VerticalContentAlignment="Center" Margin="0,84,0,0"/>
+                <Label Content="Начислено:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="65" Height="23" Padding="0,0,0,1" VerticalContentAlignment="Center" Margin="0,121,0,0"/>
+                <TextBox Name="Начислено_TB" HorizontalAlignment="Left" Height="23" Margin="65,121,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="90" BorderThickness="2"/>
+                <TextBox x:Name="ПодоходныйНалог_TB" HorizontalAlignment="Left" Height="23" Margin="307,121,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="77"/>
+                <Label Content="Под-ный налог:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="87" Height="23" Padding="0,0,0,1" VerticalContentAlignment="Center" Margin="217,121,0,0"/>
+                <ComboBox x:Name="СистемаТруда_CB" HorizontalAlignment="Left" Margin="266,0,0,0" VerticalAlignment="Top" Width="118" Padding="0,3,5,3" Height="23">
+                    <ComboBoxItem x:Name="ПремиальнаяItemB" Content="Премиальная" HorizontalAlignment="Left" Width="118"/>
+                </ComboBox>
+                <Label Content="Система труда:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="82" Height="23" Padding="0,0,0,1" VerticalContentAlignment="Center" Margin="183,0,0,0"/>
+            </Grid>
+        </GroupBox>
+
+        <Button x:Name="Calculate_B" Content="Рассчитать" HorizontalAlignment="Left" Margin="565,395,0,16" Width="112" Background="#FFC3C3C3" FontSize="14" Click="Calculate_B_Click"/>
+        <Button x:Name="ClearFieldsB" Content="Отчистить поля" HorizontalAlignment="Left" Margin="448,395,0,16" Width="112" Background="#FFC3C3C3" FontSize="14" Click="ClearFieldsB_Click"/>
+        <Button x:Name="RememberData_B" Content="Записать" Margin="682,395,87,16" Background="#FFC3C3C3" FontSize="14" Click="RememberData_B_Click"/>
+        <Button Name="WorkersTab_B" Content="Журнал работников" HorizontalAlignment="Left" Margin="746,28,0,0" VerticalAlignment="Top" Width="125" Click="WorkersTab_B_Click"/>
+        <Button Name="ZPTab_B" Content="Журнал ЗП" HorizontalAlignment="Left" Margin="616,28,0,0" VerticalAlignment="Top" Width="125" Click="ZPTab_B_Click"/>
+        <Button x:Name="ReloadButton" Content="" HorizontalAlignment="Left" Margin="383,89,0,0" VerticalAlignment="Top" Width="22" Height="22" Click="ReloadButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource ="Reload.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" HorizontalAlignment="Left" Margin="799,395,0,0" VerticalAlignment="Top" Width="30" Height="30" Click="ExportWord">
+        <Button.Background>
+                <ImageBrush ImageSource ="ExportWordIco.png"/>
+        </Button.Background>
+        </Button>
+    </Grid>
+</Window>
