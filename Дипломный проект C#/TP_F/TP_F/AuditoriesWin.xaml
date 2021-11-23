@@ -1,0 +1,151 @@
+﻿<Window x:Class="TP_F.AuditoriesWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TP_F"
+        mc:Ignorable="d"
+        Title="SysHelper" BorderBrush="Black" BorderThickness="1" SizeToContent="WidthAndHeight">
+    <Grid Height="451" Width="830">
+        <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="274" Width="234" Margin="10,39,0,0" VerticalAlignment="Top"  Padding="0,1,1,1">
+            <ScrollViewer x:Name="SViewer" HorizontalAlignment="Left" Width="232" FlowDirection="RightToLeft" CanContentScroll="True" Margin="-2,-3,-3,-3" Background="#FFF0F0F0">
+                <WrapPanel Name="AuditoriesList_WP" HorizontalAlignment="Left" Height="6" VerticalAlignment="Top" Width="232" Background="#FFF0F0F0"/>
+            </ScrollViewer>
+        </Border>
+        <Label Content="Кабинеты" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="234" FontFamily="Tahoma" FontSize="16" Height="39" FontWeight="Bold" Foreground="#FF3E3E3E" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" BorderThickness="1,0">
+            <Label.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.505"/>
+                </LinearGradientBrush>
+            </Label.BorderBrush>
+            <Label.Background>
+                <RadialGradientBrush Center="0.5,1.3" RadiusY="1.1" RadiusX="0.7">
+                    <GradientStop Color="#FFC2C8FF" Offset="0.607"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </RadialGradientBrush>
+            </Label.Background>
+        </Label>
+        <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="274" Width="259" Margin="258,39,0,0" VerticalAlignment="Top"  Padding="0,2,2,2">
+            <ScrollViewer x:Name="SViewer1" FlowDirection="RightToLeft" CanContentScroll="True" Margin="-2,-4,-4,-4" Background="#FFF0F0F0">
+                <WrapPanel x:Name="WorkPlacesList_WP" HorizontalAlignment="Left" Height="6" VerticalAlignment="Top" Width="257" Background="#FFF0F0F0"/>
+            </ScrollViewer>
+        </Border>
+        <Border BorderThickness="1" HorizontalAlignment="Left" Margin="249,0,0,0" Width="4" Height="349" VerticalAlignment="Top">
+            <Border.Effect>
+                <BlurEffect/>
+            </Border.Effect>
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0.884"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.026"/>
+                    <GradientStop Color="Black" Offset="0.158"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <Label Content="Рабочие места" HorizontalAlignment="Left" Margin="258,0,0,0" VerticalAlignment="Top" Width="259" FontFamily="Tahoma" FontSize="16" Height="39" FontWeight="Bold" Foreground="#FF3E3E3E" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" BorderThickness="1,0">
+            <Label.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.505"/>
+                </LinearGradientBrush>
+            </Label.BorderBrush>
+            <Label.Background>
+                <RadialGradientBrush Center="0.5,1.3" RadiusY="1.1" RadiusX="0.7">
+                    <GradientStop Color="#FFC2C8FF" Offset="0.607"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </RadialGradientBrush>
+            </Label.Background>
+        </Label>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="451" Margin="522,0,0,0" VerticalAlignment="Top" Width="4" Background="#FF444444"/>
+        <GroupBox HorizontalAlignment="Left" Height="31" Margin="531,8,0,0" VerticalAlignment="Top" Width="295" Background="#FFC2C8FF" Foreground="#FF5858C3">
+            <Label Content="Оборудование" VerticalAlignment="Top" Margin="0,0,-2,-4" Height="29" FontFamily="Tahoma" FontSize="16" FontWeight="Bold" Foreground="#FF3E3E3E"/>
+        </GroupBox>
+        <GroupBox Height="408" Width="295" Margin="531,39,0,0" VerticalAlignment="Top"  FontFamily="Arial Black" FontSize="14" Background="#FFE8E8E8" Foreground="#FF5858C3" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Left">
+            <WrapPanel Name="SetInf_SP" Margin="5,10,5,0" Height="387" Width="273" VerticalAlignment="Top">
+                <Border Name="KompInf_Panel" Margin="0,0,0,3" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="186" VerticalAlignment="Top" Width="273" Background="White">
+                    <Canvas Margin="0,0,0,-1">
+                        <Label Content="Системный блок" FontFamily="Arial Unicode MS" FontSize="14" Foreground="#FF2491B9" Padding="0" FontWeight="Bold" Height="20" Canvas.Left="6" Canvas.Top="3" Width="126" BorderThickness="0,0,1,0" BorderBrush="#FFA0A0A0"/>
+                        <Separator HorizontalAlignment="Left" Height="5" Margin="0" VerticalAlignment="Top" Width="260" Canvas.Left="6" Canvas.Top="23"/>
+                        <Label Content="Имя:" FontFamily="Arial Unicode MS" FontSize="12" Foreground="#FF686868" Width="32" Height="17" Padding="0"  Canvas.Left="6" Canvas.Top="29" FontWeight="Bold" />
+                        <Label Content="Процессор:" FontFamily="Arial Unicode MS" FontSize="12" Foreground="#FF686868" Width="71" Height="17" Padding="0"  Canvas.Left="6" Canvas.Top="46" FontWeight="Bold" />
+                        <Label Content="Видеокарта: " FontFamily="Arial Unicode MS" FontSize="12" Foreground="#FF686868" Width="76" Height="17" Padding="0"  Canvas.Left="6" Canvas.Top="63" FontWeight="Bold" />
+                        <Label Content="Жесткий диск: " FontFamily="Arial Unicode MS" FontSize="12" Foreground="#FF686868" Width="87" Height="17" Padding="0"  Canvas.Left="6" Canvas.Top="80" FontWeight="Bold" />
+                        <Label Content="Объем ОЗУ (ГБ): " FontFamily="Arial Unicode MS" FontSize="12" Foreground="#FF686868" Height="17" Padding="0"  Canvas.Left="6" Canvas.Top="97" FontWeight="Bold" />
+                        <Label Content="ОС: " FontFamily="Arial Unicode MS" FontSize="12" Foreground="#FF686868" Width="27" Height="17" Padding="0"  Canvas.Left="6" Canvas.Top="114" FontWeight="Bold" />
+                        <Label Content="Логические диски: " FontFamily="Arial Unicode MS" FontSize="12" Foreground="#FF686868" Width="112" Height="17" Padding="0" Canvas.Left="6" Canvas.Top="131" FontWeight="Bold" />
+
+                        <Label Name="KI_Name_L" Content="{Binding kompukter.name}" FontFamily="Arial Unicode MS" FontSize="11" Foreground="#FF686868" Width="228" Height="17" Padding="0,0,0,1"  Canvas.Left="38" Canvas.Top="29" VerticalContentAlignment="Center" />
+                        <Label x:Name="KI_Processor_L" Content="{Binding kompukter.cpu.name}" FontFamily="Bahnschrift Light" FontSize="10" Foreground="#FF686868" Width="189" Height="17" Padding="0,0,0,3" Canvas.Left="77" Canvas.Top="46" VerticalContentAlignment="Bottom" />
+                        <Label x:Name="KI_VideoCard_L" Content="{Binding kompukter.videoAdapters[0].name}" FontFamily="Bahnschrift Light" FontSize="10" Foreground="#FF686868" Width="184" Height="17" Padding="0,0,0,3" Canvas.Left="82" Canvas.Top="63" VerticalContentAlignment="Bottom" />
+                        <Label x:Name="KI_HardDisk_L" Content="{Binding kompukter.disks[0].model}" FontFamily="Bahnschrift Light" FontSize="10" Foreground="#FF686868" Width="173" Height="17" Padding="0,0,0,3" Canvas.Left="93" Canvas.Top="80" VerticalContentAlignment="Bottom" />
+                        <Label x:Name="KI_OZU_L" Content="{Binding kompukter.ozuSize}" FontFamily="Bahnschrift Light" FontSize="10" Foreground="#FF686868" Width="158" Height="17" Padding="0,0,0,3" Canvas.Left="108" Canvas.Top="97" VerticalContentAlignment="Bottom" />
+                        <Label x:Name="KI_OS_L" Content="{Binding kompukter.systems[0].name}" FontFamily="Bahnschrift Light" FontSize="10" Foreground="#FF686868" Width="233" Height="17" Padding="0,0,0,3" Canvas.Left="33" Canvas.Top="114" VerticalContentAlignment="Bottom" />
+                        <Label x:Name="KI_LogDisks_L" Content="{Binding kompukter.logDisks}" FontFamily="Bahnschrift Light" FontSize="10" Foreground="#FF686868" Width="148" Height="17" Padding="0,0,0,3" Canvas.Left="118" Canvas.Top="131" VerticalContentAlignment="Bottom" />
+                        <Separator HorizontalAlignment="Left" Height="5" Margin="0" VerticalAlignment="Top" Width="260" Canvas.Left="6" Canvas.Top="149"/>
+                        <Button x:Name="WriteToInventoryK_B" Content="Убрать в инвентарь" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="20" FontSize="12" Canvas.Left="6" Canvas.Top="158" FontFamily="Segoe UI"/>
+                        <Button Name="DeleteFacilityK_B" Uid="K" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" Height="20" FontSize="12" Canvas.Left="151" Canvas.Top="158" FontFamily="Segoe UI" Click="DeleteFacility_B_Click"/>
+                        <Label Content="ИН:" FontFamily="Arial Unicode MS" FontSize="14" Foreground="#FF686868" Width="28" Height="20" Padding="0"  Canvas.Left="137" FontWeight="Bold" Canvas.Top="3"/>
+                        <Label Name="KompIN_L" Content="{Binding kompukter.kompIN}" FontFamily="Arial Unicode MS" FontSize="14" Foreground="#FF2491B9" Padding="0" FontWeight="Bold" Height="20" Canvas.Left="165" Canvas.Top="3" Width="96"/>
+                    </Canvas>
+                </Border>
+                <Border Name="MonicInf_Panel" Visibility="Visible" BorderBrush="Black" Background="White" BorderThickness="1" HorizontalAlignment="Left" Height="170" Width="273" Margin="0,0,0,3">
+                    <Canvas Margin="0,0,0,-1" >
+                        <Label Content="Монитор" FontFamily="Arial Unicode MS" FontSize="14" Foreground="#FF2491B9" Padding="0" FontWeight="Bold" Height="20" Canvas.Left="6" Canvas.Top="3" Width="126" BorderBrush="#FFA0A0A0" BorderThickness="0,0,1,0"/>
+                        <Separator HorizontalAlignment="Left" Height="5" Margin="0" VerticalAlignment="Top" Width="260" Canvas.Left="6" Canvas.Top="23"/>
+                        <Label Content="Модель:" FontFamily="Arial Unicode MS" FontSize="12" Foreground="#FF686868" Width="54" Height="17" Padding="0"  Canvas.Left="6" Canvas.Top="29" FontWeight="Bold"/>
+                        <Label Content="Диагональ (&quot;): " FontFamily="Arial Unicode MS" FontSize="12" Foreground="#FF686868" Height="17" Padding="0"  Canvas.Left="6" Canvas.Top="46" FontWeight="Bold"/>
+                        <Label Content="Соотношение сторон:" FontFamily="Arial Unicode MS" FontSize="12" Foreground="#FF686868" Width="131" Height="17" Padding="0"  Canvas.Left="6" Canvas.Top="64" FontWeight="Bold" />
+                        <Label Content="Матрица: " FontFamily="Arial Unicode MS" FontSize="12" Foreground="#FF686868" Width="59" Height="17" Padding="0"  Canvas.Left="6" Canvas.Top="81" FontWeight="Bold" />
+                        <Label Content="Частота (ГЦ): " FontFamily="Arial Unicode MS" FontSize="12" Foreground="#FF686868" Height="17" Padding="0"  Canvas.Left="6" Canvas.Top="98" FontWeight="Bold" />
+                        <Label Content="Разрешение: " FontFamily="Arial Unicode MS" FontSize="12" Foreground="#FF686868" Width="81" Height="17" Padding="0"  Canvas.Left="6" Canvas.Top="115" FontWeight="Bold" />
+
+                        <Label x:Name="MI_Model_L" Content="{Binding monitor.model}" FontFamily="Arial Unicode MS" FontSize="11" Foreground="#FF686868" Width="204" Height="17" Padding="0,0,0,1"  Canvas.Left="62" Canvas.Top="29" VerticalContentAlignment="Center" />
+                        <Label x:Name="MI_Diagonal_L" Content="{Binding monitor.diagonal}" FontFamily="Arial Unicode MS" FontSize="11" Foreground="#FF686868" Width="175" Height="18" Padding="0,0,0,3"  Canvas.Left="91" Canvas.Top="46" VerticalContentAlignment="Center" />
+                        <Label x:Name="MI_SideRatio_L" Content="{Binding monitor.sideRatio}" FontFamily="Bahnschrift Light" FontSize="10" Foreground="#FF686868" Width="129" Height="17" Padding="0,0,0,3" Canvas.Left="137" Canvas.Top="64" VerticalContentAlignment="Bottom" />
+                        <Label x:Name="MI_Matrix_L" Content="{Binding monitor.matrix}" FontFamily="Bahnschrift Light" FontSize="10" Foreground="#FF686868" Width="201" Height="17" Padding="0,0,0,3" Canvas.Left="65" Canvas.Top="81" VerticalContentAlignment="Bottom" />
+                        <Label x:Name="MI_Freq_L" Content="{Binding monitor.freq}" FontFamily="Bahnschrift Light" FontSize="10" Foreground="#FF686868" Width="178" Height="17" Padding="0,0,0,3" Canvas.Left="88" Canvas.Top="98" VerticalContentAlignment="Bottom" />
+                        <Label x:Name="MI_Resolution_L" Content="{Binding monitor.resolution}" FontFamily="Bahnschrift Light" FontSize="10" Foreground="#FF686868" Width="179" Height="17" Padding="0,0,0,3" Canvas.Left="87" Canvas.Top="115" VerticalContentAlignment="Bottom" />
+                        <Separator HorizontalAlignment="Left" Height="5" Margin="0" VerticalAlignment="Top" Width="260" Canvas.Left="6" Canvas.Top="133"/>
+                        <Button x:Name="WriteToInventoryM_B" Content="Убрать в инвентарь" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="20" FontSize="12" Canvas.Left="6" Canvas.Top="143" FontFamily="Segoe UI"/>
+                        <Button Name="DeleteFacilityM_B" Uid="M" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" Height="20" FontSize="12" Canvas.Left="151" Canvas.Top="143" FontFamily="Segoe UI" Click="DeleteFacility_B_Click"/>
+                        <Label Content="ИН:" FontFamily="Arial Unicode MS" FontSize="14" Foreground="#FF686868" Width="28" Height="20" Padding="0"  Canvas.Left="137" FontWeight="Bold" Canvas.Top="3"/>
+                        <Label x:Name="MonitorIN_L" Content="{Binding monitor.monitorIN}" FontFamily="Arial Unicode MS" FontSize="14" Foreground="#FF2491B9" Padding="0" FontWeight="Bold" Height="20" Canvas.Left="165" Canvas.Top="3" Width="96"/>
+                    </Canvas>
+                </Border>
+                <Button Name="AddMonitor_B" BorderBrush="Black" Background="White" BorderThickness="1" HorizontalAlignment="Left" Height="66" VerticalAlignment="Top" Width="273" Margin="0,0,0,3" Padding="0" Visibility="Collapsed" Click="AddMonitor_B_Click">
+                    <Canvas Height="64" Width="271">
+                        <Image Source="images/Icon_AddMonitor.bmp" Height="58" Width="75" Canvas.Left="3" Canvas.Top="3"/>
+                        <Label Content="Добавить монитор" FontFamily="Arial Black" FontSize="15" Foreground="#FF2491B9" Canvas.Left="83" Height="64" Width="188" VerticalContentAlignment="Center" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+                    </Canvas>
+                </Button>
+                <Button Name="AddKomputer_B" BorderBrush="Black" Background="White" BorderThickness="1" HorizontalAlignment="Left" Height="66" VerticalAlignment="Top" Width="273" Margin="0,0,0,3" Padding="0" Visibility="Collapsed" Click="AddKomputer_B_Click">
+                    <Canvas Height="64" Width="271">
+                        <Image Source="images/Icon_AddKomputer.bmp" Height="58" Width="75" Canvas.Left="3" Canvas.Top="3"></Image>
+                        <Label Content="Добавить компьютер" FontFamily="Arial Black" FontSize="15" Foreground="#FF2491B9" Canvas.Left="83" Height="64" Width="188" VerticalContentAlignment="Center" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+                    </Canvas>
+                </Button>
+                <Button x:Name="MoreInf_B" Content="Подробно" IsEnabled="False" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="132" FontFamily="Segoe UI" FontSize="14" VerticalContentAlignment="Center" Click="MoreInf_B_Click"/>
+                <Button x:Name="Edit_B" Uid="AuditoriesB" IsEnabled="False" Width="136" Content="Редактировать" Margin="5,0,0,0" FontFamily="Segoe UI" Click="Edit_B_Click"></Button>
+            </WrapPanel>
+        </GroupBox>
+        <Button Name="BackToMenu_B" Content="В главное меню" HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top" Width="154" Height="31" FontFamily="Arial Black" FontSize="14" Foreground="#FF495187" Click="BackToMenu_B_Click"/>
+        <Button IsEnabled="False" Name="AddWorkPlace_B" Content="Добавить место" HorizontalAlignment="Left" Margin="258,318,0,0" VerticalAlignment="Top" Width="127" Height="31" FontSize="13" Click="AddWorkPlace_B_Click"/>
+        <Button Name="AddKabinet_B" Content="Добавить кабинет" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" Width="116" Height="31" FontSize="13" Click="AddKabinet_B_Click"/>
+        <GroupBox Name="MiniSearch_GB" Header="Поиск" HorizontalAlignment="Left" Width="254" Height="51" Margin="10,349,0,0" VerticalAlignment="Top" BorderBrush="#FFC2C8FF" BorderThickness="2" FontSize="14" FontFamily="Arial Unicode MS" FontWeight="Bold" Foreground="#FF2491B9">
+            <Canvas Margin="5,3" ClipToBounds="True">
+                <Label Content="Название кабинета :" HorizontalAlignment="Left" VerticalAlignment="Top" Width="123" Padding="0" Height="22" Foreground="#FF686868" FontSize="12" VerticalContentAlignment="Center"/>
+                <TextBox Name="KabinetSearchField_TB" Height="22" Canvas.Left="123" TextWrapping="Wrap" Text="" Width="109" FontWeight="Normal" FontSize="12" VerticalContentAlignment="Center" TextChanged="KabinetSearchField_TB_TextChanged"/>
+                <Label Content="Название раб. места :" HorizontalAlignment="Left" VerticalAlignment="Top" Width="133" Padding="0" Height="22" Foreground="#FF686868" FontSize="12" VerticalContentAlignment="Center" Canvas.Left="237"/>
+                <TextBox Name="WorkplaceSearchField_TB" Height="22" Canvas.Left="370" TextWrapping="Wrap" Text="" Width="115" FontWeight="Normal" FontSize="12" VerticalContentAlignment="Center" TextChanged="WorkplaceSearchField_TB_TextChanged"/>
+            </Canvas>
+        </GroupBox>
+        <Button x:Name="CreateReport_B" Click="CreateReport_B_Click" ToolTip="Создать отчет" Margin="480,410,319,10" Width="31" Height="31">
+            <Image Source="images/Button_Excel.bmp"/>
+        </Button>
+        <Button IsEnabled="False" x:Name="EditKabinet_B" Content="Редактировать" HorizontalAlignment="Left" Margin="131,318,0,0" VerticalAlignment="Top" Width="113" Height="31" FontSize="13" Click="EditKabinet_B_Click"/>
+        <Button IsEnabled="False" x:Name="EditWorkPlace_B" Content="Редактировать" HorizontalAlignment="Left" Margin="390,318,0,0" VerticalAlignment="Top" Width="127" Height="31" FontSize="13" Click="EditWorkPlace_B_Click"/>
+
+    </Grid>
+</Window>
