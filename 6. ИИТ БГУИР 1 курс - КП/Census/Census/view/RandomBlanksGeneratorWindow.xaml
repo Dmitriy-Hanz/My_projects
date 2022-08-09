@@ -1,0 +1,22 @@
+﻿<Window x:Class="Census.view.RandomBlanksGeneratorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Census.view"
+            xmlns:vm="clr-namespace:Census.viewModel"
+        mc:Ignorable="d"
+        Title="RandomBlanksGeneratorWindow" SizeToContent="WidthAndHeight">
+    <Window.DataContext>
+        <vm:RandomBlanksGeneratorVM/>
+    </Window.DataContext>
+    <Canvas Height="130" Width="470">
+        <GroupBox Header="Кол-во генерируемых записей (человек)" FontFamily="Calibri" FontSize="22" Height="66" Width="450" Canvas.Left="10" Canvas.Top="10">
+            <TextBox Width="100" Text="{Binding Path=GeneratedBlanksCount, Mode=OneWayToSource, FallbackValue=0}" Style="{StaticResource UsualTextBox1}"/>
+        </GroupBox>
+        <UniformGrid Columns="2" Grid.Row="2" Canvas.Left="10" Canvas.Top="84" Width="450">
+            <Button Margin="5" Content="Сгенерировать" Height="25" Width="200" Style="{StaticResource UsualButton1}" Command="{Binding Path=GenerateBlanksCommand}"/>
+            <Button Margin="5" Content="Отмена" Height="25" Width="200" Style="{StaticResource UsualButton1}" Command="{Binding Path=CancelCommand}"/>
+        </UniformGrid>
+    </Canvas>
+</Window>

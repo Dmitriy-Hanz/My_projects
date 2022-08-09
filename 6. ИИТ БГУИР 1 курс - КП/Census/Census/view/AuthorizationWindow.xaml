@@ -1,0 +1,36 @@
+﻿<Window x:Class="Census.view.AuthorizationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Census.view"
+            xmlns:vm="clr-namespace:Census.viewModel"
+        mc:Ignorable="d"
+        Title="AuthorizationWindow" SizeToContent="WidthAndHeight">
+    <Window.DataContext>
+        <vm:AuthorizationVM/>
+    </Window.DataContext>
+    <Grid Height="450" Width="800">
+        <TextBlock Text="{Binding Path=AdminPassword}" Margin="0,436,651,0"/>
+        <GroupBox Header="Авторизация" Margin="212,53,212,52" Padding="3" FontSize="18" FontFamily="Bahnschrift Light">
+            <DockPanel>
+                <Button DockPanel.Dock="Bottom" Content="Выйти" Margin="5,30,5,10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="30" Width="264" Command="{Binding Path=ShutdownAppCommand}"/>
+                <StackPanel>
+                    <UniformGrid Rows="1">
+                        <RadioButton GroupName="UserType" Content="Администратор" Command="{Binding Path=SwitchUserTypeCommand}" CommandParameter="2"/>
+                        <RadioButton GroupName="UserType" HorizontalAlignment="Right" Content="Пользователь" Command="{Binding Path=SwitchUserTypeCommand}" CommandParameter="1" IsChecked="True"/>
+                    </UniformGrid>
+                    <UniformGrid Rows="4" Margin="5,10" Visibility="{Binding Path=PasswordAreaVisibility}">
+                        <Label Content="Введите имя учетной записи (логин):" Padding="5,10,0,0"/>
+                        <TextBox Margin="3,0,3,0" Height="25" Text="{Binding Administrator.AccountName}"/>
+                        <Label Content="Введите личный пароль:" Padding="5,5,0,0" Height="27"/>
+                        <TextBox Margin="3,0,3,0" Height="25" Text="{Binding Administrator.Password}"/>
+                    </UniformGrid>
+                    <Button Content="Войти" Margin="5,20,5,3" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Width="263" Command="{Binding Path=AuthorizationCommand}"/>
+                </StackPanel>
+            </DockPanel>
+        </GroupBox>
+
+
+    </Grid>
+</Window>

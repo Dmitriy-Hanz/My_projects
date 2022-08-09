@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="databaseFiles\CensusDB.mdf" />
+    <None Remove="databaseFiles\CensusDB_log.ldf" />
+    <None Remove="pictures\BlankBase1.bmp" />
+    <None Remove="pictures\BlankBase2.bmp" />
+    <None Remove="pictures\BlankBase3.bmp" />
+    <None Remove="pictures\BlankBase4.bmp" />
+    <None Remove="pictures\BlankForeign1.bmp" />
+    <None Remove="pictures\BlankHousehold1.bmp" />
+    <None Remove="pictures\User.bmp" />
+    <None Remove="utils\DatabaseCreationSqlScript.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OxyPlot.Wpf" Version="1.0.0">
+      <NoWarn>NU1701</NoWarn>
+    </PackageReference>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3">
+      <NoWarn>NU1701</NoWarn>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="databaseFiles\CensusDB.mdf" />
+    <Resource Include="databaseFiles\CensusDB_log.ldf" />
+    <Resource Include="pictures\BlankBase1.bmp" />
+    <Resource Include="pictures\BlankBase2.bmp" />
+    <Resource Include="pictures\BlankBase3.bmp" />
+    <Resource Include="pictures\BlankBase4.bmp" />
+    <Resource Include="pictures\BlankForeign1.bmp" />
+    <Resource Include="pictures\BlankHousehold1.bmp">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="pictures\User.bmp" />
+    <Resource Include="utils\DatabaseCreationSqlScript.txt" />
+  </ItemGroup>
+
+</Project>

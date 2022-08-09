@@ -1,0 +1,56 @@
+﻿<Window x:Class="Census.view.MainMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Census.view"
+            xmlns:vm="clr-namespace:Census.viewModel"
+        mc:Ignorable="d"
+        Title="MainMenuWindow" SizeToContent="WidthAndHeight">
+    <Window.DataContext>
+        <vm:MainMenuVM/>
+    </Window.DataContext>
+    <Canvas Width="800" Height="450">
+        <Button Content="База данных" Height="46" Width="170" Command="{Binding Path=LoadDataBaseWindowCommand}" Style="{StaticResource UsualButton1}" Canvas.Left="302" Canvas.Top="202"/>
+        <Button Content="Результаты переписи" Height="46" Width="170" Command="{Binding Path=LoadCensusResultsWindowCommand}" Style="{StaticResource UsualButton1}" Canvas.Left="94" Canvas.Top="202"/>
+        <Button Content="Выход" Height="46" Width="170" Command="{Binding Path=ShutdownAppCommand}" Style="{StaticResource UsualButton1}" Canvas.Left="506" Canvas.Top="202"/>
+        <Border Height="{Binding Path=ProfileHeightSize}" Width="227" BorderBrush="Black" BorderThickness="0,0,1,1" Panel.ZIndex="2">
+            <StackPanel Background="White">
+                <Grid Height="50" Background="{Binding Path=ProfileTypeCollor}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image Margin="3" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Source="/pictures/User.bmp"/>
+                    <TextBlock Text="{Binding Path=Admin.AccountName}" Margin="2,0" Grid.Row="0" Grid.Column="1" Style="{StaticResource TextBlockForBlanks}"/>
+                    <Button Margin="10,3" Content="Профиль" Padding="0" Grid.Row="1" Grid.Column="1" Command="{Binding Path=ShowHideProfileCommand}"/>
+                </Grid>
+                <GridSplitter HorizontalAlignment="Stretch" Height="3"/>
+                <TextBlock Text="Фамилия:" Margin="2,0" Visibility="{Binding Path=ProfileExtraInfo}" Background="#FFE8E8E8"/>
+                <TextBlock Text="{Binding Path=Admin.Surname}" Visibility="{Binding Path=ProfileExtraInfo}" Margin="2,0" Style="{StaticResource TextBlockForBlanks}"/>
+                <TextBlock Text="Имя:" Margin="2,0" Visibility="{Binding Path=ProfileExtraInfo}" Background="#FFE8E8E8"/>
+                <TextBlock Text="{Binding Path=Admin.Name}" Visibility="{Binding Path=ProfileExtraInfo}" Margin="2,0" Style="{StaticResource TextBlockForBlanks}"/>
+                <TextBlock Text="Отчество:" Margin="2,0" Visibility="{Binding Path=ProfileExtraInfo}" Background="#FFE8E8E8"/>
+                <TextBlock Text="{Binding Path=Admin.Fathername}" Visibility="{Binding Path=ProfileExtraInfo}" Margin="2,0" Style="{StaticResource TextBlockForBlanks}"/>
+                <TextBlock Text="Пароль:" Margin="2,0" Background="#FFE8E8E8"/>
+                <TextBlock Text="{Binding Path=Admin.Password}" Margin="2,0" Style="{StaticResource TextBlockForBlanks}"/>
+                <GridSplitter HorizontalAlignment="Stretch" Height="3"/>
+                <Button Margin="10,3" Content="Редактировать профиль" Padding="0" Grid.Row="1" Grid.Column="1" Command="{Binding Path=EditProfileCommand}" Visibility="{Binding Path=ProfileButtonsVisibility}"/>
+                <Button Margin="10,3" Content="Удалить профиль" Padding="0" Grid.Row="1" Grid.Column="1" Background="#FFFDB6B6" Command="{Binding Path=DeleteProfileCommand}" Visibility="{Binding Path=ProfileButtonsVisibility}"/>
+                <GridSplitter HorizontalAlignment="Stretch" Height="3"/>
+                <Button Margin="10,3" Background="#FFACFFAC" Content="Создать новый профиль" Padding="0" Grid.Row="1" Grid.Column="1" Command="{Binding Path=CreateNewProfileCommand}"/>
+                <Button Margin="10,3" Content="Список существующих профилей" Padding="0" Grid.Row="1" Grid.Column="1" Command="{Binding Path=ShowAllProfilesCommand}"/>
+                <GridSplitter HorizontalAlignment="Stretch" Height="3"/>
+                <UniformGrid Background="#FFFFE647" Rows="2" Columns="1" Visibility="{Binding Path=ProfileExtraInfo}">
+                    <TextBlock Padding="0" Text="{Binding Path=Admin.SystemAccountName, StringFormat=Системный логин: {0}}" Height="14" FontSize="9"/>
+                    <TextBlock Padding="0" Text="{Binding Path=Admin.SystemPassword, StringFormat=Системный пароль: {0}}" Height="14" FontSize="9"/>
+                </UniformGrid>
+            </StackPanel>
+        </Border>
+        <Button Content="Справка" Height="37" Width="147" Command="{Binding Path=ManualCommand}" Style="{StaticResource UsualButton1}" Canvas.Left="643" Canvas.Top="10"/>
+    </Canvas>
+</Window>

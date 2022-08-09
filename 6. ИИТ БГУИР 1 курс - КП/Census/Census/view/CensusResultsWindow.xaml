@@ -1,0 +1,73 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Census.view"
+            xmlns:vm="clr-namespace:Census.viewModel"
+            xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:Series="clr-namespace:OxyPlot.Series;assembly=OxyPlot" xmlns:OxyPlot="clr-namespace:OxyPlot;assembly=OxyPlot" x:Class="Census.view.CensusResultsWindow"
+        mc:Ignorable="d"
+        Title="CensusResultsWindow" SizeToContent="WidthAndHeight">
+    <Window.DataContext>
+        <vm:CensusResultsVM/>
+    </Window.DataContext>
+    <Canvas Height="450" Width="800">
+        <Grid Height="395" Width="277" Canvas.Left="10" Canvas.Top="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Доступные диаграммы" Height="25" FontSize="20" FontFamily="Bahnschrift SemiBold Condensed" TextAlignment="Center"/>
+            <ListBox Grid.Row="1" Margin="5,5,3,5" ItemsSource="{Binding Path=DiagramsList}" SelectedIndex="{Binding ElementName=plotsTC, Path=SelectedIndex, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Hidden"/>
+        </Grid>
+
+        <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" UseLayoutRounding="False" Canvas.Left="287" Canvas.Top="10" Width="503" Height="395" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TabControl Grid.Row="1" Margin="5" x:Name="plotsTC">
+                <TabControl.Resources>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                    </Style>
+                </TabControl.Resources>
+                <TabItem Header="1">
+                    <oxy:PlotView Model="{Binding Path=GeneralPopulationOfCountryPlot}"/>
+                </TabItem>
+                <TabItem Header="2">
+                    <oxy:PlotView Model="{Binding Path=PopulationOfCountryByRegionsPlot}"/>
+                </TabItem>
+                <TabItem Header="3">
+                    <oxy:PlotView Model="{Binding Path=PopulationOfCountryByAgeGroupsPlot}"/>
+                </TabItem>
+                <TabItem Header="4">
+                    <oxy:PlotView Model="{Binding Path=PopulationOfCountryByGenderPlot}"/>
+                </TabItem>
+                <TabItem Header="5">
+                    <oxy:PlotView Model="{Binding Path=PopulationOfCountryByMaritalStatusPlot}"/>
+                </TabItem>
+                <TabItem Header="6">
+                    <oxy:PlotView Model="{Binding Path=WomenWithChildrenByCountPlot}"/>
+                </TabItem>
+                <TabItem Header="7">
+                    <oxy:PlotView Model="{Binding Path=WomenWithChildrenByPlansPlot}"/>
+                </TabItem>
+                <TabItem Header="8">
+                    <oxy:PlotView Model="{Binding Path=PopulationOfCountryByEducationLvlPlot}"/>
+                </TabItem>
+                <TabItem Header="9">
+                    <oxy:PlotView Model="{Binding Path=PopulationOfCountryByNationalityPlot}"/>
+                </TabItem>
+                <TabItem Header="9">
+                    <oxy:PlotView Model="{Binding Path=PopulationOfCountryBySpeakingLanguagePlot}"/>
+                </TabItem>
+                <TabItem Header="10">
+                    <oxy:PlotView Model="{Binding Path=PopulationOfCountryByEmploymentPlot}"/>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <Button Content="В главное меню" Grid.Row="2" Grid.Column="0" Width="135" Command="{Binding BackToMainMenuCommand}" Style="{StaticResource NavigationButton}" Canvas.Top="410" Canvas.Left="10"/>
+    </Canvas>
+</Window>

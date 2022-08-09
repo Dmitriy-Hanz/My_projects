@@ -1,0 +1,108 @@
+﻿<Window x:Class="Census.view.DataBaseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Census.view"
+            xmlns:vm="clr-namespace:Census.viewModel"
+        mc:Ignorable="d"
+        Title="DataBaseWindow" SizeToContent="WidthAndHeight">
+    <Window.DataContext>
+        <vm:DataBaseVM/>
+    </Window.DataContext>
+    <Canvas Height="469" Width="800">
+        <GroupBox Padding="3,2" Header="Поиск" FontSize="14" FontFamily="Bahnschrift Light" Height="92" Width="780" Canvas.Left="10" Canvas.Top="10">
+            <WrapPanel Orientation="Vertical" Height="62">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Имя: " Width="70" Padding="0,2" Style="{StaticResource UsualTextBlock2}"/>
+                    <TextBox Width="250" Text="{Binding Path=NameForSort}" Style="{StaticResource UsualTextBox1}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,1,0,0">
+                    <TextBlock Text="Фамилия: " Width="70" Padding="0,2" Style="{StaticResource UsualTextBlock2}"/>
+                    <TextBox Width="250" Text="{Binding Path=SurnameForSort}" Style="{StaticResource UsualTextBox1}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,1,0,0">
+                    <TextBlock Width="70" Text="Отчество: " Padding="0,2" Style="{StaticResource UsualTextBlock2}"/>
+                    <TextBox Width="250" Text="{Binding Path=FathernameForSort}" Style="{StaticResource UsualTextBox1}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                    <TextBlock Width="125" Text="Дата рождения: " Padding="0,2" Style="{StaticResource UsualTextBlock2}"/>
+                    <ComboBox SelectedIndex="{Binding Path=BirthdayDateCompareIndex}" Style="{StaticResource ComboBoxForSort}">
+                        <ComboBoxItem Content="="/>
+                        <ComboBoxItem Content="&gt;"/>
+                        <ComboBoxItem Content="&lt;"/>
+                    </ComboBox>
+                    <TextBox Width="100" Text="{Binding Path=BirthdayDateForSort}" Style="{StaticResource UsualTextBox1}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,1,0,0">
+                    <TextBlock Text="Число полных лет: " Width="125" Padding="0,2" Style="{StaticResource UsualTextBlock2}"/>
+                    <ComboBox SelectedIndex="{Binding Path=AgeCompareIndex}" Style="{StaticResource ComboBoxForSort}">
+                        <ComboBoxItem Content="="/>
+                        <ComboBoxItem Content="&gt;"/>
+                        <ComboBoxItem Content="&lt;"/>
+                    </ComboBox>
+                    <TextBox Width="100" Text="{Binding Path=AgeForSort}" Style="{StaticResource UsualTextBox1}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,1,0,0">
+                    <TextBlock Text="Пол: " Width="125" Padding="0,2" Style="{StaticResource UsualTextBlock2}"/>
+                    <ComboBox SelectedIndex="{Binding Path=GenderSelectedIndex}" FontSize="18" Width="70" Style="{StaticResource ComboBoxForSort}">
+                        <ComboBoxItem Content=""/>
+                        <ComboBoxItem Content="муж"/>
+                        <ComboBoxItem Content="жен"/>
+                    </ComboBox>
+                </StackPanel>
+                <Button Margin="20,3" Content="Искать" Command="{Binding Path=SearchCommand}" Style="{StaticResource UsualButton1}" Height="25" Width="150"/>
+                <Button Margin="20,3" Content="Обновить" Command="{Binding Path=UpdateDataGridCommand}" Style="{StaticResource UsualButton1}" Height="25" Width="150"/>
+            </WrapPanel>
+        </GroupBox>
+        <Button Content="В главное меню" Command="{Binding BackToMainMenuCommand}" Style="{StaticResource NavigationButton}" Canvas.Left="10" Canvas.Top="429"/>
+        <Button Content="Генератор случайных записей" Command="{Binding Path=LoadRandomBlanksGeneratorWindowCommand}" Style="{StaticResource UsualButton1}" Canvas.Left="350" Canvas.Top="428" Height="31" Width="245"/>
+        <Button Content="Очистить базу данных" Command="{Binding Path=ClearDatabaseCommand}" Style="{StaticResource UsualButton1}" Canvas.Left="600" Canvas.Top="428" Background="#FFFFBFBF" Height="31" Width="190"/>
+        <DataGrid ItemsSource="{Binding Path=DataGridRows}" SelectedItem="{Binding Path=DataGridSelectedRow, Mode=OneWayToSource}" FontSize="14" IsReadOnly="True" AutoGenerateColumns="False" Height="311" Width="780" Canvas.Left="10" Canvas.Top="107">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn SortMemberPath="HouseholdNum">
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock TextAlignment="Center">№ дом.<LineBreak/>хоз-а</TextBlock>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=HouseholdId}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Path=Name}" Width="*"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Path=Surname}" Width="*"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Path=Fathername}" Width="*"/>
+                <DataGridTextColumn Header="Пол" Binding="{Binding Path=Gender}" Width="37"/>
+                <DataGridTemplateColumn SortMemberPath="BirthdayDate">
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock TextAlignment="Center">Дата<LineBreak/>рождения</TextBlock>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=BirthdayDate, StringFormat='dd/MM/yyyy'}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn SortMemberPath="Age" Width="84">
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock TextAlignment="Center">Число<LineBreak/>полных лет</TextBlock>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate >
+                            <TextBlock Text="{Binding Path=Age}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Подробно" Width="105">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext}" Content="Анкета" Command="{Binding Path=ShowFullBlankCommand}" Width="100"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Canvas>
+</Window>

@@ -1,0 +1,15 @@
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\MainWindow.g.cs
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\view\AuthorizationWindow.g.cs
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\view\BlankSurveyWindow.g.cs
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\view\BlankViewFormWindow.g.cs
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\view\CensusResultsWindow.g.cs
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\view\CreateEditProfileWindow.g.cs
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\view\DataBaseWindow.g.cs
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\view\MainMenuWindow.g.cs
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\view\ProfilesListWindow.g.cs
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\view\RandomBlanksGeneratorWindow.g.cs
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\App.g.cs
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\Census_MarkupCompile.cache
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\Census_MarkupCompile.lref
+C:\Users\Professional\source\repos\Unik_Kurs1_OAiP_KURS\Census\Census\obj\Debug\net5.0-windows\Census.csproj.AssemblyReference.cache

@@ -1,0 +1,304 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:base="clr-namespace:Census.viewModel.Base"
+                    xmlns:oxy="http://oxyplot.org/wpf">
+    <base:BoolToStringConverter x:Key="BoolToStringConverter"/>
+    <base:ReturnStaticBoolConverter x:Key="ReturnStaticBoolConverter"/>
+
+    <!--#region Общие стили -->
+    
+    <Style x:Key="UsualButton1" TargetType="Button">
+        <Setter Property="FontFamily" Value="Bahnschrift Light"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+    <Style x:Key="NavigationButton" TargetType="Button">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="MinWidth" Value="120"/>
+    </Style>
+    <Style x:Key="ShutdownButton" TargetType="Button" BasedOn="{StaticResource NavigationButton}">
+        <Setter Property="Command" Value="{Binding Path=ShutdownAppCommand}"/>
+    </Style>
+    
+
+    
+    <Style x:Key="UsualTextBlock1" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Bahnschrift SemiBold Condensed"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Height" Value="20"/>
+    </Style>
+    <Style x:Key="UsualTextBlock2" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Bahnschrift Light"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Height" Value="20"/>
+    </Style>
+    <Style x:Key="UsualTextBlock3" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Bahnschrift Light"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Padding" Value="0,5"/>
+    </Style>
+    
+    <Style x:Key="UsualTextBox1" TargetType="TextBox">
+        <Setter Property="FontFamily" Value="Bahnschrift SemiBold Condensed"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Height" Value="20"/>
+    </Style>
+
+    <!--#endregion-->
+    <!--#region Стили для опросных бланков -->
+    
+    <!--#region Стили для канвасов с бланками (картинками) -->
+
+    <Style x:Key="CanvasBlankBackgroundBasic" TargetType="Canvas">
+        <Setter Property="Width" Value="790"/>
+        <Setter Property="MinWidth" Value="790"/>
+        <Setter Property="Height" Value="1100"/>
+        <Style.Resources>
+            <Style TargetType="TextBox">
+                <Setter Property="Height" Value="25"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Bahnschrift SemiBold Condensed"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                <Setter Property="BorderBrush" Value="#FFABAdB3"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="3,1"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+
+    <Style x:Key="BlankHousehold1Background" TargetType="Canvas" BasedOn="{StaticResource CanvasBlankBackgroundBasic}">
+        <Setter Property="Canvas.Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/pictures/BlankHousehold1.bmp"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="BlankBase1Background" TargetType="Canvas" BasedOn="{StaticResource CanvasBlankBackgroundBasic}">
+        <Setter Property="Canvas.Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/pictures/BlankBase1.bmp"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="BlankBase2Background" TargetType="Canvas" BasedOn="{StaticResource CanvasBlankBackgroundBasic}">
+        <Setter Property="Canvas.Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/pictures/BlankBase2.bmp"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="BlankBase3Background" TargetType="Canvas" BasedOn="{StaticResource CanvasBlankBackgroundBasic}">
+        <Setter Property="Canvas.Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/pictures/BlankBase3.bmp"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="BlankBase4Background" TargetType="Canvas" BasedOn="{StaticResource CanvasBlankBackgroundBasic}">
+        <Setter Property="Canvas.Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/pictures/BlankBase4.bmp"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="BlankForeign1Background" TargetType="Canvas" BasedOn="{StaticResource CanvasBlankBackgroundBasic}">
+        <Setter Property="Canvas.Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/pictures/BlankForeign1.bmp"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region базовый стиль для RadioButton -->
+
+    <Style x:Key="FocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="2" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="OptionMarkFocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="14,0,0,0" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ToggleButtonForBlanks" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Width" Value="22"/>
+        <Setter Property="Height" Value="22"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True" Margin="0">
+                        <Border x:Name="checkBoxBorder" Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="#FF707070" HorizontalAlignment="Stretch"  Margin="1" VerticalAlignment="Stretch">
+                            <Grid x:Name="markGrid">
+                                <Rectangle x:Name="optionMark" Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Margin="1" Opacity="0"/>
+                                <!--<Rectangle x:Name="indeterminateMark" Fill="#FF212121"  Margin="2" Opacity="0"/>-->
+                            </Grid>
+                        </Border>
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasContent" Value="true">
+                            <Setter Property="Foreground">
+                                <Setter.Value>
+                                    <SolidColorBrush Opacity="0"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="#FFF3F9FF"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="#FF5593FF"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="#FF212121"/>
+                            <!--<Setter Property="Fill" TargetName="indeterminateMark" Value="#FF212121"/>-->
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="#FFE6E6E6"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="#FFBCBCBC"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="#FF707070"/>
+                            <!--<Setter Property="Fill" TargetName="indeterminateMark" Value="#FF707070"/>-->
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="#FFD9ECFF"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="#FF3C77DD"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="#FF212121"/>
+                            <!--<Setter Property="Fill" TargetName="indeterminateMark" Value="#FF212121"/>-->
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
+                            <!--<Setter Property="Opacity" TargetName="indeterminateMark" Value="0"/>-->
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter Property="Opacity" TargetName="optionMark" Value="0"/>
+                            <!--<Setter Property="Opacity" TargetName="indeterminateMark" Value="1"/>-->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--#endregion-->
+
+    <!--#region Наследуемые от базового стиля RadioButton-ы -->
+
+    <Style x:Key="RB_SetContent1" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=1}"/>
+    </Style>
+    <Style x:Key="RB_SetContent2" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=2}"/>
+    </Style>
+    <Style x:Key="RB_SetContent3" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=3}"/>
+    </Style>
+    <Style x:Key="RB_SetContent4" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=4}"/>
+    </Style>
+    <Style x:Key="RB_SetContent5" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=5}"/>
+    </Style>
+    <Style x:Key="RB_SetContent6" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=6}"/>
+    </Style>
+    <Style x:Key="RB_SetContent7" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=7}"/>
+    </Style>
+    <Style x:Key="RB_SetContent8" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=8}"/>
+    </Style>
+    <Style x:Key="RB_SetContent9" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=9}"/>
+    </Style>
+    <Style x:Key="RB_SetContent10" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=10}"/>
+    </Style>
+    <Style x:Key="RB_SetContent11" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=11}"/>
+    </Style>
+    <Style x:Key="RB_SetContent12" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=12}"/>
+    </Style>
+
+    <Style x:Key="RB_SetContent1_1" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=101}"/>
+    </Style>
+    <Style x:Key="RB_SetContent1_2" TargetType="RadioButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=102}"/>
+    </Style>
+    <Style x:Key="RB_SetContent1_3" TargetType="RadioButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=103}"/>
+    </Style>
+    <Style x:Key="RB_SetContent1_4" TargetType="RadioButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=104}"/>
+    </Style>
+    <Style x:Key="RB_SetContent1_5" TargetType="RadioButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=105}"/>
+    </Style>
+
+    <Style x:Key="RB_SetContent2_1" TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=201}"/>
+    </Style>
+    <Style x:Key="RB_SetContent2_2" TargetType="RadioButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=202}"/>
+    </Style>
+    <Style x:Key="RB_SetContent2_3" TargetType="RadioButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=203}"/>
+    </Style>
+
+    <Style x:Key="RB_SetContent6_1" TargetType="RadioButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=601}"/>
+    </Style>
+
+    <Style x:Key="RB_SetContent7_1" TargetType="RadioButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=701}"/>
+    </Style>
+    <Style x:Key="RB_SetContent7_2" TargetType="RadioButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay, Converter={StaticResource BoolToStringConverter}, ConverterParameter=702}"/>
+    </Style>
+
+    <Style x:Key="RB_SetContentTrue" TargetType="RadioButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay,FallbackValue={x:Null}, Converter={StaticResource ReturnStaticBoolConverter}, ConverterParameter=true}"/>
+    </Style>
+    <Style x:Key="RB_SetContentFalse" TargetType="RadioButton" BasedOn="{StaticResource ToggleButtonForBlanks}">
+        <Setter Property="IsChecked" Value="{Binding Path=Tag,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Canvas},Mode=TwoWay,FallbackValue={x:Null}, Converter={StaticResource ReturnStaticBoolConverter}, ConverterParameter=false}"/>
+    </Style>
+    <!--#endregion-->
+
+    <Style x:Key="TextBlockForBlanks" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Bahnschrift SemiBold Condensed"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Height" Value="20"/>
+    </Style>
+
+    <Style x:Key="LabelForBlankView" TargetType="Label">
+        <Setter Property="FontFamily" Value="Bahnschrift SemiBold Condensed"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+        <Setter Property="BorderBrush" Value="#FFABAdB3"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="3,1"/>
+    </Style>
+    <!--#endregion-->
+
+    <Style x:Key="ComboBoxForSort" TargetType="ComboBox">
+        <Setter Property="Padding" Value="5,0,0,0"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Height" Value="20"/>
+    </Style>
+</ResourceDictionary>

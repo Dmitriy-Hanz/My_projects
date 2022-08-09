@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="view\AuthorizationWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\BlankSurveyWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\BlankViewFormWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\CensusResultsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\CreateEditProfileWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\DataBaseWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\MainMenuWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\ProfilesListWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\RandomBlanksGeneratorWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\AuthorizationWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\BlankSurveyWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\BlankViewFormWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\CensusResultsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\CreateEditProfileWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\DataBaseWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\MainMenuWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\ProfilesListWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\RandomBlanksGeneratorWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="view\resources\MyResources.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

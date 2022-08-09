@@ -1,0 +1,18 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: промежуточный каталог (Debug\) содержит файлы, которые используются совместно с другим проектом (ЗАГОТОВКА КУРСАЧА.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+  Source.cpp
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(109): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(617): warning C4805: ==: небезопасное смешение типа "bool" и типа "int" в операции
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(627): warning C4805: ==: небезопасное смешение типа "bool" и типа "int" в операции
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(700): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(761): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(843): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(815): warning C4101: mstat: неиспользованная локальная переменная
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(815): warning C4101: gen: неиспользованная локальная переменная
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(895): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(867): warning C4101: mstat: неиспользованная локальная переменная
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(867): warning C4101: gen: неиспользованная локальная переменная
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(1042): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(1280): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(1205): warning C4101: place_type: неиспользованная локальная переменная
+c:\users\user\source\repos\заготовка курсача\заготовка курсача\source.cpp(1449): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+  ЗАГОТОВКА КУРСАЧА.vcxproj -> C:\Users\User\source\repos\ЗАГОТОВКА КУРСАЧА\Debug\курсовая.exe

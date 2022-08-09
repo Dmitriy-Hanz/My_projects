@@ -1,0 +1,23 @@
+﻿<Window x:Class="TP_F.AddingCaseWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TP_F"
+        mc:Ignorable="d"
+        Title="Новое оборудование" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <Canvas Height="107" Width="227">
+        <Button Name="NewKomputer_B" Canvas.Left="19" Canvas.Top="19" Width="70" Height="70" Click="NewKomputer_B_Click" ToolTip="Новый компьютер">
+            <Button.Content>
+                <Image Source="images/Icon_AddKomputer.bmp"/>
+            </Button.Content>
+        </Button>
+
+        <Button Name="NewMonitor_B" Canvas.Left="137" Canvas.Top="19" Width="70" Height="70" Click="NewMonitor_B_Click" ToolTip="Новый монитор">
+            <Button.Content>
+                <Image Source="images/Icon_AddMonitor.bmp" Width="67"/>
+            </Button.Content>
+        </Button>
+    </Canvas>
+
+</Window>

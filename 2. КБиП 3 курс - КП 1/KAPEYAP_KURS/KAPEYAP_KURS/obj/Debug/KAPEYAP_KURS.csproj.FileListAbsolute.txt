@@ -1,0 +1,46 @@
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\bin\Debug\KAPEYAP_KURS.exe.config
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\bin\Debug\KAPEYAP_KURS.exe
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\bin\Debug\KAPEYAP_KURS.pdb
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS.csprojAssemblyReference.cache
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\CalcWin1.g.cs
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\MainMenuWin.g.cs
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\App.g.cs
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS_MarkupCompile.cache
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS_MarkupCompile.lref
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\CalcWin1.baml
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\MainMenuWin.baml
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS.g.resources
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS.Properties.Resources.resources
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS.csproj.GenerateResource.cache
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS.exe
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS.pdb
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\WorkersTabWin.g.cs
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\WorkersTabWin.baml
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\ZPTab.g.cs
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\ZPTab.baml
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\Spravka_F.g.cs
+C:\Users\User\source\repos\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\Spravka_F.baml
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\bin\Debug\KAPEYAP_KURS.exe.config
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\bin\Debug\KAPEYAP_KURS.exe
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\bin\Debug\KAPEYAP_KURS.pdb
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS.csprojAssemblyReference.cache
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\CalcWin1.g.cs
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\MainMenuWin.g.cs
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\Spravka_F.g.cs
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\WorkersTabWin.g.cs
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\ZPTab.g.cs
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\App.g.cs
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS_MarkupCompile.cache
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS_MarkupCompile.lref
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\CalcWin1.baml
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\MainMenuWin.baml
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\Spravka_F.baml
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\WorkersTabWin.baml
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\ZPTab.baml
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS.g.resources
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS.Properties.Resources.resources
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS.csproj.GenerateResource.cache
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS.csproj.CoreCompileInputs.cache
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS.exe
+C:\Users\Professional\source\repos\КУРСАЧИ\Курсовой проект 3 курс C# №1\KAPEYAP_KURS\KAPEYAP_KURS\obj\Debug\KAPEYAP_KURS.pdb

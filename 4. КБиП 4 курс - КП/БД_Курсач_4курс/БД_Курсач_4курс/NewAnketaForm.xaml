@@ -1,0 +1,48 @@
+﻿<Window x:Class="БД_Курсач_4курс.NewAnketaForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:БД_Курсач_4курс"
+        mc:Ignorable="d"
+        Title="NewAnketaForm" Height="480" Width="800">
+    <Grid>
+        <GroupBox Header="Адрес квартиры" HorizontalAlignment="Left" Height="161" Margin="11,96,0,0" VerticalAlignment="Top" Width="471" FontSize="14" BorderBrush="#FF005DFF"/>
+        <GroupBox Header="Характеристики квартиры" HorizontalAlignment="Left" Height="113" Margin="11,262,0,0" VerticalAlignment="Top" Width="471" FontSize="14" BorderBrush="#FF005DFF"/>
+        <TextBox x:Name="AdrCity_TB" HorizontalAlignment="Left" Height="29" Margin="77,121,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154" FontSize="14" VerticalContentAlignment="Center"/>
+        <Label Content="Город:" HorizontalAlignment="Left" Margin="20,121,0,0" VerticalAlignment="Top" Width="52" FontSize="14"/>
+        <Label Content="Улица:" HorizontalAlignment="Left" Margin="236,121,0,0" VerticalAlignment="Top" Width="53" FontSize="14"/>
+        <Label Content="Номер дома:" HorizontalAlignment="Left" Margin="20,169,0,0" VerticalAlignment="Top" Width="125" FontSize="14"/>
+        <Label Content="Номер корпуса:" HorizontalAlignment="Left" Margin="236,169,0,0" VerticalAlignment="Top" Width="115" FontSize="14"/>
+        <TextBox x:Name="AdrStreet_TB" HorizontalAlignment="Left" Height="29" Margin="294,121,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="175" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="AdrHouseNum_TB" HorizontalAlignment="Left" Height="29" Margin="150,169,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" FontSize="14" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="AdrKorpNum_TB" HorizontalAlignment="Left" Height="29" Margin="356,169,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="54" FontSize="14" VerticalContentAlignment="Center"/>
+        <Label Content="Номер квартиры:" HorizontalAlignment="Left" Margin="20,217,0,0" VerticalAlignment="Top" Width="125" FontSize="14"/>
+        <TextBox x:Name="AdrFlatNum_TB" HorizontalAlignment="Left" Height="29" Margin="150,217,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" FontSize="14" VerticalContentAlignment="Center"/>
+        <Label Content="Новая анкета" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="32" Width="472" FontSize="14" FontWeight="Bold" FontFamily="Arial Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFD2FFD0"/>
+        <Label Content="Кол-во комнат:" HorizontalAlignment="Left" Margin="20,288,0,0" VerticalAlignment="Top" Width="107" FontSize="14"/>
+        <TextBox x:Name="KvRoomsCount_TB" HorizontalAlignment="Left" Height="29" Margin="132,288,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" FontSize="14" VerticalContentAlignment="Center"/>
+        <Label Content="Этаж:" HorizontalAlignment="Left" Margin="195,288,0,0" VerticalAlignment="Top" Width="46" FontSize="14"/>
+        <TextBox x:Name="KvFloor_TB" HorizontalAlignment="Left" Height="29" Margin="246,288,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53" FontSize="14" VerticalContentAlignment="Center"/>
+        <Label Content="Площадь (м²):" HorizontalAlignment="Left" Margin="304,288,0,0" VerticalAlignment="Top" Width="102" FontSize="14"/>
+        <TextBox x:Name="KvSquare_TB" HorizontalAlignment="Left" Height="29" Margin="411,288,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" FontSize="14" VerticalContentAlignment="Center"/>
+        <CheckBox x:Name="KvBalcon_CHB" Content="Наличие балкона" HorizontalAlignment="Left" Margin="20,331,0,0" VerticalAlignment="Top" Width="138" FlowDirection="RightToLeft" Height="29" VerticalContentAlignment="Center" FontSize="14"/>
+        <Label Content="Тип анкеты:" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Width="85" FontSize="14"/>
+        <ComboBox x:Name="AnkType_CB" HorizontalAlignment="Left" Margin="100,56,0,0" VerticalAlignment="Top" Width="184" Height="29">
+            <ComboBoxItem Content="Покупка" FontSize="14"/>
+            <ComboBoxItem Content="Продажа" FontSize="14"/>
+            <ComboBoxItem Content="Обмен" FontSize="14"/>
+            <ComboBoxItem Content="Продажа/обмен" FontSize="14"/>
+        </ComboBox>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Margin="500,0,0,0" Width="2"/>
+        <Label Content="Ваши анкеты" HorizontalAlignment="Left" Margin="517,10,0,0" VerticalAlignment="Top" Height="32" Width="265" FontSize="14" FontWeight="Bold" FontFamily="Arial Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFD2FFD0"/>
+        <ListBox x:Name="Ankets_LB" HorizontalAlignment="Left" Height="199" Margin="517,47,0,0" VerticalAlignment="Top" Width="265"/>
+        <Button x:Name="ChangeAnket_B" Content="Изменить" HorizontalAlignment="Left" Margin="672,251,0,0" VerticalAlignment="Top" Width="110" Height="32" FontSize="14" Click="ChangeAnket_B_Click"/>
+        <Button x:Name="DeleteAnket_B" Content="Удалить" HorizontalAlignment="Left" Margin="517,251,0,0" VerticalAlignment="Top" Width="110" Height="32" FontSize="14" Click="DeleteAnket_B_Click"/>
+        <Button x:Name="CreateAnket_B" Content="Создать анкету" HorizontalAlignment="Left" Margin="10,394,0,0" VerticalAlignment="Top" Width="135" Height="32" FontSize="14" Click="CreateAnket_B_Click"/>
+        <Button x:Name="ClearFields_B" Content="Отчистить поля" HorizontalAlignment="Left" Margin="347,394,0,0" VerticalAlignment="Top" Width="135" Height="32" FontSize="14" Click="ClearFields_B_Click"/>
+        <Button x:Name="BackToMenu_B" Content="Вернуться в главное меню" HorizontalAlignment="Left" Margin="517,394,0,0" VerticalAlignment="Top" Width="265" Height="32" FontSize="14" Click="BackToMenu_B_Click"/>
+        <Button x:Name="SaveAnket_B" Content="Сохранить" HorizontalAlignment="Left" Margin="150,394,0,0" VerticalAlignment="Top" Width="116" Height="32" FontSize="14" Click="SaveAnket_B_Click" Visibility="Hidden"/>
+        <Button x:Name="CloseForm_B" Visibility="Hidden" Content="Закрыть форму" HorizontalAlignment="Left" Margin="182,394,0,0" VerticalAlignment="Top" Width="135" Height="32" FontSize="14" Click="CloseForm_B_Click"/>
+    </Grid>
+</Window>

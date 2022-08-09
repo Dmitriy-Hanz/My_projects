@@ -1,0 +1,551 @@
+﻿<Window x:Class="Census.view.BlankSurveyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Census.view"
+            xmlns:vm="clr-namespace:Census.viewModel"
+        mc:Ignorable="d"
+        Title="BlankSurveyWindow" SizeToContent="WidthAndHeight" Padding="0">
+    <!--xmlns:base="clr-namespace:Census.viewModel.Base"-->
+    <!--<Window.Resources>
+        <base:BoolToStringConverter x:Key="BoolToStringConverter"/>
+    </Window.Resources>-->
+    <Window.DataContext>
+        <vm:BlankSurveyVM/>
+    </Window.DataContext>
+    <Grid MinWidth="826" MinHeight="500" MaxHeight="1205" Tag="Высоты:500.1205" Width="826" Height="502">
+        <Border Padding="1" BorderBrush="Black" BorderThickness="1" MinWidth="802" Margin="10,8,10,8">
+            <DockPanel>
+                <TabControl SelectedIndex="{Binding Path=BlankHouseholdTabSelectedIndex}">
+                    <TabItem Visibility="Collapsed" Header="Анкета по домохозяйству" UseLayoutRounding="False">
+                        <Grid Margin="-3,-5,-3,-3">
+
+                            <!--Этот бордер скрывается-->
+                            <Border Visibility="{Binding Path=BorderOneVisibility}" Grid.Row="0" Background="#3F000000" Panel.ZIndex="1">
+                                <Border Padding="10" BorderThickness="1" Background="White" BorderBrush="Black" CornerRadius="10" MaxWidth="680" MaxHeight="305" >
+                                    <Canvas MinWidth="458">
+                                        <TextBlock Text="Укажите число человек - членов домохозяйства: " FontSize="18" Height="26" Width="410" Canvas.Top="204" Canvas.Left="95"/>
+                                        <TextBox Text="{Binding Path=Household.NumberOfMembers}" MinWidth="50" FontSize="18" Canvas.Left="510" Canvas.Top="204"/>
+                                        <GroupBox Header="Адрес проживания домохозяйства" FontSize="18" Height="192" Width="658" Padding="0,5,0,0">
+                                            <Canvas>
+                                                <TextBlock Text="Область (г. Минск):" FontSize="14" Height="20" Width="128"/>
+                                                <TextBox Text="{Binding Path=Household.FullAdressInfo.Region}" FontSize="14" Canvas.Left="133" Height="20" Width="235"/>
+                                                <TextBlock Text="Район области:" FontSize="14" Height="20" Width="128" Canvas.Top="25"/>
+                                                <TextBox Text="{Binding Path=Household.FullAdressInfo.RegionDistrict}" FontSize="14" Canvas.Left="133" Width="235" Canvas.Top="25"/>
+                                                <TextBlock Text="Город (ПГТ):" FontSize="14" Height="20" Width="128" Canvas.Top="50"/>
+                                                <TextBox Text="{Binding Path=Household.FullAdressInfo.Sity}" FontSize="14" Canvas.Left="133" Width="235" Canvas.Top="50"/>
+                                                <TextBlock Text="Район города:" FontSize="14" Height="20" Width="128" Canvas.Top="75"/>
+                                                <TextBox Text="{Binding Path=Household.FullAdressInfo.SityDistrict}" FontSize="14" Canvas.Left="133" Width="235" Canvas.Top="75"/>
+                                                <TextBlock Text="Сельсовет:" FontSize="14" Height="20" Width="128" Canvas.Top="100"/>
+                                                <TextBox Text="{Binding Path=Household.FullAdressInfo.VillageCouncil}" FontSize="14" Height="20" Canvas.Left="133" Width="235" Canvas.Top="100"/>
+                                                <TextBlock Text="Сельский НП:" FontSize="14" Height="20" Width="128" Canvas.Top="125"/>
+                                                <TextBox Text="{Binding Path=Household.FullAdressInfo.VillageName}" FontSize="14" Height="20" Canvas.Left="133" Width="235" Canvas.Top="125"/>
+
+                                                <TextBlock Text="Улица, проспект и др.:" FontSize="14" Height="20" Width="262" Canvas.Left="384"/>
+                                                <TextBox Text="{Binding Path=Household.FullAdressInfo.StreetAvenueOther}" FontSize="14" Height="20" Canvas.Left="384" Width="262" Canvas.Top="20"/>
+                                                <TextBlock Text="№ дома:" FontSize="14" Height="20" Canvas.Left="384" Canvas.Top="45"/>
+                                                <TextBox Text="{Binding Path=Household.FullAdressInfo.HouseNumber}" FontSize="14" Height="20" Canvas.Left="444" Width="52" Canvas.Top="45"/>
+                                                <TextBlock Text="№ корпуса:" FontSize="14" Height="20" Canvas.Left="516" Canvas.Top="45"/>
+                                                <TextBox Text="{Binding Path=Household.FullAdressInfo.KorpNumber}" FontSize="14" Height="20" Canvas.Left="595" Width="51" Canvas.Top="45"/>
+                                                <TextBlock Text="№ квартиры/комнаты:" FontSize="14" Height="20" Canvas.Left="384" Canvas.Top="70"/>
+                                                <TextBox Text="{Binding Path=Household.FullAdressInfo.FlatOrRoomNumber}" FontSize="14" Height="20" Canvas.Left="534" Width="56" Canvas.Top="70"/>
+                                                <TextBlock TextWrapping="Wrap" Text="В случае отсутствия номера дома укажите фамилию и инициалы собственника, нанимателя (поднанимателя):" FontSize="10" Height="30" Canvas.Left="384" Canvas.Top="95" Width="262"/>
+                                                <TextBox Text="{Binding Path=Household.FullAdressInfo.OwnerFIO}" FontSize="14" Height="20" Canvas.Left="384" Width="262" Canvas.Top="125"/>
+
+                                            </Canvas>
+                                        </GroupBox>
+                                        <Button Content="Продолжить" Command="{Binding Path=BorderOneContinueCommand}" Style="{StaticResource NavigationButton}" MaxWidth="120" Canvas.Left="528" Canvas.Top="253"/>
+                                        <Button Content="Прервать опрос" Command="{Binding Path=StopSurveyCommand}" Style="{StaticResource NavigationButton}" MaxWidth="120" Canvas.Top="253" Canvas.Left="10"/>
+                                    </Canvas>
+                                </Border>
+                            </Border>
+                            <!--Этот бордер скрывается-->
+
+                            <DockPanel Grid.Row="0" Margin="4">
+                                <Canvas Height="46" DockPanel.Dock="Bottom" Margin="1">
+                                    <Button Content="Продолжить" Command="{Binding Path=BlankHousehold1ContinueCommand}" Canvas.Left="660" Canvas.Top="8" Style="{StaticResource NavigationButton}"/>
+                                    <Button Content="Прервать опрос" Command="{Binding Path=StopSurveyCommand}" Canvas.Left="10" Canvas.Top="8" Style="{StaticResource NavigationButton}"/>
+                                </Canvas>
+                                <Border DockPanel.Dock="Top" BorderThickness="1" BorderBrush="Black">
+                                    <ScrollViewer>
+                                        <Canvas Style="{StaticResource BlankHousehold1Background}">
+                                            <TextBox Text="{Binding Path=Household.RoomsCount}" Canvas.Left="54" Canvas.Top="67" Width="44"/>
+                                            <TextBox Text="{Binding Path=Household.PartOfRoom}" Canvas.Left="234" Canvas.Top="67" Width="44"/>
+                                            <Canvas Tag="{Binding Path=Household.HouseholdAccommodationsInfo.OwnerOfApartment, Mode=TwoWay}" MinHeight="22" Width="479" Canvas.Left="54" Canvas.Top="119" Height="46">
+                                                <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Left="160"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Left="347"/>
+                                            </Canvas>
+                                            <CheckBox IsChecked="{Binding Path=Household.HouseholdAccommodationsInfo.IsAppartmentRented, Mode=TwoWay}" Canvas.Left="511" Style="{StaticResource ToggleButtonForBlanks}" Canvas.Top="165"/>
+                                            <Canvas Tag="{Binding Path=Household.HasForeighResidents, Mode=TwoWay}" MinHeight="22" Width="131" Canvas.Left="53" Canvas.Top="228" Height="52">
+                                                <RadioButton Style="{StaticResource RB_SetContentTrue}"/>
+                                                <RadioButton Style="{StaticResource RB_SetContentFalse}" Canvas.Top="30"/>
+                                            </Canvas>
+                                            <Canvas Tag="{Binding Path=Household.HasFarmFacilities, Mode=TwoWay}" MinHeight="22" Width="230" Canvas.Left="54" Canvas.Top="342" Height="52">
+                                                <RadioButton Style="{StaticResource RB_SetContentTrue}"/>
+                                                <RadioButton Style="{StaticResource RB_SetContentFalse}" Canvas.Top="30"/>
+                                            </Canvas>
+
+                                            <Canvas Tag="{Binding Path=ApartmentTypeCase, Mode=TwoWay}" MinHeight="22" Width="203" Canvas.Left="59" Canvas.Top="482" Height="181">
+                                                <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="23"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Top="46"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent4}" Canvas.Top="68"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent5}" Canvas.Top="91"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent6}" Canvas.Top="114"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent7}" Canvas.Top="136"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent8}" Canvas.Top="159"/>
+                                            </Canvas>
+                                            <TextBox Text="{Binding Path=Household.HouseholdAccommodationsInfo.AreaOfFlat}"  Canvas.Left="442" Canvas.Top="678" Width="65" IsEnabled="{Binding Path=FromBlankHousehold1Q6Enable, Mode=TwoWay}"/>
+                                            <Canvas Tag="{Binding Path=Household.HouseholdAccommodationsInfo.WaterPipes, Mode=TwoWay}" MinHeight="22" Width="154" Canvas.Left="58" Canvas.Top="771" Height="68" IsEnabled="{Binding Path=FromBlankHousehold1Q6Enable}">
+                                                <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="23"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Top="46"/>
+                                            </Canvas>
+                                            <Canvas Tag="{Binding Path=Household.HouseholdAccommodationsInfo.Сanalization, Mode=TwoWay}" MinHeight="22" Width="154" Canvas.Left="267" Canvas.Top="771" Height="68" IsEnabled="{Binding Path=FromBlankHousehold1Q6Enable}">
+                                                <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="23"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Top="46"/>
+                                            </Canvas>
+                                            <Canvas Tag="{Binding Path=Household.HouseholdAccommodationsInfo.HasBathOrShower, Mode=TwoWay}" IsEnabled="{Binding Path=FromBlankHousehold1Q6Enable}" MinHeight="22" Width="154" Canvas.Left="484" Canvas.Top="771" Height="45">
+                                                <RadioButton Style="{StaticResource RB_SetContentTrue}"/>
+                                                <RadioButton Style="{StaticResource RB_SetContentFalse}" Canvas.Top="23"/>
+                                            </Canvas>
+                                            <Canvas Tag="{Binding Path=Household.HouseholdAccommodationsInfo.HotWaterSupply, Mode=TwoWay}" MinHeight="22" Width="154" Canvas.Left="59" Canvas.Top="882" Height="145" IsEnabled="{Binding Path=FromBlankHousehold1Q6Enable}">
+                                                <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="23"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent2_1}" Canvas.Top="53" Canvas.Left="19"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent2_2}" Canvas.Top="76" Canvas.Left="19"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent2_3}" Canvas.Top="99" Canvas.Left="19"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Top="123"/>
+                                            </Canvas>
+                                            <Canvas Tag="{Binding Path=Household.HouseholdAccommodationsInfo.Heating, Mode=TwoWay}" MinHeight="22" Width="154" Canvas.Left="267" Canvas.Top="882" Height="190" IsEnabled="{Binding Path=FromBlankHousehold1Q6Enable}">
+                                                <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="23"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent2_1}" Canvas.Top="53" Canvas.Left="19"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent2_2}" Canvas.Top="76" Canvas.Left="19"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent2_3}" Canvas.Top="99" Canvas.Left="19"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Top="123"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent4}" Canvas.Top="146"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent5}" Canvas.Top="168"/>
+                                            </Canvas>
+                                            <Canvas Tag="{Binding Path=Household.HouseholdAccommodationsInfo.CookingEquipment, Mode=TwoWay}" MinHeight="22" Width="154" Canvas.Left="484" Canvas.Top="882" Height="152" IsEnabled="{Binding Path=FromBlankHousehold1Q6Enable}">
+                                                <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent1_1}" Canvas.Top="30" Canvas.Left="20"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent1_2}" Canvas.Top="52" Canvas.Left="20"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="78"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Top="106"/>
+                                                <RadioButton Style="{StaticResource RB_SetContent4}" Canvas.Top="129"/>
+                                            </Canvas>
+                                        </Canvas>
+                                    </ScrollViewer>
+                                </Border>
+                            </DockPanel>
+                        </Grid>
+
+                    </TabItem>
+                    <TabItem Header="Анкета по людям" Visibility="Collapsed" TabIndex="{Binding Path=BlankBaseTabSelectedIndex}">
+                        <Grid Margin="-2">
+
+                            <!--этот бордер скрывается-->
+                            <Border Visibility="{Binding Path=BorderTwoVisibility}" Grid.Row="0"  Background="#3F000000" Panel.ZIndex="1">
+                                <Border Padding="10" BorderThickness="1" Background="White" BorderBrush="Black" CornerRadius="10" MaxWidth="480" MaxHeight="125" >
+                                    <Canvas>
+                                        <TextBlock TextWrapping="Wrap" FontSize="18" Grid.ColumnSpan="2" Height="51" Width="458"><Run Text="Являетесь ли вы респондентом, постоянно проживающ"/><Run Language="ru-ru" Text="и"/><Run Text="м за пределами Республики Беларусь?"/></TextBlock>
+                                        <UniformGrid Canvas.Top="73" Rows="1" Width="458">
+                                            <Button Content="Да" Width="100" Height="30" Command="{Binding BorderTwoContinueCommand}" CommandParameter="true"/>
+                                            <TextBlock Text="{Binding Path=BlankBasePersonNumInfo, StringFormat=Опрашиваемый: {0}}" Canvas.Left="184" Canvas.Top="14" Style="{StaticResource TextBlockForBlanks}" HorizontalAlignment="Center"/>
+                                            <Button Content="Нет" Width="100" Height="30" Command="{Binding BorderTwoContinueCommand}" CommandParameter="false"/>
+                                        </UniformGrid>
+                                    </Canvas>
+                                </Border>
+                            </Border>
+                            <!--этот бордер скрывается-->
+
+                            <DockPanel IsEnabled="True" Margin="2">
+                                <Canvas Height="46" DockPanel.Dock="Bottom" Margin="1">
+                                    <Button Content="Продолжить"        Command="{Binding Path=BlankBaseContinueCommand}" Canvas.Left="660" Canvas.Top="8" Style="{StaticResource NavigationButton}"/>
+                                    <Button Content="Предыдущий бланк"  Command="{Binding Path=BlankBasePreviousCommand}" Canvas.Left="535" Canvas.Top="8" Style="{StaticResource NavigationButton}"/>
+                                    <Button Content="Прервать опрос"    Command="{Binding Path=StopSurveyCommand}" Canvas.Left="10" Canvas.Top="8" Style="{StaticResource NavigationButton}"/>
+
+                                    <TextBlock Text="{Binding Path=BlankBasePersonNumInfo, StringFormat=Опрашиваемый: {0}}" Canvas.Left="184" Canvas.Top="14" Style="{StaticResource TextBlockForBlanks}"/>
+                                    <TextBlock Text="{Binding Path=BlankBasePageNumInfo, StringFormat=Страница: {0}}" Canvas.Left="356" Canvas.Top="14" Style="{StaticResource TextBlockForBlanks}"/>
+                                </Canvas>
+                                <TabControl DockPanel.Dock="Top" SelectedIndex="{Binding Path=BlankBaseTabSelectedIndex}">
+                                    <TabItem Header="1" TabIndex="0" Visibility="Collapsed">
+                                        <ScrollViewer>
+                                            <Canvas Style="{StaticResource BlankBase1Background}">
+                                                <TextBox Text="{Binding Path=Person.Surname, UpdateSourceTrigger=PropertyChanged}" Canvas.Left="236" Canvas.Top="165" Width="520"/>
+                                                <TextBox Text="{Binding Path=Person.Name, UpdateSourceTrigger=PropertyChanged}" Canvas.Left="236" Canvas.Top="191" Width="520"/>
+                                                <TextBox Text="{Binding Path=Person.Fathername, UpdateSourceTrigger=PropertyChanged}" Canvas.Left="236" Canvas.Top="218" Width="520"/>
+                                                <TextBox Text="{Binding Path=Person.PassportID, UpdateSourceTrigger=PropertyChanged}" Canvas.Left="258" Canvas.Top="244" Width="498"/>
+
+                                                <Canvas MinHeight="22" Width="280" Canvas.Left="302" Canvas.Top="278" Height="25">
+                                                    <DatePicker SelectedDate="{Binding Path=Person.BirthdayDate}" Width="199" Height="25" Background="White"/>
+                                                    <TextBox Text="{Binding Path=BlankBase1Q3AgeCase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="62" Canvas.Left="218"/>
+                                                </Canvas>
+
+                                                <Canvas Tag="{Binding Path=GenderCase, Mode=TwoWay}" MinHeight="22" Width="230" Canvas.Left="142" Canvas.Top="322" Height="22">
+                                                    <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Left="136"/>
+                                                </Canvas>
+
+                                                <Canvas Tag="{Binding Path=Person.HouseholdRelations, Mode=TwoWay}" MinHeight="22" Width="699" Canvas.Left="57" Canvas.Top="371" Height="79">
+                                                    <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="31"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Top="57"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent4}" Canvas.Left="194"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent5}" Canvas.Top="31" Canvas.Left="194"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent6}" Canvas.Top="57" Canvas.Left="194"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent7}" Canvas.Left="342"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent8}" Canvas.Top="31" Canvas.Left="342"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent9}" Canvas.Top="57" Canvas.Left="342"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent10}" Canvas.Left="477"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent11}" Canvas.Left="477" Canvas.Top="31"/>
+                                                </Canvas>
+
+                                                <Canvas Tag="{Binding Path=Person.MaritalStatus, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase1Q6Enable}" MinHeight="22" Width="699" Canvas.Left="57" Canvas.Top="498" Height="44">
+                                                    <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="22"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Left="254"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent4}" Canvas.Left="254" Canvas.Top="22"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent5}" Canvas.Left="559"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent6}" Canvas.Top="22" Canvas.Left="559"/>
+                                                </Canvas>
+
+                                                <Canvas Tag="{Binding Path=Person.BirthCountry, Mode=TwoWay}" MinHeight="22" Width="617" Canvas.Left="57" Canvas.Top="608" Height="25">
+                                                    <RadioButton GroupName="BirthCountry" Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton GroupName="BirthCountry" Style="{StaticResource RB_SetContent2}" x:Name="BlankBase1Q7_RB" Canvas.Left="186"/>
+                                                    <TextBox IsEnabled="{Binding ElementName=BlankBase1Q7_RB, Path=IsChecked, TargetNullValue=false}" Text="{Binding Path=Person.NameOfBirthCountry}" Canvas.Left="302" Width="315"/>
+                                                </Canvas>
+
+                                                <Canvas Tag="{Binding Path=DoYouLiveHereFromBirthCase, Mode=TwoWay, FallbackValue={x:Null}}" MinHeight="22" Width="309" Canvas.Left="57" Canvas.Top="683" Height="77">
+                                                    <RadioButton Style="{StaticResource RB_SetContentTrue}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContentFalse}" Canvas.Left="246"/>
+                                                    <DatePicker SelectedDate="{Binding Path=Person.LivingPlaceInfo.ArrivalPeriod}" IsEnabled="{Binding Path=FromBlankBase1Q8Enable}" Width="149" Height="25" Background="White" Canvas.Top="52"/>
+                                                </Canvas>
+
+                                                <Canvas Tag="{Binding Path=Person.LivingPlaceInfo.PreviousLivingPlace, Mode=TwoWay}" IsEnabled="{Binding Path=FromBlankBase1Q8Enable}" MinHeight="22" Width="523" Canvas.Left="61" Canvas.Top="816" Height="140">
+                                                    <RadioButton GroupName="PreviousLivingPlace" Style="{StaticResource RB_SetContent1}" x:Name="BlankBase1Q8p2_1_RB" Canvas.Top="5"/>
+                                                    <Canvas IsEnabled="{Binding ElementName=BlankBase1Q8p2_1_RB, Path=IsChecked, TargetNullValue=false}" Height="68" Width="487" Canvas.Left="36">
+                                                        <TextBox Text="{Binding Path=Person.LivingPlaceInfo.RegionOrDistrictName}" Canvas.Left="127" Width="360"/>
+                                                        <TextBox Text="{Binding Path=Person.LivingPlaceInfo.CityOrPGTName}" Width="315" Canvas.Top="43"/>
+                                                        <CheckBox IsChecked="{Binding Path=Person.LivingPlaceInfo.IsItVillage}" Style="{StaticResource ToggleButtonForBlanks}" Canvas.Top="46" Canvas.Left="338"/>
+                                                    </Canvas>
+                                                    <RadioButton GroupName="PreviousLivingPlace" x:Name="BlankBase1Q8p2_2_RB" Style="{StaticResource RB_SetContent2}" Canvas.Top="83"/>
+                                                    <TextBox Text="{Binding Path=Person.LivingPlaceInfo.NameOfPreviousCountry}" IsEnabled="{Binding ElementName=BlankBase1Q8p2_2_RB, Path=IsChecked, TargetNullValue=false}" Width="293" Canvas.Top="106"/>
+                                                </Canvas>
+
+                                                <Canvas Tag="{Binding Path=Person.LivingPlaceInfo.ReasonForArrivalAtPlace, Mode=TwoWay}" IsEnabled="{Binding Path=FromBlankBase1Q8Enable}" MinHeight="22" Width="699" Canvas.Left="60" Canvas.Top="987" Height="72">
+                                                    <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="25"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Top="50"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent4}" Canvas.Left="220"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent5}" Canvas.Top="25" Canvas.Left="220"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent6}" Canvas.Top="50" Canvas.Left="220"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent7}" Canvas.Left="526"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent8}" Canvas.Top="25" Canvas.Left="526"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent9}" Canvas.Top="50" Canvas.Left="526"/>
+                                                </Canvas>
+                                            </Canvas>
+                                        </ScrollViewer>
+                                    </TabItem>
+                                    <TabItem Header="2" TabIndex="1" Visibility="Collapsed">
+                                        <ScrollViewer>
+                                            <Canvas Style="{StaticResource BlankBase2Background}">
+
+                                                <Canvas IsEnabled="{Binding Path=FromBlankBase1Q8Enable}" Height="283" Width="702" Canvas.Left="47" Canvas.Top="71">
+                                                    <Canvas Tag="{Binding Path=DidYouLiveInOtherCountryCase, Mode=TwoWay, FallbackValue=false}" MinHeight="22" Width="315" Height="148">
+                                                        <RadioButton Style="{StaticResource RB_SetContentTrue}" Canvas.Left="13"/>
+                                                        <RadioButton Style="{StaticResource RB_SetContentFalse}" Canvas.Left="135"/>
+                                                        <TextBox Text="{Binding Path=Person.LivingCountryInfo.NameOfCountryYouCameFrom}" IsEnabled="{Binding Path=FromBlankBase2Q9Enable}" Width="315" Canvas.Top="52"/>
+                                                        <DatePicker SelectedDate="{Binding Path=Person.LivingCountryInfo.ArrivalPeriod}" IsEnabled="{Binding Path=FromBlankBase2Q9Enable}" Width="149" Height="25" Background="White" Canvas.Top="116" Canvas.Left="9"/>
+                                                    </Canvas>
+                                                    <Canvas Tag="{Binding Path=Person.LivingCountryInfo.ReasonForArrivalAtRB, Mode=TwoWay}" IsEnabled="{Binding Path=FromBlankBase2Q9Enable}" MinHeight="22" Width="689" Canvas.Left="13" Canvas.Top="216" Height="67">
+                                                        <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                        <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="23"/>
+                                                        <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Top="45"/>
+                                                        <RadioButton Style="{StaticResource RB_SetContent4}" Canvas.Left="212"/>
+                                                        <RadioButton Style="{StaticResource RB_SetContent5}" Canvas.Top="23" Canvas.Left="212"/>
+                                                        <RadioButton Style="{StaticResource RB_SetContent6}" Canvas.Top="45" Canvas.Left="212"/>
+                                                        <RadioButton Style="{StaticResource RB_SetContent7}" Canvas.Left="522"/>
+                                                        <RadioButton Style="{StaticResource RB_SetContent8}" Canvas.Top="22" Canvas.Left="522"/>
+                                                        <RadioButton Style="{StaticResource RB_SetContent9}" Canvas.Top="45" Canvas.Left="522"/>
+                                                    </Canvas>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=BlankBase2Q9p4Case, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase1Q3AgeCaseForQ9p4}" MinHeight="22" Width="422" Canvas.Left="60" Canvas.Top="395" Height="82">
+                                                    <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent1_1}" Canvas.Left="19" Canvas.Top="27" Height="18" Width="18"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent1_2}" Canvas.Left="19" Canvas.Top="46" Height="18" Width="18"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent1_3}" Canvas.Left="19" Canvas.Top="64" Height="18" Width="18"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Left="400"/>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=Person.LivingCountryInfo.ReasonForLeaveBelarus, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase2Q9p5Enable}" MinHeight="22" Width="689" Canvas.Left="60" Canvas.Top="503" Height="67">
+                                                    <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="23"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Top="45"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent4}" Canvas.Left="212"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent5}" Canvas.Top="23" Canvas.Left="212"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent6}" Canvas.Top="45" Canvas.Left="212"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent7}" Canvas.Left="522"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent8}" Canvas.Top="22" Canvas.Left="522"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent9}" Canvas.Top="45" Canvas.Left="522"/>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=Person.Citizenship, Mode=TwoWay}" MinHeight="22" Width="696" Canvas.Left="60" Canvas.Top="602" Height="26">
+                                                    <RadioButton GroupName="P_Citizenship" Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton GroupName="P_Citizenship" x:Name="BlankBase2Q10_2_RB" Style="{StaticResource RB_SetContent2}" Canvas.Left="179"/>
+                                                    <TextBox Text="{Binding Path=Person.NameOfCitizenshipCountry}" IsEnabled="{Binding ElementName=BlankBase2Q10_2_RB, Path=IsChecked, TargetNullValue=false}" Canvas.Left="303" Width="246" Height="24" Canvas.Top="2"/>
+                                                    <RadioButton GroupName="P_Citizenship" Style="{StaticResource RB_SetContent3}" Canvas.Left="566"/>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=Person.Nationality, Mode=TwoWay}" MinHeight="22" Width="696" Canvas.Left="60" Canvas.Top="664" Height="48">
+                                                    <RadioButton GroupName="Nationality" Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton GroupName="Nationality" Style="{StaticResource RB_SetContent2}" Canvas.Top="23"/>
+                                                    <RadioButton GroupName="Nationality" Style="{StaticResource RB_SetContent3}" Canvas.Left="116"/>
+                                                    <RadioButton GroupName="Nationality" Style="{StaticResource RB_SetContent4}" Canvas.Left="116" Canvas.Top="23"/>
+                                                    <RadioButton GroupName="Nationality" Style="{StaticResource RB_SetContent5}" Canvas.Left="251"/>
+                                                    <RadioButton GroupName="Nationality" x:Name="BlankBase2Q11_6_RB" Style="{StaticResource RB_SetContent6}" Canvas.Left="251" Canvas.Top="23"/>
+                                                    <TextBox Text="{Binding Path=Person.NameOfNationality}" IsEnabled="{Binding ElementName=BlankBase2Q11_6_RB, Path=IsChecked}" Canvas.Left="328" Width="289" Height="24" Canvas.Top="24"/>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=Person.NativeLanguage, Mode=TwoWay}" MinHeight="22" Width="696" Canvas.Left="60" Canvas.Top="744" Height="50">
+                                                    <RadioButton GroupName="NativeLanguage" Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton GroupName="NativeLanguage" Style="{StaticResource RB_SetContent2}" Canvas.Left="129"/>
+                                                    <RadioButton GroupName="NativeLanguage" Style="{StaticResource RB_SetContent3}" Canvas.Left="234"/>
+                                                    <RadioButton GroupName="NativeLanguage" Style="{StaticResource RB_SetContent4}" Canvas.Left="347"/>
+                                                    <RadioButton GroupName="NativeLanguage" Name="BlankBase2Q12_5_RB" Style="{StaticResource RB_SetContent5}" Canvas.Top="25"/>
+                                                    <TextBox Text="{Binding Path=Person.NameOfNativeLanguage}" IsEnabled="{Binding ElementName=BlankBase2Q12_5_RB, Path=IsChecked}" Canvas.Left="89" Width="287" Height="24" Canvas.Top="26"/>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=Person.SpeakingLanguage, Mode=TwoWay}" MinHeight="22" Width="696" Canvas.Left="60" Canvas.Top="832" Height="52">
+                                                    <RadioButton GroupName="SpeakingLanguage" Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton GroupName="SpeakingLanguage" Style="{StaticResource RB_SetContent2}" Canvas.Left="129"/>
+                                                    <RadioButton GroupName="SpeakingLanguage" Style="{StaticResource RB_SetContent3}" Canvas.Left="234"/>
+                                                    <RadioButton GroupName="SpeakingLanguage" Style="{StaticResource RB_SetContent4}" Canvas.Left="347"/>
+                                                    <RadioButton GroupName="SpeakingLanguage" Name="BlankBase2Q13_5_RB" Style="{StaticResource RB_SetContent5}" Canvas.Top="30"/>
+                                                    <TextBox Text="{Binding Path=Person.NameOfSpeakingLanguage}" IsEnabled="{Binding ElementName=BlankBase2Q13_5_RB, Path=IsChecked}" Canvas.Left="92" Width="288" Canvas.Top="25"/>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=Person.EducationInfo.LvlOfEducation, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase1Q3AgeCaseForQ14}" MinHeight="22" Width="689" Canvas.Left="60" Canvas.Top="919" Height="150">
+                                                    <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="22"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Top="45"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent4}" Canvas.Top="68"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent5}" Canvas.Top="90"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent6}" Canvas.Left="238"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent6_1}" Height="18" Width="18" Canvas.Left="257" Canvas.Top="22"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent7}" Canvas.Left="238" Canvas.Top="45"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent7_1}" Height="18" Width="18" Canvas.Left="256" Canvas.Top="71"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent7_2}" Height="18" Width="18" Canvas.Left="256" Canvas.Top="94"/>
+                                                    <Canvas Tag="{Binding Path=Person.EducationInfo.AcademicDegree, Mode=TwoWay}" Height="60" Width="114" Canvas.Left="475" Canvas.Top="23">
+                                                        <RadioButton Style="{StaticResource RB_SetContent1}" Height="18" Width="18"/>
+                                                        <RadioButton Style="{StaticResource RB_SetContent2}" Height="18" Width="18" Canvas.Top="21"/>
+                                                        <RadioButton Style="{StaticResource RB_SetContent3}" Height="18" Width="18" Canvas.Top="42"/>
+                                                    </Canvas>
+                                                    <RadioButton x:Name="BlankBase2Q14_8_RB" Style="{StaticResource RB_SetContent8}" Canvas.Top="128"/>
+                                                    <Canvas Tag="{Binding Path=Person.EducationInfo.CanYouReadAndWrite, Mode=TwoWay}" IsEnabled="{Binding ElementName=BlankBase2Q14_8_RB, Path=IsChecked}" Height="56" Width="133" Canvas.Left="451" Canvas.Top="94">
+                                                        <RadioButton Style="{StaticResource RB_SetContentTrue}" Canvas.Top="34"/>
+                                                        <RadioButton Style="{StaticResource RB_SetContentFalse}" Canvas.Top="34" Canvas.Left="80"/>
+                                                    </Canvas>
+                                                </Canvas>
+                                            </Canvas>
+                                        </ScrollViewer>
+                                    </TabItem>
+                                    <TabItem Header="3" TabIndex="2" Visibility="Collapsed">
+                                        <ScrollViewer>
+                                            <Canvas Style="{StaticResource BlankBase3Background}">
+                                                <Canvas Tag="{Binding Path=Person.EducationInfo.GettingBasicEducation, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase1Q3AgeCaseForQ15p1}" MinHeight="22" Width="384" Canvas.Left="60" Canvas.Top="71" Height="126">
+                                                    <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent1_1}" Canvas.Left="39" Canvas.Top="26" Height="18" Width="18"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent1_2}" Canvas.Left="39" Canvas.Top="45" Height="18" Width="18"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent1_3}" Canvas.Left="39" Canvas.Top="64" Height="18" Width="18"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent1_4}" Canvas.Left="39" Canvas.Top="83" Height="18" Width="18"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent1_5}" Canvas.Left="39" Canvas.Top="101" Height="18" Width="18"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Left="362"/>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=Person.EducationInfo.GettingAdditionalEducation, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase1Q3AgeCaseForQ15p2}" MinHeight="22" Width="383" Canvas.Left="60" Canvas.Top="202" Height="22">
+                                                    <RadioButton Style="{StaticResource RB_SetContentTrue}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContentFalse}" Canvas.Left="361"/>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=Person.EducationInfo.DoesChildAttendPreschool, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase1Q3AgeCaseForQ15p3}" MinHeight="22" Width="101" Canvas.Left="83" Canvas.Top="287" Height="22">
+                                                    <RadioButton Style="{StaticResource RB_SetContentTrue}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContentFalse}" Canvas.Left="79"/>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=BlankBase3Q16Case, Mode=TwoWay}" MinHeight="22" Width="689" Canvas.Left="60" Canvas.Top="342" Height="185">
+                                                    <CheckBox Style="{StaticResource RB_SetContent1}"/>
+                                                    <CheckBox Style="{StaticResource RB_SetContent2}" Canvas.Top="24"/>
+                                                    <CheckBox Style="{StaticResource RB_SetContent2_1}" Canvas.Top="69" Canvas.Left="37"/>
+                                                    <CheckBox Style="{StaticResource RB_SetContent3}" Canvas.Top="92"/>
+                                                    <CheckBox Style="{StaticResource RB_SetContent4}" Canvas.Top="114"/>
+                                                    <CheckBox Style="{StaticResource RB_SetContent5}" Canvas.Top="136"/>
+                                                    <CheckBox Style="{StaticResource RB_SetContent6}" Canvas.Top="159"/>
+                                                    <CheckBox Style="{StaticResource RB_SetContent7}" Canvas.Left="372"/>
+                                                    <CheckBox Style="{StaticResource RB_SetContent8}" Canvas.Top="24" Canvas.Left="372"/>
+                                                    <CheckBox Style="{StaticResource RB_SetContent9}" Canvas.Top="54" Canvas.Left="372"/>
+                                                    <CheckBox Style="{StaticResource RB_SetContent10}" Canvas.Top="83" Canvas.Left="372"/>
+                                                    <CheckBox Style="{StaticResource RB_SetContent11}" Canvas.Top="113" Canvas.Left="372"/>
+                                                    <CheckBox Style="{StaticResource RB_SetContent12}" Canvas.Top="135" Canvas.Left="372"/>
+                                                    <TextBox Text="{Binding Path=MainSourceOfResourcesCase, Mode=TwoWay, FallbackValue={x:Null}}" Width="43" Canvas.Left="554" Canvas.Top="160"/>
+                                                </Canvas>
+
+                                                <Canvas IsEnabled="{Binding Path=BlankBase1Q3AgeCaseForQWork}" MinHeight="22" Width="724" Canvas.Left="36" Canvas.Top="541" Height="534">
+                                                    <Canvas Tag="{Binding Path=DoYouHaveWorkCase, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase1Q3AgeCaseForQWork}" MinHeight="22" Width="192" Canvas.Left="24" Canvas.Top="47" Height="48">
+                                                        <RadioButton Style="{StaticResource RB_SetContentTrue}"/>
+                                                        <RadioButton x:Name="BlankBase3Q17_2_RB" Style="{StaticResource RB_SetContentFalse}" Canvas.Top="26"/>
+                                                    </Canvas>
+                                                    <Canvas Tag="{Binding Path=WhyYouDontHaveWorkCase, Mode=TwoWay}" IsEnabled="{Binding ElementName=BlankBase3Q17_2_RB, Path=IsChecked, TargetNullValue=false}" MinHeight="22" Width="237" Canvas.Left="60" Canvas.Top="153" Height="22">
+                                                        <RadioButton Style="{StaticResource RB_SetContentTrue}"/>
+                                                        <RadioButton x:Name="BlankBase3Q17_2_2_RB" Style="{StaticResource RB_SetContentFalse}" Canvas.Left="215"/>
+                                                    </Canvas>
+                                                    <Canvas Tag="{Binding Path=LocationOfWorkCase, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase3Q17p1Enable, TargetNullValue=false}" MinHeight="22" Width="450" Canvas.Left="24" Canvas.Top="208" Height="193">
+                                                        <RadioButton GroupName="LocationOfWork" Style="{StaticResource RB_SetContent1}"/>
+                                                        <RadioButton GroupName="LocationOfWork" x:Name="BlankBase3Q17p1_2_RB" Style="{StaticResource RB_SetContent2}" Canvas.Top="26"/>
+                                                        <Canvas IsEnabled="{Binding ElementName=BlankBase3Q17p1_2_RB, Path=IsChecked, TargetNullValue=false}" Height="69" Width="450" Canvas.Top="55">
+                                                            <TextBox Text="{Binding Path=Person.WorkInfo.RegionOrDistrictName}" Width="361"/>
+                                                            <TextBox Text="{Binding Path=Person.WorkInfo.CityOrPGTName}" Width="361" Canvas.Top="44"/>
+                                                            <CheckBox IsChecked="{Binding Path=Person.WorkInfo.IsItVillage}" Style="{StaticResource ToggleButtonForBlanks}" Canvas.Top="47" Canvas.Left="381"/>
+                                                        </Canvas>
+                                                        <RadioButton GroupName="LocationOfWork" x:Name="BlankBase3Q17p1_3_RB" Style="{StaticResource RB_SetContent3}" Canvas.Top="157"/>
+                                                        <TextBox Text="{Binding Path=Person.WorkInfo.NameOfCountry}" IsEnabled="{Binding ElementName=BlankBase3Q17p1_3_RB, Path=IsChecked}" Width="293" Canvas.Top="158" Canvas.Left="157"/>
+                                                        <Canvas Tag="{Binding Path=Person.WorkInfo.DepartureFrequencyToWork, Mode=TwoWay}" IsEnabled="{Binding ElementName=BlankBase3Q17p1_3_RB, Path=IsChecked}" MinHeight="22" Width="458" Canvas.Top="230" Height="22">
+                                                            <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                            <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Left="132"/>
+                                                            <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Left="435"/>
+                                                        </Canvas>
+                                                    </Canvas>
+                                                    <Canvas Tag="{Binding Path=Person.WorkInfo.UnemploymentReason, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase3Q18Enable}" MinHeight="22" Width="430" Canvas.Left="24" Canvas.Top="488" Height="44">
+                                                        <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                        <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="22"/>
+                                                        <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Left="408"/>
+                                                    </Canvas>
+                                                </Canvas>
+
+                                            </Canvas>
+                                        </ScrollViewer>
+                                    </TabItem>
+                                    <TabItem Header="4" TabIndex="3" Visibility="Collapsed">
+                                        <ScrollViewer>
+                                            <Canvas Style="{StaticResource BlankBase4Background}">
+                                                <Canvas Tag="{Binding Path=Person.WorkInfo.TypeOfWorkplace, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase4Q19Enable}" MinHeight="22" Width="690" Canvas.Left="51" Canvas.Top="73" Height="162">
+                                                    <RadioButton Style="{StaticResource RB_SetContent1}" Canvas.Top="3"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent1_1}" Canvas.Top="48" Canvas.Left="46"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="75"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Top="102"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent4}" Canvas.Top="140"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent5}" Canvas.Left="369"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent6}" Canvas.Top="25" Canvas.Left="369"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent6_1}" Canvas.Top="65" Canvas.Left="417"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent7}" Canvas.Top="92" Canvas.Left="369"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent8}" Canvas.Top="140" Canvas.Left="369"/>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=Person.WorkInfo.TypeOfWorkPosition, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase4Q20Enable}" MinHeight="22" Width="690" Canvas.Left="51" Canvas.Top="260" Height="118">
+                                                    <RadioButton Style="{StaticResource RB_SetContent1}" Canvas.Top="3"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="26"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2_1}" Canvas.Top="50" Canvas.Left="19"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2_2}" Canvas.Top="73" Canvas.Left="19"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2_3}" Canvas.Top="96" Canvas.Left="19"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Left="380" Canvas.Top="7"/>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=DidYouLookedForAJobCase, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase4Q21Enable}" MinHeight="22" Width="159" Canvas.Left="51" Canvas.Top="426" Height="22">
+                                                    <RadioButton Style="{StaticResource RB_SetContentTrue}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContentFalse}" Canvas.Left="137"/>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=CanYouStarWorkingInTwoWeeksCase, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase4Q22Enable}" MinHeight="22" Width="159" Canvas.Left="51" Canvas.Top="481" Height="60">
+                                                    <RadioButton Style="{StaticResource RB_SetContentTrue}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContentFalse}" Canvas.Top="38"/>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=Person.WorkInfo.WhyYouCantWorkOrStopedSearch, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase4Q23Enable}" MinHeight="22" Width="584" Canvas.Left="52" Canvas.Top="585" Height="271">
+                                                    <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="23"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Top="45"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent4}" Canvas.Top="67"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent5}" Canvas.Top="90"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent6}" Canvas.Top="113"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent7}" Canvas.Top="135"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent8}" Canvas.Top="158"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent9}" Canvas.Top="181"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent10}" Canvas.Top="204"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent11}" Canvas.Top="226"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent12}" Canvas.Top="249"/>
+                                                </Canvas>
+                                                <Canvas IsEnabled="{Binding Path=BlankBase4Q24Enable}" MinHeight="22" Width="170" Canvas.Left="61" Canvas.Top="881" Height="49">
+                                                    <TextBox Text="{Binding Path=Person.ChildrenInfo.HowManyChildrenDidYouHave}" Width="47"/>
+                                                    <CheckBox IsChecked="{Binding Path=Person.ChildrenInfo.NoChildren}" Style="{StaticResource ToggleButtonForBlanks}" Canvas.Top="27"/>
+                                                </Canvas>
+                                                <Canvas Tag="{Binding Path=Person.ChildrenInfo.ChildrenPlans, Mode=TwoWay}" IsEnabled="{Binding Path=BlankBase4Q25Enable}" MinHeight="22" Width="553" Canvas.Left="59" Canvas.Top="958" Height="107">
+                                                    <RadioButton GroupName="ChildrenPlans" Name="BlankBase4Q25_1_1_RB" Style="{StaticResource RB_SetContent1}" Canvas.Top="3"/>
+                                                    <RadioButton GroupName="ChildrenPlans" Style="{StaticResource RB_SetContent2}" Canvas.Left="256"/>
+                                                    <RadioButton GroupName="ChildrenPlans" Style="{StaticResource RB_SetContent3}" Canvas.Left="398"/>
+                                                    <TextBox Text="{Binding Path=Person.ChildrenInfo.HowManyChildrenDoYouWant}" IsEnabled="{Binding ElementName=BlankBase4Q25_1_1_RB, Path=IsChecked, TargetNullValue=false}" Width="43" Canvas.Left="25" Canvas.Top="46"/>
+                                                    <CheckBox IsChecked="{Binding Path=Person.ChildrenInfo.DontKnowHowMany}" Style="{StaticResource ToggleButtonForBlanks}" Canvas.Left="24" Canvas.Top="85"/>
+                                                </Canvas>
+                                            </Canvas>
+                                        </ScrollViewer>
+                                    </TabItem>
+                                    <TabItem Header="Заграничный" TabIndex="4" Visibility="Collapsed">
+                                        <ScrollViewer>
+                                            <Canvas Style="{StaticResource BlankForeign1Background}">
+
+                                                <TextBox Text="{Binding Path=Person.Surname}" Canvas.Left="236" Canvas.Top="198" Width="520"/>
+                                                <TextBox Text="{Binding Path=Person.Name}" Canvas.Left="236" Canvas.Top="225" Width="520"/>
+                                                <TextBox Text="{Binding Path=Person.Fathername}" Canvas.Left="236" Canvas.Top="252" Width="520"/>
+
+                                                <Canvas MinHeight="22" Width="280" Canvas.Left="418" Canvas.Top="291" Height="25">
+                                                    <DatePicker SelectedDate="{Binding Path=Person.BirthdayDate}" Width="199" Height="25" Background="White"/>
+                                                    <TextBox Text="{Binding Path=Person.Age}" Width="62" Canvas.Left="218"/>
+                                                </Canvas>
+
+                                                <Canvas Tag="{Binding Path=GenderForForeignCase, Mode=TwoWay}" MinHeight="22" Width="220" Canvas.Left="144" Canvas.Top="343" Height="22">
+                                                    <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Left="136"/>
+                                                </Canvas>
+
+                                                <Canvas Tag="{Binding Path=BirthCountryForForeignCase, Mode=TwoWay}" MinHeight="22" Width="618" Canvas.Left="46" Canvas.Top="402" Height="25">
+                                                    <RadioButton GroupName="BirthCountry" Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton GroupName="BirthCountry" Style="{StaticResource RB_SetContent2}" x:Name="BlankForeignQ4_RB" Canvas.Left="181"/>
+                                                    <TextBox IsEnabled="{Binding ElementName=BlankForeignQ4_RB, Path=IsChecked, TargetNullValue=false}" Text="{Binding Path=Person.NameOfBirthCountry}" Canvas.Left="303" Width="315"/>
+                                                </Canvas>
+
+                                                <Canvas Tag="{Binding Path=CitizenshipForForeignCase, Mode=TwoWay}" MinHeight="22" Width="709" Canvas.Left="46" Canvas.Top="476" Height="66">
+                                                    <RadioButton x:Name="BlankForeignQ5_1_RB" GroupName="Citizenship" Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton GroupName="Citizenship" Style="{StaticResource RB_SetContent2}" Canvas.Left="174"/>
+                                                    <RadioButton x:Name="BlankForeignQ5_2_RB" GroupName="Citizenship" Style="{StaticResource RB_SetContent3}" Canvas.Left="321"/>
+                                                    <TextBox IsEnabled="{Binding ElementName=BlankForeignQ5_1_RB, Path=IsChecked, TargetNullValue=false}" Text="{Binding Path=Person.PassportID}" Width="316" Height="25" Canvas.Top="41"/>
+                                                    <TextBox IsEnabled="{Binding ElementName=BlankForeignQ5_2_RB, Path=IsChecked}" Text="{Binding Path=Person.NameOfCitizenshipCountry}" Canvas.Left="393" Width="316" Height="25" Canvas.Top="41"/>
+                                                </Canvas>
+                                                <TextBox Text="{Binding Path=Person.HomeCountry}" Width="315" Height="24" Canvas.Top="594" Canvas.Left="51"/>
+
+                                                <Canvas Tag="{Binding Path=Person.ReasonForMigrationForForeign, Mode=TwoWay}" MinHeight="22" Width="203" Canvas.Left="48" Canvas.Top="668" Height="181">
+                                                    <RadioButton Style="{StaticResource RB_SetContent1}"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent2}" Canvas.Top="23"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent3}" Canvas.Top="46"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent4}" Canvas.Top="68"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent5}" Canvas.Top="91"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent6}" Canvas.Top="114"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent7}" Canvas.Top="136"/>
+                                                    <RadioButton Style="{StaticResource RB_SetContent8}" Canvas.Top="159"/>
+                                                </Canvas>
+                                            </Canvas>
+                                        </ScrollViewer>
+                                    </TabItem>
+                                </TabControl>
+                            </DockPanel>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Финал" Visibility="Collapsed">
+                        <Canvas>
+                            <TextBlock Text="Спасибо, что приняли участие в мероприятии по переписи населения" Canvas.Left="69" Canvas.Top="151" FontFamily="Calibri" FontSize="22"/>
+                            <Button Content="Выйти" Canvas.Left="500" Canvas.Top="267" Style="{StaticResource ShutdownButton}"/>
+                            <Button Content="Вернутся к окну авторизации" Command="{Binding Path=BackToAuthorizationWindowCommand}" Canvas.Left="169" Canvas.Top="267" Width="184" Style="{StaticResource NavigationButton}"/>
+                        </Canvas>
+                    </TabItem>
+                    <TabItem Header="Прерывание" Visibility="Collapsed">
+                        <Canvas>
+                            <TextBlock Text="Опрос был прерван. Желаете начать его заново или выйти?" Canvas.Left="118" Canvas.Top="154" FontFamily="Calibri" FontSize="22"/>
+                            <Button Content="Выйти" Canvas.Left="533" Canvas.Top="267" Style="{StaticResource ShutdownButton}"/>
+                            <Button Content="Начать опрос заново" Command="{Binding Path=RestartSurveyCommand}" Canvas.Left="118" Canvas.Top="267" Width="154" Style="{StaticResource NavigationButton}"/>
+                            <Button Content="Вернутся к окну авторизации" Command="{Binding Path=BackToAuthorizationWindowCommand}" Canvas.Left="306" Canvas.Top="267" Width="190" Style="{StaticResource NavigationButton}"/>
+                        </Canvas>
+                    </TabItem>
+                </TabControl>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>
