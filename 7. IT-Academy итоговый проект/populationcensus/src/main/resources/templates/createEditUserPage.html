@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div th:insert="common/lib :: copy"/>
+    <title>questionsFinishPage.html</title>
+</head>
+<body style="background: #F2F2F2">
+<!--    <div th:insert="common/header :: headerPage"/>-->
+
+    <div class="bg-white p-5 mt-5" style="margin-left: 20%;margin-right: 20%">
+        <h2 class="text-center" th:if="${user} != null">Новый профиль</h2>
+        <h2 class="text-center" th:if="${user} == null">Текущий профиль</h2>
+        <hr/>
+        <div th:if="${user} == null">
+            <form th:action="@{/adminMain/editUser}" th:object="${currentUser}" method="post">
+                <div class="form-group">
+                    <label>Логин:</label>
+                    <input class="form-control" th:field="*{username}">
+                    <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+                </div>
+                <div class="form-group">
+                    <label>Пароль:</label>
+                    <input class="form-control" th:field="*{decodedPassword}">
+                    <div style="color:red" th:if="${#fields.hasErrors('decodedPassword')}" th:errors="*{decodedPassword}"></div>
+                </div>
+                <small class="mt-2">Дополнительная информация</small>
+                <hr class="mt-0 mb-2"/>
+                <div class="form-group">
+                    <label>Имя:</label>
+                    <input class="form-control" th:field="*{name}">
+                </div>
+                <div class="form-group">
+                    <label>Фамилия:</label>
+                    <input class="form-control" th:field="*{surname}">
+                </div>
+                <div class="form-group">
+                    <label>Отчество:</label>
+                    <input class="form-control" th:field="*{fathername}">
+                </div>
+                <hr/>
+                <button type="submit" class="btn btn-light w-100">Сохранить</button>
+            </form>
+        </div>
+
+        <div th:if="${user} != null">
+            <form th:action="@{/adminMain/usersList/createUser}" th:object="${user}" method="post">
+                <div class="form-group">
+                    <label>Логин:</label>
+                    <input class="form-control" th:field="*{username}">
+                    <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+                </div>
+                <div class="form-group">
+                    <label>Пароль:</label>
+                    <input class="form-control" th:field="*{decodedPassword}">
+                    <div style="color:red" th:if="${#fields.hasErrors('decodedPassword')}" th:errors="*{decodedPassword}"></div>
+                </div>
+                <small class="mt-2">Дополнительная информация</small>
+                <hr class="mt-0 mb-2"/>
+                <div class="form-group">
+                    <label>Имя:</label>
+                    <input class="form-control" th:field="*{name}">
+                </div>
+                <div class="form-group">
+                    <label>Фамилия:</label>
+                    <input class="form-control" th:field="*{surname}">
+                </div>
+                <div class="form-group">
+                    <label>Отчество:</label>
+                    <input class="form-control" th:field="*{fathername}">
+                </div>
+                <hr/>
+                <button type="submit" class="btn w-100">Сохранить</button>
+            </form>
+        </div>
+
+        <form th:action="@{/cancel}" method="post">
+            <button class="btn w-100">Отмена</button>
+        </form>
+
+    </div>
+
+<div th:if="${user} != null">
+    <div th:if="${#fields.hasErrors('${user.*}')}" class="modal" tabindex="-1" role="dialog" id="validationModalUser">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ошибка валидации.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div th:errors="${user.*}"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary h-50" data-dismiss="modal">Да</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(window).on('load',function(){
+            $('#validationModalUser').modal('show');
+        });
+    </script>
+</div>
+<div th:if="${user} == null">
+    <div th:if="${#fields.hasErrors('${currentUser.*}')}" class="modal" tabindex="-1" role="dialog" id="validationModalCurrentUser">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ошибка валидации.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div th:errors="${currentUser.*}"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary h-50" data-dismiss="modal">Да</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(window).on('load',function(){
+            $('#validationModalCurrentUser').modal('show');
+        });
+    </script>
+</div>
+</body>
+</html>

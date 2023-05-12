@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div th:insert="common/lib :: copy"/>
+    <script type="text/javascript" th:src="@{/js/validation.js}"></script>
+    <title>foreignPersonQuestionsPage.html</title>
+</head>
+<body style="background: #F2F2F2">
+    <div th:insert="common/header :: headerPage"/>
+
+    <div class="bg-white p-5 mt-5" style="margin-left: 5%;margin-right: 5%">
+
+        <h3>Респондент (временно проживающий в РБ)</h3>
+        <h4>[[${persons.size() + 1}]] из [(${household.numberOfMembers})]</h4>
+        <hr/>
+
+        <form th:action="@{/personNext}" th:object="${currentPerson}" method="post" onsubmit="return validateForeignPerson()">
+
+            <div class="form-row">
+                <span class="align-bottom mt-1">1. Фамилия</span>
+                <input class="form-control" th:field="*{surname}"/>
+                <span class="align-bottom mt-1 ml-3">Собственное имя</span>
+                <input class="form-control" th:field="*{name}"/>
+                <span class="align-bottom mt-1 ml-3">Отчество (если таковое имеется)</span>
+                <input class="form-control" th:field="*{fathername}"/>
+            </div>
+
+            <div class="form-row mt-2">
+                <div class="col-6 pl-0">
+                    <span class="align-bottom mt-1">2. Дата рождения (число, месяц, год)</span>
+                    <input type="date" class="form-control" th:field="*{stringBirthdayDate}">
+                </div>
+                <div class="col-3 pl-0">
+                    <span class="align-bottom mt-1">Число полных лет</span>
+                    <input class="form-control" th:field="*{age}">
+                </div>
+            </div>
+
+            <div class="form-row w-25 mt-2">
+                <span class="align-bottom">3. Пол</span>
+                <select class="custom-select" th:field="*{gender}">
+                    <option value="0" selected>...</option>
+                    <option value="1">Мужской</option>
+                    <option value="2">Женский</option>
+                </select>
+            </div>
+
+            <div class="form-row mt-2">
+                <div class="col p-0">
+                    <span class="align-bottom">4. Страна рождения</span>
+                    <select class="custom-select" th:field="*{birthCountry}" id="p_birthCountry">
+                        <option value="0" selected>...</option>
+                        <option value="1">Республика Беларусь</option>
+                        <option value="2">Другая страна</option>
+                    </select>
+                </div>
+                <div class="col-5 text-center" id="p_nameOfBirthCountry" style="visibility: hidden">
+                    <small class="text-muted align-bottom">Укажите название страны</small>
+                    <input class="form-control" th:field="*{nameOfBirthCountry}">
+                </div>
+                <script>
+                    p_birthCountry.onchange = function (){
+                        p_birthCountry.value == 2 ? p_nameOfBirthCountry.style.visibility='visible' : p_nameOfBirthCountry.style.visibility='hidden';
+                    };
+                </script>
+            </div>
+
+
+            <div class="form-row mt-2">
+                <div class="col-6 p-0">
+                    <span class="align-bottom">5. Ваше гражданство</span>
+                    <select class="custom-select" th:field="*{citizenship}" id="p_citizenship">
+                        <option value="0" selected>...</option>
+                        <option value="1">Республика Беларусь</option>
+                        <option value="2">Гражданство другой страны</option>
+                        <option value="3">Без гражданства</option>
+                    </select>
+                </div>
+                <div class="col text-center" id="p_citizenship_v2" style="display: none">
+                    <small class="text-muted align-bottom">Укажите название страны</small>
+                    <input class="form-control" th:field="*{nameOfCitizenshipCountry}">
+                </div>
+                <script>
+                    p_citizenship.onchange = function (){
+                        p_citizenship.value == 2 ? p_citizenship_v2.style.display='block' : p_citizenship_v2.style.display='none';
+                    };
+                </script>
+            </div>
+            <div class="form-row w-50">
+                <span class="align-bottom mt-1 ml-3">Идентификационный номер (указан в паспорте)</span>
+                <input class="form-control" th:field="*{passportID}"/>
+            </div>
+
+            <div class="form-row w-50">
+                <span class="align-bottom mt-1">6. Страна постоянного проживания</span>
+                <input class="form-control" th:field="*{homeCountry}"/>
+            </div>
+
+            <div class="form-row mt-2">
+                <span class="align-bottom">7. Укажите основную причину приезда в Республику Беларусь</span>
+                <select class="custom-select" th:field="*{reasonForMigration}">
+                    <option value="0" selected>...</option>
+                    <option value="1">Работа</option>
+                    <option value="2">Получение образования</option>
+                    <option value="3">Служебная или деловая встреча</option>
+                    <option value="4">Посещение родственников</option>
+                    <option value="5">Туризм, отдых или лечение</option>
+                    <option value="6">Транзит</option>
+                    <option value="7">Поиск убежища</option>
+                    <option value="8">Другая цель</option>
+                </select>
+            </div>
+
+            <div class="text-right mt-5">
+                <button type="submit" class="btn btn-primary" style="width: 15%">Далее</button>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+</html>

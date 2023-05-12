@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div th:insert="common/lib :: copy"/>
+    <title></title>
+</head>
+<body style="background: #F2F2F2">
+    <header th:insert="common/header :: headerPage" class="mb-4"></header>
+
+    <div class="bg-white p-5" style="margin-left: 5%;margin-right: 5%">
+
+        <table th:if="${persons.totalPages} != 0" class="table w-100" style="background: #71dd8a" >
+            <thead style="background: #71dd8a">
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Отчество</th>
+                <th scope="col">Дата рождения</th>
+                <th scope="col">Число полных лет</th>
+                <th scope="col">Заграничный</th>
+                <th scope="col">Анкета</th>
+            </tr>
+            </thead>
+            <tbody class="bg-white">
+            <tr th:each="person,state : ${persons.content}">
+                <th scope="row" th:utext="${state.count}"/>
+                <td th:utext="${person.name}"/>
+                <td th:utext="${person.surname}"/>
+                <td th:utext="${person.fathername}"/>
+                <td th:utext="${person.birthdayDate}"/>
+                <td th:utext="${person.age}"/>
+                <td><input class="form-check-input" type="checkbox" th:checked="${person.isForeign}" disabled/></td>
+                <td>
+                    <form th:action="@{/blank/{id}(id=${person.id})}" method="post">
+                        <button class="btn btn-secondary">Анкета</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <nav th:if="${persons.totalPages > 0}" style="height: 3rem">
+            <ul class="pagination justify-content-center font-weight-medium">
+                <li class="page-item">
+                    <a class="page-link" th:href="@{/adminMain/personsList(size=${persons.size}, page=1)}" th:text="Первая"></a>
+                </li>
+
+                <li class="page-item" th:if="${spannedPages[0]}!=1">
+                    <p class="page-link">...</p>
+                </li>
+                <li class="page-item" th:each="i : ${spannedPages}">
+                    <a class="page-link" th:href="@{/adminMain/personsList(size=${persons.size}, page=${i})}" th:text="${i}"></a>
+                </li>
+                <li class="page-item disabled" th:if="${lastSpannedPage} != ${persons.totalPages}">
+                    <p class="page-link">...</p>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link" th:href="@{/adminMain/personsList(size=${persons.size}, page=${persons.totalPages})}" th:text="Последняя"></a>
+                </li>
+            </ul>
+        </nav>
+
+        <div th:if="${persons.totalPages} == 0" class="border rounded mb-4 text-center" style="margin: -10px; padding: 10px">
+            <h3 style="color: #b9bbbe; margin-top: 10%; margin-bottom: 10%">В базе данных нет анкет</h3>
+        </div>
+
+    </div>
+
+</body>
+</html>

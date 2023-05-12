@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div th:insert="common/lib :: copy"/>
+    <title></title>
+</head>
+<body style="background: #F2F2F2">
+    <header th:insert="common/header :: headerPage" class="mb-4"></header>
+
+    <div class="bg-white p-5" style="margin-left: 5%;margin-right: 5%">
+
+        <div th:if="${hasPersons} == false" class="border rounded mb-4 text-center" style="margin: -10px; padding: 10px">
+            <h3 style="color: #b9bbbe; margin-top: 20%; margin-bottom: 15%">В базе данных нет анкет</h3>
+        </div>
+
+        <div th:if="${hasPersons} == true" class="container mt-3">
+
+            <h4 class="mb-3" id="navPanel">Навигация</h4>
+            <div class="border rounded mb-4 w-75" style="margin: -10px; padding: 10px">
+                <div class="w-100"><a href="#populationCountAndDensity" class="link-success">Численность и плотность население</a></div>
+                <div class="w-100"><a href="#populationCountByAgeGroups" class="link-success">Численность населения основных возрастных групп</a></div>
+                <div class="w-100"><a href="#populationCountByMaritalStatus" class="link-success">Численность мужчин и женщин в возрасте 15 лет и старше по состоянию в браке</a></div>
+                <div class="w-100"><a href="#populationCountByBirthrate" class="link-success">Рождаемость</a></div>
+                <div class="w-100"><a href="#populationCountByEducationLvl" class="link-success">Численность населения в возрасте 15 лет и старше по уровню образования</a></div>
+                <div class="w-100"><a href="#populationCountByNationality" class="link-success">Национальный состав населения</a></div>
+                <div class="w-100"><a href="#populationCountByNativeLanguage" class="link-success">Численность населения отдельных национальностей по родному языку</a></div>
+            </div>
+
+            <hr/>
+            <h4>Таблицы</h4>
+            <hr/>
+
+            <h5>Численность и плотность население</h5>
+            <div id="populationCountAndDensity">
+                <table class="table table-sm table-bordered">
+                    <thead style="background: #71dd8a"><tr>
+                            <th scope="col">Критерии</th>
+                            <th scope="col">Численность</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td th:utext="'Численность населения – всего, человек'"/>
+                            <td th:utext="${populationCountAndDensity[0]}"/>
+                        </tr>
+                        <tr>
+                            <td th:utext="'Численность населения – городское, человек'"/>
+                            <td th:utext="${populationCountAndDensity[1]}"/>
+                        </tr>
+                        <tr>
+                            <td th:utext="'Численность населения – сельское, человек'"/>
+                            <td th:utext="${populationCountAndDensity[2]}"/>
+                        </tr>
+                    </tbody>
+                    <thead><tr>
+                            <th scope="col" colspan="2">В процентах</th>
+                    </tr></thead>
+                    <tbody>
+                    <tr>
+                        <td th:utext="'Численность населения – городское, проценты'"/>
+                        <td th:utext="${populationCountAndDensity[3]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Численность населения – сельское, проценты'"/>
+                        <td th:utext="${populationCountAndDensity[4]}"/>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a href="#navPanel" class="link-success">К панели навигации</a>
+
+            <hr/>
+            <h5>Численность населения основных возрастных групп</h5>
+            <div id="populationCountByAgeGroups">
+                <table class="table table-sm table-bordered">
+                    <thead style="background: #71dd8a" class="text-center align-middle">
+                    <tr>
+                        <th rowspan="2" scope="col">Критерии</th>
+                        <th rowspan="2" scope="col">Мужчины и женщины</th>
+                        <th colspan="3" scope="col">Из них в возрасте</th>
+                        <th rowspan="2" scope="col">Средний возраст, лет</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Моложе трудоспособного</th>
+                        <th scope="col">Трудоспособном</th>
+                        <th scope="col">Старше трудоспособного</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:utext="'Все население'"/>
+                        <td th:utext="${populationCountByAgeGroups[0][0]}"/>
+                        <td th:utext="${populationCountByAgeGroups[0][1]}"/>
+                        <td th:utext="${populationCountByAgeGroups[0][2]}"/>
+                        <td th:utext="${populationCountByAgeGroups[0][3]}"/>
+                        <td th:utext="${populationCountByAgeGroups[0][4]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Городское население'"/>
+                        <td th:utext="${populationCountByAgeGroups[1][0]}"/>
+                        <td th:utext="${populationCountByAgeGroups[1][1]}"/>
+                        <td th:utext="${populationCountByAgeGroups[1][2]}"/>
+                        <td th:utext="${populationCountByAgeGroups[1][3]}"/>
+                        <td th:utext="${populationCountByAgeGroups[1][4]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Сельское население'"/>
+                        <td th:utext="${populationCountByAgeGroups[2][0]}"/>
+                        <td th:utext="${populationCountByAgeGroups[2][1]}"/>
+                        <td th:utext="${populationCountByAgeGroups[2][2]}"/>
+                        <td th:utext="${populationCountByAgeGroups[2][3]}"/>
+                        <td th:utext="${populationCountByAgeGroups[2][4]}"/>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a href="#navPanel" class="link-success">К панели навигации</a>
+
+            <hr/>
+            <h5>Численность мужчин и женщин в возрасте 15 лет и старше по состоянию в браке</h5>
+            <div id="populationCountByMaritalStatus">
+                <table class="table table-sm table-bordered">
+                    <thead style="background: #71dd8a" class="text-center align-middle">
+                    <tr>
+                        <th scope="col">Критерии</th>
+                        <th scope="col">Мужчины</th>
+                        <th scope="col">Женщины</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:utext="'Никогда не состоявшие в браке'"/>
+                        <td th:utext="${populationCountByMaritalStatus[0][0]}"/>
+                        <td th:utext="${populationCountByMaritalStatus[0][1]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Состоящие в браке, в незарегистрированных отношениях'"/>
+                        <td th:utext="${populationCountByMaritalStatus[1][0]}"/>
+                        <td th:utext="${populationCountByMaritalStatus[1][1]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Вдовые'"/>
+                        <td th:utext="${populationCountByMaritalStatus[2][0]}"/>
+                        <td th:utext="${populationCountByMaritalStatus[2][1]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Разведенные и разошедшиеся'"/>
+                        <td th:utext="${populationCountByMaritalStatus[3][0]}"/>
+                        <td th:utext="${populationCountByMaritalStatus[3][1]}"/>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a href="#navPanel" class="link-success">К панели навигации</a>
+
+            <hr/>
+            <h5>Рождаемость</h5>
+            <div id="populationCountByBirthrate">
+                <table class="table table-sm table-bordered">
+                    <thead style="background: #71dd8a" class="text-center align-middle">
+                    <tr>
+                        <th scope="col">Женщины, родившие хотя бы одного ребенка</th>
+                        <th scope="col">Женщины, планирующие рождение детей</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:utext="${populationCountByBirthrate[0][0]}"/>
+                        <td th:utext="${populationCountByBirthrate[0][1]}"/>
+                    </tr>
+                    </tbody>
+                    <thead>
+                    <tr>
+                        <th scope="col" colspan="2">В процентах (от общего числа женщин населения)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:utext="${populationCountByBirthrate[1][0]}"/>
+                        <td th:utext="${populationCountByBirthrate[1][1]}"/>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a href="#navPanel" class="link-success">К панели навигации</a>
+
+            <hr/>
+            <h5>Численность населения в возрасте 15 лет и старше по уровню образования</h5>
+            <div id="populationCountByEducationLvl">
+                <table class="table table-sm table-bordered">
+                    <thead style="background: #71dd8a" class="text-center align-middle">
+                    <tr>
+                        <th scope="col">Критерии</th>
+                        <th scope="col">Численность</th>
+                        <th scope="col">В процентах</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:utext="'Высшее'"/>
+                        <td th:utext="${populationCountByEducationLvl[0][0]}"/>
+                        <td th:utext="${populationCountByEducationLvl[0][1]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Послевузовское'"/>
+                        <td th:utext="${populationCountByEducationLvl[1][0]}"/>
+                        <td th:utext="${populationCountByEducationLvl[1][1]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Среднее специальное'"/>
+                        <td th:utext="${populationCountByEducationLvl[2][0]}"/>
+                        <td th:utext="${populationCountByEducationLvl[2][1]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Профессионально-техническое'"/>
+                        <td th:utext="${populationCountByEducationLvl[3][0]}"/>
+                        <td th:utext="${populationCountByEducationLvl[3][1]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Общее среднее'"/>
+                        <td th:utext="${populationCountByEducationLvl[4][0]}"/>
+                        <td th:utext="${populationCountByEducationLvl[4][1]}"/>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a href="#navPanel" class="link-success">К панели навигации</a>
+
+            <hr/>
+            <h5>Национальный состав населения</h5>
+            <div id="populationCountByNationality">
+                <table class="table table-sm table-bordered">
+                    <thead style="background: #71dd8a" class="text-center align-middle">
+                    <tr>
+                        <th scope="col">Национальность</th>
+                        <th scope="col">Численность</th>
+                        <th scope="col">В процентах</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:utext="'Белорусы'"/>
+                        <td th:utext="${populationCountByNationality[0][0]}"/>
+                        <td th:utext="${populationCountByNationality[0][1]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Русские'"/>
+                        <td th:utext="${populationCountByNationality[1][0]}"/>
+                        <td th:utext="${populationCountByNationality[1][1]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Поляки'"/>
+                        <td th:utext="${populationCountByNationality[2][0]}"/>
+                        <td th:utext="${populationCountByNationality[2][1]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Украинцы'"/>
+                        <td th:utext="${populationCountByNationality[3][0]}"/>
+                        <td th:utext="${populationCountByNationality[3][1]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Другие'"/>
+                        <td th:utext="${populationCountByNationality[4][0]}"/>
+                        <td th:utext="${populationCountByNationality[4][1]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Нет данных'"/>
+                        <td th:utext="${populationCountByNationality[5][0]}"/>
+                        <td th:utext="${populationCountByNationality[5][1]}"/>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a href="#navPanel" class="link-success">К панели навигации</a>
+
+            <hr/>
+            <h5>Численность населения отдельных национальностей по родному языку</h5>
+            <div id="populationCountByNativeLanguage">
+                <table class="table table-sm table-bordered">
+                    <thead style="background: #71dd8a" class="text-center align-middle">
+                    <tr>
+                        <th rowspan="2" scope="col">Национальность</th>
+                        <th rowspan="2" scope="col">Мужчины и женщины</th>
+                        <th colspan="2" scope="col">Из общей численности мужчин и женщин данной национальности назвали родным языком</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Язык своей национальности</th>
+                        <th scope="col">Язык другой национальности</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:utext="'Белорусы'"/>
+                        <td th:utext="${populationCountByNativeLanguage[0][0]}"/>
+                        <td th:utext="${populationCountByNativeLanguage[0][1]}"/>
+                        <td th:utext="${populationCountByNativeLanguage[0][2]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Русские'"/>
+                        <td th:utext="${populationCountByNativeLanguage[1][0]}"/>
+                        <td th:utext="${populationCountByNativeLanguage[1][1]}"/>
+                        <td th:utext="${populationCountByNativeLanguage[1][2]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Поляки'"/>
+                        <td th:utext="${populationCountByNativeLanguage[2][0]}"/>
+                        <td th:utext="${populationCountByNativeLanguage[2][1]}"/>
+                        <td th:utext="${populationCountByNativeLanguage[2][2]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Украинцы'"/>
+                        <td th:utext="${populationCountByNativeLanguage[3][0]}"/>
+                        <td th:utext="${populationCountByNativeLanguage[3][1]}"/>
+                        <td th:utext="${populationCountByNativeLanguage[3][2]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Другие'"/>
+                        <td th:utext="${populationCountByNativeLanguage[4][0]}"/>
+                        <td th:utext="${populationCountByNativeLanguage[4][1]}"/>
+                        <td th:utext="${populationCountByNativeLanguage[4][2]}"/>
+                    </tr>
+                    <tr>
+                        <td th:utext="'Нет данных'"/>
+                        <td th:utext="${populationCountByNativeLanguage[5][0]}"/>
+                        <td th:utext="${populationCountByNativeLanguage[5][1]}"/>
+                        <td th:utext="${populationCountByNativeLanguage[5][2]}"/>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a href="#navPanel" class="link-success">К панели навигации</a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

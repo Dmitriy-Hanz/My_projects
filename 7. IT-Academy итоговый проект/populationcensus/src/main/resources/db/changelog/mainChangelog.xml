@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <include file="db/changelog/v/0000-00-00--01-tables.xml"/>
+    <include file="db/changelog/v/2022-07-15--02-user-table.xml"/>
+    <include file="db/changelog/v/2022-07-17--03-role-table.xml"/>
+    <include file="db/changelog/v/2022-07-17--04-user_role-table.xml"/>
+
+</databaseChangeLog>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd" context="runtime">
+
+    <changeSet id="1" author="Household_table">
+        <sql>
+            create table household
+            (
+                id                    bigint auto_increment,
+                number_of_members     int,
+                rooms_count           int,
+                part_of_room          char(100),
+                has_foreign_residents bool,
+                has_farm_facilities   bool,
+
+                constraint id_pk primary key (id)
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="2" author="AccommodationsInfo_table">
+        <sql>
+            create table accommodations_info
+            (
+                linked_household_id bigint,
+
+                owner_of_apartment  int,
+                is_apartment_rented bool,
+                apartment_type      int,
+                area_of_flat        float,
+                water_pipes         int,
+                canalization        int,
+                has_bath_or_shower  bool,
+                hot_water_supply    int,
+                heating             int,
+                cooking_equipment   int
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="3" author="FullAddressInfo_table">
+        <sql>
+            create table full_address_info
+            (
+                linked_household_id bigint,
+
+                city                varchar(100),
+                city_district       varchar(100),
+                region              varchar(100),
+                region_district     varchar(100),
+                village_council     varchar(100),
+                village_name        varchar(100),
+                street_avenue_other varchar(100),
+                house_number        varchar(100),
+                owner_fio           varchar(100),
+                frame_number        varchar(100),
+                flat_or_room_number varchar(100)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="5" author="Person_table">
+        <sql>
+            create table person
+            (
+                id                          bigint auto_increment,
+                id_household                bigint,
+
+                is_foreign                  bool,
+                home_country                varchar(100),
+                reason_for_migration        int,
+
+                p_name                      varchar(100),
+                p_surname                   varchar(100),
+                p_fathername                varchar(100),
+                passport_id                 varchar(100),
+                birthday_date               date,
+                age                         int,
+                gender                      int,
+                household_relations         int,
+                marital_status              int,
+                birth_country               int,
+                name_of_birth_country       varchar(100),
+                citizenship                 int,
+                name_of_citizenship_country varchar(100),
+                nationality                 int,
+                name_of_nationality         varchar(100),
+                native_language             int,
+                name_of_native_language     varchar(100),
+                speaking_language           int,
+                name_of_speaking_language   varchar(100),
+                main_source_of_resources    int,
+
+                constraint id_pk primary key (id),
+                constraint id_person_household_fk foreign key (id_household) references household (id)
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="6" author="LivingPlaceInfo_table">
+        <sql>
+            create table living_place_info
+            (
+                linked_person_id            bigint,
+
+                do_you_live_here_from_birth bool,
+                arrival_period              date,
+                previous_living_place       int,
+                region_or_district_name     varchar(100),
+                city_or_pgt_name            varchar(100),
+                is_it_village               bool,
+                name_of_previous_country    varchar(100),
+                reason_for_arrival_at_place int
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="7" author="LivingCountryInfo_table">
+        <sql>
+            create table living_country_info
+            (
+                linked_person_id              bigint,
+
+                did_you_live_in_other_country bool,
+                name_of_country_you_came_from varchar(100),
+                arrival_period                date,
+                reason_for_arrival_at_rb      int,
+                info_about_leaving_belarus    int,
+                reason_for_leaving_belarus    int
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="8" author="EducationInfo_table">
+        <sql>
+            create table education_info
+            (
+                linked_person_id            bigint,
+
+                lvl_of_education            int,
+                academic_degree             int,
+                can_you_read_and_write      bool,
+                basic_education_info        int,
+                additional_education_info   bool,
+                does_child_attend_preschool bool
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="9" author="WorkInfo_table">
+        <sql>
+            create table work_info
+            (
+                linked_person_id                    bigint,
+
+                do_you_have_work                    bool,
+                why_didnt_you_work_till_now         bool,
+                location_of_work                    int,
+                region_or_district_name             varchar(100),
+                city_or_pgt_name                    varchar(100),
+                is_it_village                       bool,
+                name_of_country                     varchar(100),
+                departure_frequency_to_work         int,
+                unemployment_reason                 int,
+                type_of_workplace                   int,
+                type_of_work_position               int,
+                did_you_looked_for_a_job            bool,
+                can_you_star_working_in_two_weeks   bool,
+                why_you_cant_work_or_stopped_search int
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="10" author="ChildrenInfo_table">
+        <sql>
+            create table children_info
+            (
+                linked_person_id              bigint,
+
+                how_many_children_do_you_have int,
+                no_children                   bool,
+                children_plans                int,
+                how_many_children_do_you_want int,
+                dont_know_how_many            bool
+            );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

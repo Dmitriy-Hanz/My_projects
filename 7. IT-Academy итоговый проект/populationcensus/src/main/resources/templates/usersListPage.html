@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div th:insert="common/lib :: copy"/>
+    <title th:utext="${#execInfo.processedTemplateName}"></title>
+</head>
+<body style="background: #F2F2F2">
+    <header th:insert="common/header :: headerPage" class="mb-4"></header>
+
+    <div class="bg-white p-5" style="margin-left: 5%;margin-right: 5%">
+
+        <div class="row mb-3">
+            <form th:action="@{/createUser}" method="post">
+                <button class="btn btn-primary">Новый профиль</button>
+            </form>
+        </div>
+
+        <table th:if="${users.size} != 0" class="table w-100" style="background: #71dd8a" >
+            <thead style="background: #71dd8a">
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Логин</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Отчество</th>
+            </tr>
+            </thead>
+            <tbody class="bg-white">
+            <tr th:each="user,state : ${users}">
+                <th scope="row" th:utext="${state.count}"/>
+                <td th:utext="${user.username}"/>
+                <td th:utext="${user.name}"/>
+                <td th:utext="${user.surname}"/>
+                <td th:utext="${user.fathername}"/>
+            </tr>
+            </tbody>
+        </table>
+
+        <div th:if="${users.size} == 0" class="border rounded mb-4 text-center" style="margin: -10px; padding: 10px">
+            <h3 style="color: #b9bbbe; margin-top: 10%; margin-bottom: 10%">Здесь пока нет ни одного пользователя</h3>
+        </div>
+
+    </div>
+
+</body>
+</html>

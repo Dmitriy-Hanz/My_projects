@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div th:insert="common/lib :: copy"/>
+    <title>mainPage.html</title>
+</head>
+<body>
+    <div th:insert="common/header :: headerPage"></div>
+
+    <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" style="margin-bottom: -35%">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="img-fluid w-100" src="/images/carousel/1.jpg" alt="Первый слайд">
+            </div>
+            <div class="carousel-item">
+                <img class="img-fluid w-100" src="/images/carousel/2.jpg" alt="Второй слайд">
+            </div>
+            <div class="carousel-item">
+                <img class="img-fluid w-100" src="/images/carousel/3.jpg" alt="Третий слайд">
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $('#carousel').carousel({
+                interval: 10000,
+                keyboard: false,
+                pause: false,
+                ride: 'carousel',
+                wrap: true
+            });
+        });
+    </script>
+
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="currentProfileModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <div th:if="${#authentication.name} != 'admin'">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Текущий профиль</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div th:if="${#authentication.name} == 'admin'">
+                    <div class="modal-header" style="background: gold">
+                        <h5 class="modal-title">Текущий профиль</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="modal-body">
+                    <p>Логин: <b th:utext="${currentUser.username}">Login</b></p>
+                    <p>Пароль: <b th:utext="${currentUser.decodedPassword}">Password</b></p>
+                    <div th:if="${#authentication.name} != 'admin'">
+                        <small class="mt-2">Дополнительная информация</small>
+                        <hr class="mt-0 mb-1"/>
+                        <p>Имя: <b th:utext="${currentUser.name}"></b> <small class="text-muted" th:if="${currentUser.name} == ''">Имя не указано</small></p>
+                        <p>Фамилия: <b th:utext="${currentUser.surname}"></b> <small class="text-muted" th:if="${currentUser.surname} == ''">Фамилия не указана</small></p>
+                        <p>Отчество: <b th:utext="${currentUser.fathername}"></b> <small class="text-muted" th:if="${currentUser.fathername} == ''">Отчество не указано</small></p>
+                    </div>
+                </div>
+                <div th:if="${#authentication.name} != 'admin'">
+                    <div class="modal-footer">
+                        <form th:action="@{/editCurrentUser}" th:object="${currentUser}" method="post" class="w-100">
+                            <button class="btn btn-secondary w-100">Редактировать профиль</button>
+                        </form>
+                        <button class="btn btn-danger w-100" data-toggle="modal" data-target="#deleteCurrentProfileModal">Удалить профиль</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="deleteCurrentProfileModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Удаление текущего профиля.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Вы уверены?</p>
+                </div>
+                <div class="modal-footer">
+                    <form th:action="@{/deleteCurrentUser}" th:method="post">
+                        <button class="btn btn-primary h-50">Да</button>
+                    </form>
+                    <button class="btn btn-secondary h-50" data-dismiss="modal">Нет</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

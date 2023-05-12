@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd" context="runtime">
+
+    <changeSet id="1" author="User_table">
+        <sql>
+            create table role
+            (
+                id   bigint auto_increment,
+                name varchar(100),
+
+                constraint id_pk primary key (id)
+            );
+
+            insert into role (name)
+            values ('ROLE_ADMIN');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

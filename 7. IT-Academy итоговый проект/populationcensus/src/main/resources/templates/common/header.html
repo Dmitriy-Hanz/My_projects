@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<header th:fragment="headerPage" class="fixed-top bg-white">
+
+    <div th:if="${#execInfo.processedTemplateName} eq 'householdQuestionsPage'
+            or ${#execInfo.processedTemplateName} eq 'personQuestionsPage'
+            or ${#execInfo.processedTemplateName} eq 'foreignPersonQuestionsPage'">
+
+        <div class="text-center" style="background: #71dd8a">
+            <form th:action="@{/interrupt}" method="post">
+                <button class="btn btn-primary w-25" style="margin: 9px">Прервать опрос</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div th:if="${#execInfo.processedTemplateName} eq 'questionsFinishPage'">
+
+        <div class="text-center" style="background: #71dd8a">
+            <form th:action="@{/finish}" method="post">
+                <button class="btn btn-primary w-25" style="margin: 9px">На главную страницу</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div th:if="${#execInfo.processedTemplateName} eq 'mainPage'">
+
+        <nav class="navbar navbar-expand-lg navbar-light" style="background: #71dd8a">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                </ul>
+                <form th:action="@{/authorization}" method="post">
+                    <button class="btn mr-1">Войти</button>
+                </form>
+                <img src="/images/profileIcon.png" height="40" width="40" alt="profileIcon"/>
+            </div>
+        </nav>
+
+    </div>
+
+    <div th:if="${#execInfo.processedTemplateName} eq 'adminMainPage' or
+                ${#execInfo.processedTemplateName} eq 'usersListPage' or
+                ${#execInfo.processedTemplateName} eq 'personsListPage' or
+                ${#execInfo.processedTemplateName} eq 'censusResultsPage'">
+
+        <nav class="navbar navbar-expand-lg navbar-light" style="background: #71dd8a">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active mr-1">
+                        <form th:action="@{/navAdminMain}" method="post">
+                            <button class="btn btn-primary">Главная</button>
+                        </form>
+                    </li>
+                    <li class="nav-item mr-1">
+                        <form th:action="@{/navCensusResults}" method="post">
+                            <button class="btn btn-light">Результаты переписи</button>
+                        </form>
+                    </li>
+                    <li class="nav-item mr-1">
+                        <form th:action="@{/navPersonsList}" method="post">
+                            <button class="btn btn-light">Список опрошенных</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <form th:action="@{/navUsersList}" method="post">
+                            <button class="btn btn-light">Список профилей</button>
+                        </form>
+                    </li>
+                </ul>
+
+                <button class="btn btn-light mr-1" data-toggle="modal" data-target="#currentProfileModal">Профиль</button>
+                <form method="post" th:action="@{/logout}">
+                    <button class="btn btn-light mr-1">Выйти</button>
+                </form>
+                <img src="/images/profileIcon.png" height="40" width="40" alt="profileIcon"/>
+
+            </div>
+        </nav>
+
+    </div>
+
+
+    <div th:if="${#execInfo.processedTemplateName} eq 'personBlankViewerPage'">
+
+        <div class="text-center" style="background: #71dd8a">
+            <div class="row w-100 text-center align-items-center">
+                <form th:action="@{/backToPage}" method="post" class="w-50 pr-2" style="padding-left: 25%">
+                    <button class="btn btn-primary w-100" style="margin: 9px">Вернуться на страницу</button>
+                </form>
+                <form th:action="@{/showHousehold}" method="post" class="w-50 pl-2" style="padding-right: 25%">
+                    <button class="btn btn-primary w-100" style="margin: 9px">Домохозяйство</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div th:if="${#execInfo.processedTemplateName} eq 'householdBlankViewerPage'">
+
+        <div class="text-center" style="background: #71dd8a">
+            <div class="row w-100 text-center align-items-center">
+                <form th:action="@{/backToPage}" method="post" class="w-50 pr-2" style="padding-left: 25%">
+                    <button class="btn btn-primary w-100" style="margin: 9px">Вернуться на страницу</button>
+                </form>
+                <form th:action="@{/showPerson}" method="post" class="w-50 pl-2" style="padding-right: 25%">
+                    <button class="btn btn-primary w-100" style="margin: 9px">Респондент</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div th:if="${#execInfo.processedTemplateName} eq 'personBlankViewerFailPage'">
+
+        <div class="text-center" style="background: #71dd8a">
+            <form th:action="@{/backToPage}" method="post">
+                <button class="btn btn-primary w-25" style="margin: 9px">Вернуться на страницу</button>
+            </form>
+        </div>
+
+    </div>
+
+
+
+    <hr class="m-0"/>
+</header>
+
+</body>
+</html>
+
+

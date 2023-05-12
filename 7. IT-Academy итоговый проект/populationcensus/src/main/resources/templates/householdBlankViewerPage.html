@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div th:insert="common/lib :: copy"/>
+    <title></title>
+</head>
+<body>
+    <div th:insert="common/header :: headerPage"/>
+
+    <div class="bg-white p-5 mt-5" style="margin-left: 5%;margin-right: 5%">
+        <h3>Домохозяйство</h3>
+        <hr/>
+
+        <form th:object="${householdForView}" class="disabled">
+
+            <p class="font-weight-bold">Адрес проживания домохозяйства:</p>
+            <div class="border rounded mb-4" style="margin: -10px; padding: 10px">
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Область (г. Минск)</label>
+                        <input class="form-control font-weight-bold" th:value="*{fullAddressInfo.region}" readonly/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Район области</label>
+                        <input class="form-control font-weight-bold" th:value="*{fullAddressInfo.regionDistrict}" readonly/>
+                    </div>
+                </div>
+
+                <div th:if="(*{fullAddressInfo.city}) != '' or (*{fullAddressInfo.cityDistrict}) != ''" class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Город (ПГТ)</label>
+                        <input class="form-control font-weight-bold" th:value="*{fullAddressInfo.city}" readonly/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Район города</label>
+                        <input class="form-control font-weight-bold" th:value="*{fullAddressInfo.cityDistrict}" readonly/>
+                    </div>
+                </div>
+
+                <div th:if="(*{fullAddressInfo.villageCouncil}) != '' or (*{fullAddressInfo.villageName}) != ''" class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Сельсовет</label>
+                        <input class="form-control font-weight-bold" th:value="*{fullAddressInfo.villageCouncil}" readonly/>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Сельский НП</label>
+                        <input class="form-control font-weight-bold" th:value="*{fullAddressInfo.villageName}" readonly/>
+                    </div>
+                </div>
+
+                <div th:if="(*{fullAddressInfo.streetAvenueOther}) != ''" class="form-group">
+                    <label>Улица, проспект и др.</label>
+                    <input class="form-control font-weight-bold" th:value="*{fullAddressInfo.streetAvenueOther}" readonly/>
+                </div>
+
+                <div class="form-row">
+                    <div th:if="(*{fullAddressInfo.houseNumber}) != ''" class="form-group col">
+                        <label>№ дома</label>
+                        <input class="form-control font-weight-bold" th:value="*{fullAddressInfo.houseNumber}" readonly/>
+                    </div>
+                    <div th:if="(*{fullAddressInfo.frameNumber}) != ''" class="form-group col">
+                        <label>№ корпуса</label>
+                        <input class="form-control font-weight-bold" th:value="*{fullAddressInfo.frameNumber}" readonly/>
+                    </div>
+                    <div th:if="(*{fullAddressInfo.flatOrRoomNumber}) != ''" class="form-group col">
+                        <label>№ квартиры/комнаты</label>
+                        <input class="form-control font-weight-bold" th:value="*{fullAddressInfo.flatOrRoomNumber}" readonly/>
+                    </div>
+                </div>
+
+                <small th:if="(*{fullAddressInfo.ownerFIO}) != ''" class="text-muted">
+                    В случае отсутствия номера дома укажите фамилию и инициалы собственника, нанимателя (поднанимателя)
+                </small>
+                <div th:if="(*{fullAddressInfo.ownerFIO}) != ''" class="form-group">
+                    <input class="form-control font-weight-bold" th:value="*{fullAddressInfo.ownerFIO}" readonly/>
+                </div>
+
+            </div>
+
+            <p class="font-weight-bold">Условия проживания домохозяйства:</p>
+            <div class="border rounded mb-4" style="margin: -10px; padding: 10px">
+
+                <div class="text-center">
+                    <label>число человек - членов домохозяйства</label>
+                </div>
+                <div class="form-row mb-3 text-center">
+                    <div class="col"></div>
+                    <div class="col-2 text-center">
+                        <input class="form-control font-weight-bold" th:value="*{numberOfMembers}" readonly/>
+                    </div>
+                    <div class="col"></div>
+                </div>
+
+                <label>Количество жилых комнат, занимаемых домохозяйством</label>
+                <div class="border rounded mb-3" style="margin: -5px; padding: 5px">
+                    <div class="form-row">
+                        <div class="col-3">
+                            <label>число комнат</label>
+                            <input class="form-control font-weight-bold" th:value="*{roomsCount}" readonly/>
+                        </div>
+                        <div th:if="(*{partOfRoom}) != ''" class="col-2">
+                            <label>часть комнаты</label>
+                            <input class="form-control font-weight-bold" th:value="*{partOfRoom}" readonly/>
+                        </div>
+                    </div>
+                </div>
+
+                <label>В чьей собственности находится помещение, используемое домохозяйством для проживания</label>
+                <div class="form-row">
+                    <div class="col-6">
+                        <input value="Государственной собственности" th:if="(*{accommodationsInfo.ownerOfApartment}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Частной собственности физического лица" th:if="(*{accommodationsInfo.ownerOfApartment}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="Частной собственности негосударственного юр. лица" th:if="(*{accommodationsInfo.ownerOfApartment}) == 3" class="form-control font-weight-bold" readonly>
+                    </div>
+                </div>
+
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" th:field="*{accommodationsInfo.isApartmentRented}" disabled>
+                    <small class="form-text text-muted">
+                        Указать, если владение и пользование осуществляется по договору найма (поднайма) жилого помещения у физического лица
+                    </small>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" th:field="*{hasForeignResidents}" disabled>
+                    <label>Находились ли временно в данном домохозяйстве на момент проведения переписи респонденты, постоянно проживающие за пределами Республики Беларусь?</label>
+                </div>
+
+                <div class="form-check mb-5">
+                    <input class="form-check-input" type="checkbox" th:field="*{hasFarmFacilities}" disabled>
+                    <label>Находились ли на момент проведения переписи у кого-либо из членов домохозяйства в собственности или владении, пользовании земельные участки (части земельных участков) и (или) сельскохозяйственные животные?</label>
+                </div>
+
+
+
+                <label>Тип помещения, используемого для проживания</label>
+                <div class="form-row mb-3">
+                    <div class="col-6">
+                        <input value="Одноквартирный жилой дом" th:if="(*{accommodationsInfo.apartmentType}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Квартира" th:if="(*{accommodationsInfo.apartmentType}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="Общежитие для учащихся и студентов" th:if="(*{accommodationsInfo.apartmentType}) == 3" class="form-control font-weight-bold" readonly>
+                        <input value="Другое общежитие (кроме общежития для учащихся и студентов)" th:if="(*{accommodationsInfo.apartmentType}) == 4" class="form-control font-weight-bold" readonly>
+                        <input value="Садовый домик (дача)" th:if="(*{accommodationsInfo.apartmentType}) == 5" class="form-control font-weight-bold" readonly>
+                        <input value="Гостиница" th:if="(*{accommodationsInfo.apartmentType}) == 6" class="form-control font-weight-bold" readonly>
+                        <input value="Иное помещение" th:if="(*{accommodationsInfo.apartmentType}) == 7" class="form-control font-weight-bold" readonly>
+                        <input value="Нежилое помещение" th:if="(*{accommodationsInfo.apartmentType}) == 8" class="form-control font-weight-bold" readonly>
+                        <small>Если ответ - что-то кроме "Одноквартирный жилой дом" или "Квартира" -> перейти на следующую страницу опроса</small>
+                    </div>
+                </div>
+
+
+                <label th:if="(*{accommodationsInfo.apartmentType}) < 3">Размер общей площади одноквартирного жилого дома или квартиры</label>
+                <div th:if="(*{accommodationsInfo.apartmentType}) < 3" class="form-row">
+                    <div class="col-3">
+                        <input class="form-control font-weight-bold" th:value="*{accommodationsInfo.areaOfFlat}" readonly/>
+                    </div>
+                </div>
+                <small th:if="(*{accommodationsInfo.apartmentType}) < 3" class="form-text text-muted">квадратных метров, в целых числах</small>
+
+                <label th:if="(*{accommodationsInfo.apartmentType}) < 3" class="mt-4">Виды благоустройства в помещении, используемом для проживания</label>
+                <div th:if="(*{accommodationsInfo.apartmentType}) < 3" class="border rounded mb-3" style="margin: -5px; padding: 5px">
+                    <div class="form-row">
+                        <div class="col-6">
+                            <label>Водопровод</label>
+                            <input value="Центральный" th:if="(*{accommodationsInfo.waterPipes}) == 1" class="form-control font-weight-bold" readonly>
+                            <input value="Локальный" th:if="(*{accommodationsInfo.waterPipes}) == 2" class="form-control font-weight-bold" readonly>
+                            <input value="Отсутствует" th:if="(*{accommodationsInfo.waterPipes}) == 3" class="form-control font-weight-bold" readonly>
+                        </div>
+                    </div>
+                    <div class="form-row mt-3">
+                        <div class="col-6">
+                            <label>Канализация</label>
+                            <input value="Центральная" th:if="(*{accommodationsInfo.canalization}) == 1" class="form-control font-weight-bold" readonly>
+                            <input value="Локальная" th:if="(*{accommodationsInfo.canalization}) == 2" class="form-control font-weight-bold" readonly>
+                            <input value="Отсутствует" th:if="(*{accommodationsInfo.canalization}) == 3" class="form-control font-weight-bold" readonly>
+                        </div>
+                    </div>
+                    <div class="form-check mt-3">
+                        <input class="form-check-input" type="checkbox" th:field="*{accommodationsInfo.hasBathOrShower}" disabled>
+                        <label>ванна и (или) душ</label>
+                    </div>
+                    <div class="form-row mt-3">
+                        <div class="col-6">
+                            <label>Горячее водоснабжение</label>
+                            <input value="Централизованное" th:if="(*{accommodationsInfo.hotWaterSupply}) == 1" class="form-control font-weight-bold" readonly>
+                            <input value="От индивидуальных водонагревателей" th:if="(*{accommodationsInfo.hotWaterSupply}) == 2" class="form-control font-weight-bold" readonly>
+                            <input value="Отсутствует" th:if="(*{accommodationsInfo.hotWaterSupply}) == 3" class="form-control font-weight-bold" readonly>
+                        </div>
+                    </div>
+                    <div class="form-row mt-3">
+                        <div class="col-6">
+                            <label>Отопление</label>
+                            <input value="Централизованное" th:if="(*{accommodationsInfo.heating}) == 1" class="form-control font-weight-bold" readonly>
+                            <input value="От индивидуальных отопительных приборов" th:if="(*{accommodationsInfo.heating}) == 2" class="form-control font-weight-bold" readonly>
+                            <input value="Печное" th:if="(*{accommodationsInfo.heating}) == 3" class="form-control font-weight-bold" readonly>
+                            <input value="Другое" th:if="(*{accommodationsInfo.heating}) == 4" class="form-control font-weight-bold" readonly>
+                            <input value="Отсутствует" th:if="(*{accommodationsInfo.heating}) == 5" class="form-control font-weight-bold" readonly>
+                        </div>
+                    </div>
+                    <div class="form-row mt-3">
+                        <div class="col-6">
+                            <label>Оборудование для приготовления пищи</label>
+                            <input value="Напольная, настольная газовая плита, варочная панель, подключенная к газу" th:if="(*{accommodationsInfo.cookingEquipment}) == 1" class="form-control font-weight-bold" readonly>
+                            <input value="Напольная, настольная электрическая плита, варочная панель" th:if="(*{accommodationsInfo.cookingEquipment}) == 2" class="form-control font-weight-bold" readonly>
+                            <input value="Другое" th:if="(*{accommodationsInfo.cookingEquipment}) == 3" class="form-control font-weight-bold" readonly>
+                            <input value="Отсутствует" th:if="(*{accommodationsInfo.cookingEquipment}) == 4" class="form-control font-weight-bold" readonly>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

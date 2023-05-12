@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div th:insert="common/lib :: copy"/>
+    <title></title>
+</head>
+<body style="background: #F2F2F2">
+    <div th:insert="common/header :: headerPage"/>
+
+    <div th:if="${personForView.isForeign} == false" class="bg-white p-5 mt-5" style="margin-left: 5%;margin-right: 5%">
+        <h3>Респондент</h3>
+        <hr/>
+
+        <form th:object="${personForView}" class="disabled">
+
+            <p class="font-weight-bold">Общая информация:</p>
+            <div class="border rounded mb-4" style="margin: -10px; padding: 10px">
+
+                <div class="form-row">
+                    <span class="align-bottom mt-1">1. Фамилия</span>
+                    <input class="form-control font-weight-bold" th:value="*{surname}" readonly/>
+                    <span class="align-bottom mt-1 ml-3">Собственное имя</span>
+                    <input class="form-control font-weight-bold" th:value="*{name}" readonly/>
+                    <span th:if="(*{fathername}) != ''" class="align-bottom mt-1 ml-3">Отчество (если таковое имеется)</span>
+                    <input th:if="(*{fathername}) != ''" class="form-control font-weight-bold" th:value="*{fathername}" readonly/>
+                    <span class="align-bottom mt-1">2. Идентификационный номер (указан в паспорте)</span>
+                    <input class="form-control font-weight-bold" th:value="*{passportID}" readonly/>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-6 pl-0">
+                        <span class="align-bottom mt-1">3. Дата рождения (число, месяц, год)</span>
+                        <input class="form-control font-weight-bold" th:field="*{birthdayDate}" readonly>
+                    </div>
+                    <div class="col-3 pl-0">
+                        <span class="align-bottom mt-1">Число полных лет</span>
+                        <input class="form-control font-weight-bold" th:field="*{age}" readonly>
+                    </div>
+                </div>
+
+                <div class="form-row w-25 mt-1">
+                    <span class="align-bottom">4. Пол</span>
+                    <input th:if="(*{gender}) == 1" class="form-control font-weight-bold" value="Мужской" readonly>
+                    <input th:if="(*{gender}) == 2" class="form-control font-weight-bold" value="Женский" readonly>
+                </div>
+
+                <div class="form-row w-50 mt-2">
+                    <span class="align-bottom">5. Отношение к первому лицу в домохозяйстве</span>
+                    <input value="Первое лицо в домохозяйстве" th:if="(*{householdRelations}) == 1" class="form-control font-weight-bold" readonly>
+                    <input value="Жена, муж" th:if="(*{householdRelations}) == 2" class="form-control font-weight-bold" readonly>
+                    <input value="Дочь, сын, падчерица, пасынок" th:if="(*{householdRelations}) == 3" class="form-control font-weight-bold" readonly>
+                    <input value="Мать, отец" th:if="(*{householdRelations}) == 4" class="form-control font-weight-bold" readonly>
+                    <input value="Сестра, брат" th:if="(*{householdRelations}) == 5" class="form-control font-weight-bold" readonly>
+                    <input value="Свекровь, свекор, теща, тесть" th:if="(*{householdRelations}) == 6" class="form-control font-weight-bold" readonly>
+                    <input value="Невестка, зять" th:if="(*{householdRelations}) == 7" class="form-control font-weight-bold" readonly>
+                    <input value="Бабка, дед" th:if="(*{householdRelations}) == 8" class="form-control font-weight-bold" readonly>
+                    <input value="Внучка, внук" th:if="(*{householdRelations}) == 9" class="form-control font-weight-bold" readonly>
+                    <input value="Другая степень родства, свойства" th:if="(*{householdRelations}) == 10" class="form-control font-weight-bold" readonly>
+                    <input value="Не родственник" th:if="(*{householdRelations}) == 11" class="form-control font-weight-bold" readonly>
+                </div>
+
+                <div th:if="(*{maritalStatus}) != 0" class="form-row w-50 mt-2">
+                    <span class="align-bottom">6. Ваше семейное положение (для лиц в возрасте 15 лет и старше)</span>
+                    <input value="Никогда не состоял(а) в браке" th:if="(*{maritalStatus}) == 1" class="form-control font-weight-bold" readonly>
+                    <input value="Состою в браке" th:if="(*{maritalStatus}) == 2" class="form-control font-weight-bold" readonly>
+                    <input value="Состою в незарегистрированных отношениях" th:if="(*{maritalStatus}) == 3" class="form-control font-weight-bold" readonly>
+                    <input value="Вдовец, вдова" th:if="(*{maritalStatus}) == 4" class="form-control font-weight-bold" readonly>
+                    <input value="Разведен(а)" th:if="(*{maritalStatus}) == 5" class="form-control font-weight-bold" readonly>
+                    <input value="Разошелся(лась)" th:if="(*{maritalStatus}) == 6" class="form-control font-weight-bold" readonly>
+                </div>
+
+                <div class="form-row mt-2">
+                    <div class="col p-0">
+                        <span class="align-bottom">7. Место вашего рождения</span>
+                        <input value="Республика Беларусь" th:if="(*{birthCountry}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Другая страна" th:if="(*{birthCountry}) == 2" class="form-control font-weight-bold" readonly>
+                    </div>
+                    <div th:if="(*{birthCountry}) == 2" class="col-5 text-center">
+                        <small class="text-muted align-bottom">Укажите название страны</small>
+                        <input class="form-control font-weight-bold" th:field="*{nameOfBirthCountry}" readonly>
+                    </div>
+                </div>
+
+                <div class="form-row mt-2">
+                    <div class="col p-0">
+                        <span class="align-bottom">8. Ваше гражданство</span>
+                        <input value="Республика Беларусь" th:if="(*{citizenship}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Гражданство другой страны" th:if="(*{citizenship}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="Без гражданства" th:if="(*{citizenship}) == 3" class="form-control font-weight-bold" readonly>
+                    </div>
+                    <div th:if="(*{citizenship}) == 2" class="col-5 text-center">
+                        <small class="text-muted align-bottom">Укажите название страны</small>
+                        <input class="form-control font-weight-bold" th:field="*{nameOfCitizenshipCountry}" readonly>
+                    </div>
+                </div>
+
+                <div class="form-row mt-2">
+                    <div class="col p-0">
+                        <span class="align-bottom">9. К какой национальности/этнической принадлежности Вы себя относите?</span>
+                        <input value="Белорус(ка)" th:if="(*{nationality}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Русский(ая)" th:if="(*{nationality}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="Поляк (полька)" th:if="(*{nationality}) == 3" class="form-control font-weight-bold" readonly>
+                        <input value="Украинец(ка)" th:if="(*{nationality}) == 4" class="form-control font-weight-bold" readonly>
+                        <input value="Не сообщил(а)" th:if="(*{nationality}) == 5" class="form-control font-weight-bold" readonly>
+                        <input value="Другая" th:if="(*{nationality}) == 6" class="form-control font-weight-bold" readonly>
+                    </div>
+                    <div th:if="(*{nationality}) == 6" class="col-5 text-center">
+                        <small class="text-muted align-bottom">Укажите название</small>
+                        <input class="form-control" th:field="*{nameOfNationality}">
+                    </div>
+                </div>
+
+                <div class="form-row mt-2">
+                    <div class="col p-0">
+                        <span class="align-bottom">10. Ваш родной язык (язык, усвоенный первым в раннем детстве)</span>
+                        <input value="Белорусский" th:if="(*{nativeLanguage}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Русский" th:if="(*{nativeLanguage}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="Польский" th:if="(*{nativeLanguage}) == 3" class="form-control font-weight-bold" readonly>
+                        <input value="Украинский" th:if="(*{nativeLanguage}) == 4" class="form-control font-weight-bold" readonly>
+                        <input value="Другой" th:if="(*{nativeLanguage}) == 5" class="form-control font-weight-bold" readonly>
+                    </div>
+                    <div th:if="(*{nativeLanguage}) == 6" class="col-5 text-center">
+                        <small class="text-muted align-bottom">Укажите название</small>
+                        <input class="form-control" th:field="*{nameOfNativeLanguage}">
+                    </div>
+                </div>
+
+                <div class="form-row mt-2">
+                    <div class="col p-0">
+                        <span class="align-bottom">11. На каком языке Вы обычно разговариваете дома?</span>
+                        <input value="Белорусском" th:if="(*{speakingLanguage}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Русском" th:if="(*{speakingLanguage}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="Польском" th:if="(*{speakingLanguage}) == 3" class="form-control font-weight-bold" readonly>
+                        <input value="Украинском" th:if="(*{speakingLanguage}) == 4" class="form-control font-weight-bold" readonly>
+                        <input value="Другом" th:if="(*{speakingLanguage}) == 5" class="form-control font-weight-bold" readonly>
+                    </div>
+                    <div th:if="(*{speakingLanguage}) == 6" class="col-5 text-center">
+                        <small class="text-muted align-bottom">Укажите название</small>
+                        <input class="form-control" th:field="*{nameOfSpeakingLanguage}">
+                    </div>
+                </div>
+
+                <div class="form-row mt-2">
+                    <span class="align-bottom">12. Укажите основной источник средств к существованию</span>
+                    <input value="Работа по найму (кроме работы в личном подсобном хозяйстве)" th:if="(*{mainSourceOfResources}) == 1" class="form-control font-weight-bold" readonly>
+                    <input value="Самозанятость (работа не по найму)" th:if="(*{mainSourceOfResources}) == 2" class="form-control font-weight-bold" readonly>
+                    <input value="Работа в личном подсобном хозяйстве" th:if="(*{mainSourceOfResources}) == 3" class="form-control font-weight-bold" readonly>
+                    <input value="Производство товаров для собственного использования" th:if="(*{mainSourceOfResources}) == 4" class="form-control font-weight-bold" readonly>
+                    <input value="Пенсия" th:if="(*{mainSourceOfResources}) == 5" class="form-control font-weight-bold" readonly>
+                    <input value="Стипендия" th:if="(*{mainSourceOfResources}) == 6" class="form-control font-weight-bold" readonly>
+                    <input value="Пособие по безработице" th:if="(*{mainSourceOfResources}) == 7" class="form-control font-weight-bold" readonly>
+                    <input value="Государственные пособия (кроме пособия по безработице)" th:if="(*{mainSourceOfResources}) == 8" class="form-control font-weight-bold" readonly>
+                    <input value="Иные виды пособий и помощи" th:if="(*{mainSourceOfResources}) == 9" class="form-control font-weight-bold" readonly>
+                    <input value="Доходы от сдачи в аренду имущества, дивиденды либо другие выплаты по вкладам и ценным бумагам" th:if="(*{mainSourceOfResources}) == 10" class="form-control font-weight-bold" readonly>
+                    <input value="Ссуды или использование сбережений, реализация имущества" th:if="(*{mainSourceOfResources}) == 11" class="form-control font-weight-bold" readonly>
+                    <input value="На иждивении другого лица" th:if="(*{mainSourceOfResources}) == 12" class="form-control font-weight-bold" readonly>
+                    <input value="Прочие источники" th:if="(*{mainSourceOfResources}) == 13" class="form-control font-weight-bold" readonly>
+                    <input value="" th:if="(*{mainSourceOfResources}) == 14" class="form-control font-weight-bold" readonly>
+                </div>
+
+            </div>
+
+            <p class="font-weight-bold">Место проживания:</p>
+            <div class="border rounded mb-4" style="margin: -10px; padding: 10px">
+                <div class="form-row">
+                    <span class="w-100">13.</span>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" th:value="*{livingPlaceInfo.doYouLiveHereFromBirth}" disabled>
+                        <label>В вашем текущем городе, поселке городского типа или сельском населенном пункте этого административного района вы проживаете непрерывно с рождения?</label>
+                        <small class="form-text text-muted" style="margin-top: -5px">Если ответ "Нет" -> к вопросу 13.1; "Да" -> к вопросу 14</small>
+                    </div>
+                </div>
+
+                <div th:if="(*{livingPlaceInfo.doYouLiveHereFromBirth}) == false" class="form-row mb-3">
+                    <div th:if="(*{livingPlaceInfo.arrivalPeriod}) != null" class="col-7 pl-0">
+                        <span class="align-bottom mt-1">13.1. Укажите период, когда вы прибыли в данный населенный пункт (месяц, год)</span>
+                        <input class="form-control font-weight-bold" th:value="*{livingPlaceInfo.arrivalPeriod}" readonly/>
+                    </div>
+                </div>
+
+                <div th:if="(*{livingPlaceInfo.doYouLiveHereFromBirth}) == false" class="form-row mt-2">
+                    <div th:if="(*{livingPlaceInfo.previousLivingPlace}) != 0" class="col-6 p-0">
+                        <span class="align-bottom">13.2. Укажите ваше предыдущее место жительства</span>
+                        <input value="Республика Беларусь" th:if="(*{livingPlaceInfo.previousLivingPlace}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Другая страна" th:if="(*{livingPlaceInfo.previousLivingPlace}) == 2" class="form-control font-weight-bold" readonly>
+                    </div>
+                </div>
+                <div th:if="(*{livingPlaceInfo.previousLivingPlace}) == 1" class="container pl-0">
+                    <div class="form-row">
+                        <div class="col text-center pl-0">
+                            <small class="text-muted align-bottom">Укажите наименования области, района</small>
+                            <input class="form-control font-weight-bold" th:value="*{livingPlaceInfo.regionOrDistrictName}" readonly/>
+                        </div>
+                        <div class="col text-center pl-0">
+                            <small class="text-muted align-bottom">Укажите наименования города, ПГТ</small>
+                            <input class="form-control font-weight-bold" th:value="*{livingPlaceInfo.cityOrPGTName}" readonly/>
+                        </div>
+                    </div>
+                    <div class="form-check mt-2 mb-0">
+                        <input class="form-check-input" type="checkbox" th:value="*{livingPlaceInfo.isItVillage}" disabled>
+                        <label>Является ли ваше предыдущее место жительства сельским населенным пунктом?</label>
+                        <small class="form-text text-muted" style="margin-top: -5px;">Если ответ "Да" -> не заполнять поля "наименования области, района" и "наименования города, ПГТ"</small>
+                    </div>
+                    <small class="form-text text-muted">К вопросу 14 после ответа на вопрос 13.3</small>
+                </div>
+                <div th:if="(*{livingPlaceInfo.previousLivingPlace}) == 2" class="form-row w-50" style="display: none" id="lp_regionOrDistrictName_v2">
+                    <div class="col text-center pl-0">
+                        <small class="text-muted align-bottom">Укажите название страны</small>
+                        <input class="form-control font-weight-bold" th:value="*{livingPlaceInfo.nameOfPreviousCountry}" readonly/>
+                    </div>
+                    <small class="form-text text-muted">К вопросу 14.4 после ответа на вопрос 13.3</small>
+                </div>
+
+                <div th:if="(*{livingPlaceInfo.doYouLiveHereFromBirth}) == false" class="form-row mt-3 w-75">
+                    <span class="align-bottom">13.3. Укажите основную причину, по которой Вы прибыли в данный населенный пункт</span>
+                    <input value="Работа" th:if="(*{livingPlaceInfo.reasonForArrivalAtPlace}) == 1" class="form-control font-weight-bold" readonly>
+                    <input value="Получение образования" th:if="(*{livingPlaceInfo.reasonForArrivalAtPlace}) == 2" class="form-control font-weight-bold" readonly>
+                    <input value="Семейные обстоятельства" th:if="(*{livingPlaceInfo.reasonForArrivalAtPlace}) == 3" class="form-control font-weight-bold" readonly>
+                    <input value="Медицинское лечение, реабилитация" th:if="(*{livingPlaceInfo.reasonForArrivalAtPlace}) == 4" class="form-control font-weight-bold" readonly>
+                    <input value="Возвращение на прежнее место жительства" th:if="(*{livingPlaceInfo.reasonForArrivalAtPlace}) == 5" class="form-control font-weight-bold" readonly>
+                    <input value="Изменение жилищных условий" th:if="(*{livingPlaceInfo.reasonForArrivalAtPlace}) == 6" class="form-control font-weight-bold" readonly>
+                    <input value="Поиск убежища" th:if="(*{livingPlaceInfo.reasonForArrivalAtPlace}) == 7" class="form-control font-weight-bold" readonly>
+                    <input value="Другая причина" th:if="(*{livingPlaceInfo.reasonForArrivalAtPlace}) == 8" class="form-control font-weight-bold" readonly>
+                    <input value="Причина не указана" th:if="(*{livingPlaceInfo.reasonForArrivalAtPlace}) == 9" class="form-control font-weight-bold" readonly>
+                </div>
+
+            </div>
+
+            <div th:if="(*{livingPlaceInfo.doYouLiveHereFromBirth}) == false">
+                <p class="font-weight-bold">Страна проживания:</p>
+                <small class="form-text text-muted mb-2" style="margin-top: -8px">Если на вопрос 13 ответ "Да" -> к вопросу 15</small>
+                <div class="border rounded mb-4" style="margin: -10px; padding: 10px">
+                    <div class="form-row">
+                        <span class="w-100">14.</span>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" th:value="*{livingCountryInfo.didYouLiveInOtherCountry}" disabled>
+                            <label>Проживали ли Вы непрерывно 1 год и более в другой стране?</label>
+                            <small class="form-text text-muted" style="margin-top: -5px">Если ответ "Нет" -> к вопросу 14.4</small>
+                        </div>
+                    </div>
+
+                    <div th:if="(*{livingCountryInfo.nameOfCountryYouCameFrom}) != ''" class="form-row mt-2">
+                        <span class="align-bottom mt-1">14.1. Укажите название страны Вы прибыли в Республику Беларусь на постоянное место жительства</span>
+                        <input class="form-control font-weight-bold" th:value="*{livingCountryInfo.nameOfCountryYouCameFrom}" readonly/>
+                    </div>
+
+                    <div th:if="(*{livingCountryInfo.arrivalPeriod}) != null" class="form-row mt-2">
+                        <div class="col-7 pl-0">
+                            <span class="align-bottom mt-1">14.2. Укажите период прибытия (месяц, год)</span>
+                            <input class="form-control font-weight-bold" th:value="*{livingCountryInfo.arrivalPeriod}" readonly/>
+                        </div>
+                    </div>
+
+                    <div th:if="(*{livingCountryInfo.reasonForArrivalAtRB}) != 0" class="form-row mt-2 w-75">
+                        <span class="align-bottom">14.3. Укажите основную причину, по которой Вы прибыли в Республику Беларусь на постоянное место жительства</span>
+                        <input value="Работа" th:if="(*{livingCountryInfo.reasonForArrivalAtRB}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Получение образования" th:if="(*{livingCountryInfo.reasonForArrivalAtRB}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="Семейные обстоятельства" th:if="(*{livingCountryInfo.reasonForArrivalAtRB}) == 3" class="form-control font-weight-bold" readonly>
+                        <input value="Медицинское лечение, реабилитация" th:if="(*{livingCountryInfo.reasonForArrivalAtRB}) == 4" class="form-control font-weight-bold" readonly>
+                        <input value="Возвращение на прежнее место жительства" th:if="(*{livingCountryInfo.reasonForArrivalAtRB}) == 5" class="form-control font-weight-bold" readonly>
+                        <input value="Изменение жилищных условий" th:if="(*{livingCountryInfo.reasonForArrivalAtRB}) == 6" class="form-control font-weight-bold" readonly>
+                        <input value="Поиск убежища" th:if="(*{livingCountryInfo.reasonForArrivalAtRB}) == 7" class="form-control font-weight-bold" readonly>
+                        <input value="Другая причина" th:if="(*{livingCountryInfo.reasonForArrivalAtRB}) == 8" class="form-control font-weight-bold" readonly>
+                        <input value="Причина не указана" th:if="(*{livingCountryInfo.reasonForArrivalAtRB}) == 9" class="form-control font-weight-bold" readonly>
+                    </div>
+
+                    <div th:if="(*{livingCountryInfo.infoAboutLeavingBelarus}) != 0" class="form-row mt-2 w-75">
+                        <span class="align-bottom">14.4. Планируете ли Вы выехать из Республики Беларусь (для лиц в возрасте 15-74 лет)?</span>
+                        <input value="На срок менее 1 года" th:if="(*{livingCountryInfo.infoAboutLeavingBelarus}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="На срок более 1 года" th:if="(*{livingCountryInfo.infoAboutLeavingBelarus}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="На постоянное место жительства" th:if="(*{livingCountryInfo.infoAboutLeavingBelarus}) == 3" class="form-control font-weight-bold" readonly>
+                        <input value="Не планирую" th:if="(*{livingCountryInfo.infoAboutLeavingBelarus}) == 4" class="form-control font-weight-bold" readonly>
+                        <small class="form-text text-muted" style="margin-top: -0px">Если ответ "Не планирую" -> к вопросу 15</small>
+                    </div>
+
+                    <div th:if="(*{livingCountryInfo.reasonForLeavingBelarus}) != 0" class="form-row mt-2 w-75">
+                        <span class="align-bottom">14.5. По какой причине Вы планируете выехать из Республики Беларусь?</span>
+                        <input value="Работа" th:if="(*{livingCountryInfo.reasonForLeavingBelarus}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Получение образования" th:if="(*{livingCountryInfo.reasonForLeavingBelarus}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="Семейные обстоятельства" th:if="(*{livingCountryInfo.reasonForLeavingBelarus}) == 3" class="form-control font-weight-bold" readonly>
+                        <input value="Медицинское лечение, реабилитация" th:if="(*{livingCountryInfo.reasonForLeavingBelarus}) == 4" class="form-control font-weight-bold" readonly>
+                        <input value="Возвращение на прежнее место жительства" th:if="(*{livingCountryInfo.reasonForLeavingBelarus}) == 5" class="form-control font-weight-bold" readonly>
+                        <input value="Изменение жилищных условий" th:if="(*{livingCountryInfo.reasonForLeavingBelarus}) == 6" class="form-control font-weight-bold" readonly>
+                        <input value="Поиск убежища" th:if="(*{livingCountryInfo.reasonForLeavingBelarus}) == 7" class="form-control font-weight-bold" readonly>
+                        <input value="Другая причина" th:if="(*{livingCountryInfo.reasonForLeavingBelarus}) == 8" class="form-control font-weight-bold" readonly>
+                        <input value="Причина не указана" th:if="(*{livingCountryInfo.reasonForLeavingBelarus}) == 9" class="form-control font-weight-bold" readonly>
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="font-weight-bold">Образование:</p>
+            <div class="border rounded mb-4" style="margin: -10px; padding: 10px">
+
+                <div th:if="(*{educationInfo.lvlOfEducation}) != 0" class="form-row">
+                    <div class="col-7 p-0">
+                        <span class="align-bottom">15. Укажите ваш уровень (ступень) образования (для лиц в возрасте 10 лет и старше)</span>
+                        <input value="Начальное" th:if="(*{educationInfo.lvlOfEducation}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Общее базовое" th:if="(*{educationInfo.lvlOfEducation}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="Общее среднее" th:if="(*{educationInfo.lvlOfEducation}) == 3" class="form-control font-weight-bold" readonly>
+                        <input value="Профессионально-техническое" th:if="(*{educationInfo.lvlOfEducation}) == 4" class="form-control font-weight-bold" readonly>
+                        <input value="Среднее специальное" th:if="(*{educationInfo.lvlOfEducation}) == 5" class="form-control font-weight-bold" readonly>
+                        <input value="Высшее" th:if="(*{educationInfo.lvlOfEducation}) == 6" class="form-control font-weight-bold" readonly>
+                        <input value="Высшее (Магистратура)" th:if="(*{educationInfo.lvlOfEducation}) == 7" class="form-control font-weight-bold" readonly>
+                        <input value="Послевузовское" th:if="(*{educationInfo.lvlOfEducation}) == 8" class="form-control font-weight-bold" readonly>
+                        <input value="Послевузовское (аспирантура, адъюнктура)" th:if="(*{educationInfo.lvlOfEducation}) == 9" class="form-control font-weight-bold" readonly>
+                        <input value="Послевузовское (докторантура)" th:if="(*{educationInfo.lvlOfEducation}) == 10" class="form-control font-weight-bold" readonly>
+                        <input value="Не имею образования" th:if="(*{educationInfo.lvlOfEducation}) == 11" class="form-control font-weight-bold" readonly>
+                    </div>
+                    <div class="col">
+                        <span class="align-bottom pr-2">Укажите, есть ли у вас ученая степень</span>
+                        <input value="Кандидат наук" th:if="(*{educationInfo.academicDegree}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Доктор наук" th:if="(*{educationInfo.academicDegree}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="Не имею" th:if="(*{educationInfo.academicDegree}) == 3" class="form-control font-weight-bold" readonly>
+                    </div>
+                </div>
+                <div th:if="(*{educationInfo.lvlOfEducation}) == 11" class="form-row">
+                    <div class="form-check pr-2">
+                        <input class="form-check-input" type="checkbox" th:value="*{educationInfo.canYouReadAndWrite}" disabled>
+                        <label>умеете ли вы читать и писать?</label>
+                    </div>
+                </div>
+
+                <div th:if="(*{educationInfo.basicEducationInfo}) != 0" class="form-row mt-2">
+                    <span class="align-bottom">15.1 Получали ли вы основное образование на дату проведения переписи (для лиц в возрасте 6 лет и старше)?</span>
+                    <input value="Общее среднее" th:if="(*{educationInfo.basicEducationInfo}) == 1" class="form-control font-weight-bold" readonly>
+                    <input value="Профессионально-техническое" th:if="(*{educationInfo.basicEducationInfo}) == 2" class="form-control font-weight-bold" readonly>
+                    <input value="Среднее специальное" th:if="(*{educationInfo.basicEducationInfo}) == 3" class="form-control font-weight-bold" readonly>
+                    <input value="Высшее" th:if="(*{educationInfo.basicEducationInfo}) == 4" class="form-control font-weight-bold" readonly>
+                    <input value="Послевузовское" th:if="(*{educationInfo.basicEducationInfo}) == 5" class="form-control font-weight-bold" readonly>
+                    <input value="Не получал" th:if="(*{educationInfo.basicEducationInfo}) == 6" class="form-control font-weight-bold" readonly>
+                </div>
+
+                <div th:if="(*{age}) > 14 and (*{age}) < 66" class="form-row mt-2">
+                    <div class="form-check pr-2">
+                        <input class="form-check-input" type="checkbox" th:value="*{educationInfo.additionalEducationInfo}" disabled>
+                        <label>Получали ли вы дополнительное образование на дату проведения переписи (для лиц в возрасте 15-65 лет)?</label>
+                    </div>
+                </div>
+
+                <div th:if="(*{age}) > 0 and (*{age}) < 8" class="form-row mt-2">
+                    <div class="form-check pr-2">
+                        <input class="form-check-input" type="checkbox" th:value="*{educationInfo.doesChildAttendPreschool}" disabled>
+                        <label>(для детей в возрасте 1 - 7 лет, не посещающих школу) Посещает ли ребенок учреждение дошкольного образования?</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div th:if="(*{age}) > 14 and (*{age}) < 75">
+                <p class="font-weight-bold">Место работы:</p>
+                <div class="border rounded mb-4" style="margin: -10px; padding: 10px">
+
+                    <div class="form-row">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" th:value="*{workInfo.doYouHaveWork}" disabled>
+                            <label>16. Была ли у Вас с 27 сентября 2019 г. по 3 октября 2019 г. оплачиваемая работа, занятие, приносящее доход, или работа без оплаты труда у родственника (далее - работа) (для лиц в возрасте 15-74 лет)</label>
+                            <small class="form-text text-muted" style="margin-top: -5px">Если ответ "Да" -> к вопросу 16.2; "Нет" -> к вопросу 16.1</small>
+                        </div>
+                    </div>
+                    <div th:if="(*{workInfo.doYouHaveWork}) == false" class="form-row mt-2" style="display: block">
+                        <div class="form-check pr-2">
+                            <input class="form-check-input" type="checkbox" th:value="*{workInfo.whyDidntYouWorkTillNow}" disabled>
+                            <label>16.1 Вы временно не работали по причине болезни; отпуска, в том числе отпуска по беременности и родам, по уходу за ребенком в возрасте до 3 лет; производства работ вахтовым методом или иного специфического характера работы, прохождения курсов повышения квалификации и тому подобное?</label>
+                            <small class="form-text text-muted" style="margin-top: -5px">Если ответ "Да" -> к вопросу 16.2; "Нет" -> к вопросу 20</small>
+                        </div>
+                    </div>
+
+                    <div th:if="(*{workInfo.locationOfWork}) != 0" class="form-row mt-2">
+                        <div class="col-6 p-0">
+                            <span class="align-bottom">16.2. Где находилось место вашей работы?</span>
+                            <input value="В населенном пункте по месту жительства" th:if="(*{workInfo.locationOfWork}) == 1" class="form-control font-weight-bold" readonly>
+                            <input value="В другом населенном пункте Республики Беларусь" th:if="(*{workInfo.locationOfWork}) == 2" class="form-control font-weight-bold" readonly>
+                            <input value="В другой стране" th:if="(*{workInfo.locationOfWork}) == 3" class="form-control font-weight-bold" readonly>
+                            <small class="form-text text-muted" style="margin-top: -5px">Если ответ "В населенном пункте по месту жительства" -> к вопросу 17</small>
+                        </div>
+                    </div>
+                    <div th:if="(*{workInfo.locationOfWork}) == 2" class="container pl-0">
+                        <div class="form-row">
+                            <div class="col text-center pl-0">
+                                <small class="text-muted align-bottom">Укажите наименования области, района</small>
+                                <input class="form-control font-weight-bold" th:value="*{workInfo.regionOrDistrictName}" readonly/>
+                            </div>
+                            <div class="col text-center pl-0">
+                                <small class="text-muted align-bottom">Укажите наименования города, ПГТ</small>
+                                <input class="form-control font-weight-bold" th:value="*{workInfo.cityOrPGTName}" readonly/>
+                            </div>
+                        </div>
+                        <div class="form-check mt-2 mb-0">
+                            <input class="form-check-input" type="checkbox" th:value="*{workInfo.isItVillage}" disabled>
+                            <label>Является ли ваше предыдущее место жительства сельским населенным пунктом?</label>
+                        </div>
+                        <small class="form-text text-muted" style="margin-top: -5px">К вопросу 17</small>
+                    </div>
+                    <div th:if="(*{workInfo.locationOfWork}) == 3" class="form-row w-50 mt-2">
+                        <div class="col text-center pl-0">
+                            <small class="text-muted align-bottom">Укажите название страны</small>
+                            <input class="form-control font-weight-bold" th:value="*{workInfo.nameOfCountry}" readonly/>
+                        </div>
+                        <small class="form-text text-muted">К вопросу 16.3</small>
+                    </div>
+
+                    <div th:if="(*{workInfo.departureFrequencyToWork}) != 0" class="form-row mt-2">
+                        <span class="align-bottom">16.3. Как часто вы выезжали на работу на территорию другого государства?</span>
+                        <input value="Ежедневно" th:if="(*{workInfo.departureFrequencyToWork}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="На несколько дней в течение недели" th:if="(*{workInfo.departureFrequencyToWork}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="На иной период" th:if="(*{workInfo.departureFrequencyToWork}) == 3" class="form-control font-weight-bold" readonly>
+                    </div>
+
+                    <div th:if="(*{workInfo.unemploymentReason}) != 0" class="form-row mt-2">
+                        <span class="align-bottom">17. Укажите основную причину, по которой вы не работаете в населенном пункте по месту жительства?</span>
+                        <input value="Не нашел(нашла) работу в данном населенном пункте" th:if="(*{workInfo.unemploymentReason}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Нашел(нашла) работу с более высоким заработком" th:if="(*{workInfo.unemploymentReason}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="Другие причины" th:if="(*{workInfo.unemploymentReason}) == 3" class="form-control font-weight-bold" readonly>
+                    </div>
+
+                    <div th:if="(*{workInfo.typeOfWorkplace}) != 0" class="form-row mt-2">
+                        <span class="align-bottom">18. Укажите, где осуществлялась ваша работа</span>
+                        <input value="В организации (структурном подразделении организации)" th:if="(*{workInfo.typeOfWorkplace}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="В крестьянском (фермерском) хозяйстве" th:if="(*{workInfo.typeOfWorkplace}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="В сфере агроэкотуризма" th:if="(*{workInfo.typeOfWorkplace}) == 3" class="form-control font-weight-bold" readonly>
+                        <input value="У индивидуального предпринимателя или физического лица, производящего товары на продажу или оказывающего платные услуги" th:if="(*{workInfo.typeOfWorkplace}) == 4" class="form-control font-weight-bold" readonly>
+                        <input value="В домашнем хозяйстве наемным работником" th:if="(*{workInfo.typeOfWorkplace}) == 5" class="form-control font-weight-bold" readonly>
+                        <input value="В качестве индивидуального предпринимателя" th:if="(*{workInfo.typeOfWorkplace}) == 6" class="form-control font-weight-bold" readonly>
+                        <input value="На индивидуальной основе без регистрации в качестве индивидуального предпринимателя" th:if="(*{workInfo.typeOfWorkplace}) == 7" class="form-control font-weight-bold" readonly>
+                        <input value="В качестве ремесленника" th:if="(*{workInfo.typeOfWorkplace}) == 8" class="form-control font-weight-bold" readonly>
+                        <input value="В личном подсобном хозяйстве" th:if="(*{workInfo.typeOfWorkplace}) == 9" class="form-control font-weight-bold" readonly>
+                        <input value="Другое" th:if="(*{workInfo.typeOfWorkplace}) == 10" class="form-control font-weight-bold" readonly>
+                    </div>
+
+                    <div th:if="(*{workInfo.typeOfWorkPosition}) != 0" class="form-row mt-2">
+                        <span class="align-bottom">19. Кем Вы являлись на работе?</span>
+                        <input value="Наемным работником" th:if="(*{workInfo.typeOfWorkPosition}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Самозанятым (работающим не по найму)" th:if="(*{workInfo.typeOfWorkPosition}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="Работодателем (в том числе собственником, учредителем)" th:if="(*{workInfo.typeOfWorkPosition}) == 3" class="form-control font-weight-bold" readonly>
+                        <input value="Лицом, работающем на индивидуальной основе" th:if="(*{workInfo.typeOfWorkPosition}) == 4" class="form-control font-weight-bold" readonly>
+                        <input value="Работающим (помогающим в работе) без оплаты труда у родственника (члена домохозяйства)" th:if="(*{workInfo.typeOfWorkPosition}) == 5" class="form-control font-weight-bold" readonly>
+                        <input value="Лицом, не поддающимся классификации по статусу" th:if="(*{workInfo.typeOfWorkPosition}) == 6" class="form-control font-weight-bold" readonly>
+                    </div>
+
+                    <div th:if="(*{workInfo.whyDidntYouWorkTillNow}) == false and (*{workInfo.doYouHaveWork}) == false" class="form-row mt-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" th:value="*{workInfo.didYouLookedForAJob}" disabled>
+                            <label>20. Искали ли вы работу в течение последнего месяца до начала переписи (для лиц, которые не имеют работы)</label>
+                        </div>
+                    </div>
+
+                    <div th:if="(*{workInfo.whyDidntYouWorkTillNow}) == false and (*{workInfo.doYouHaveWork}) == false" class="form-row">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" th:value="*{workInfo.canYouStarWorkingInTwoWeeks}" disabled>
+                            <label>21. Если бы Вы получили подходящую работу, готовы ли Вы приступить к ней в ближайшие две недели?</label>
+                            <small class="form-text text-muted" style="margin-top: -5px">Если ответ "Да" и на вопрос 20 ответ "Да" -> к вопросу 22; Если ответ "Да" и на вопрос 20 ответ "Нет" -> к вопросу 22; Если ответ "Нет" -> к вопросу 22</small>
+                        </div>
+                    </div>
+
+                    <div th:if="(*{workInfo.whyYouCantWorkOrStoppedSearch}) != 0" class="form-row mt-2">
+                        <span class="align-bottom">22. Укажите основную причину, по которой Вы отказались от поиска работы (не готовы приступить к работе)</span>
+                        <input value="Получил(а) работу, организовал(а) собственное дело и приступлю к ней в ближайшие две недели" th:if="(*{workInfo.whyYouCantWorkOrStoppedSearch}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Нашел (нашла) работу и ожидаю ответа" th:if="(*{workInfo.whyYouCantWorkOrStoppedSearch}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="Ожидаю начала сезона" th:if="(*{workInfo.whyYouCantWorkOrStoppedSearch}) == 3" class="form-control font-weight-bold" readonly>
+                        <input value="Потерял(а) надежду найти работу" th:if="(*{workInfo.whyYouCantWorkOrStoppedSearch}) == 4" class="form-control font-weight-bold" readonly>
+                        <input value="Нет возможности найти работу" th:if="(*{workInfo.whyYouCantWorkOrStoppedSearch}) == 5" class="form-control font-weight-bold" readonly>
+                        <input value="Не знаю, где и как искать работу" th:if="(*{workInfo.whyYouCantWorkOrStoppedSearch}) == 6" class="form-control font-weight-bold" readonly>
+                        <input value="Вышел (вышла) на пенсию, в отставку" th:if="(*{workInfo.whyYouCantWorkOrStoppedSearch}) == 7" class="form-control font-weight-bold" readonly>
+                        <input value="По состоянию здоровья" th:if="(*{workInfo.whyYouCantWorkOrStoppedSearch}) == 8" class="form-control font-weight-bold" readonly>
+                        <input value="Обучаюсь в учреждении образования в дневной форме получения образования" th:if="(*{workInfo.whyYouCantWorkOrStoppedSearch}) == 9" class="form-control font-weight-bold" readonly>
+                        <input value="Веду домашнее хозяйство, ухаживаю за детьми, другими членами семьи" th:if="(*{workInfo.whyYouCantWorkOrStoppedSearch}) == 10" class="form-control font-weight-bold" readonly>
+                        <input value="Нет необходимости или желания работать" th:if="(*{workInfo.whyYouCantWorkOrStoppedSearch}) == 11" class="form-control font-weight-bold" readonly>
+                        <input value="Другая причина" th:if="(*{workInfo.whyYouCantWorkOrStoppedSearch}) == 12" class="form-control font-weight-bold" readonly>
+                    </div>
+
+                </div>
+            </div>
+
+            <div th:if="(*{gender}) == 2">
+                <p class="font-weight-bold">Дети:</p>
+                <div class="border rounded mb-4" style="margin: -10px; padding: 10px">
+
+                    <div th:if="(*{age}) > 14" class="form-row">
+                        <div th:if="(*{childrenInfo.howManyChildrenDoYouHave}) != ''" class="col-6 p-0 mr-3">
+                            <span class="align-bottom mt-1">23. Сколько детей Вы родили (для женщин в возрасте 15 лет и старше)</span>
+                            <input class="form-control font-weight-bold" th:value="*{childrenInfo.howManyChildrenDoYouHave}" readonly/>
+                        </div>
+                        <div th:if="(*{childrenInfo.howManyChildrenDoYouHave}) == ''" class="col pl-0 pt-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" th:value="*{childrenInfo.noChildren}" disabled>
+                                <label>Ни одного</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div th:if="(*{childrenInfo.childrenPlans}) != 0" class="form-row mt-2">
+                        <span class="align-bottom">24. Планируете ли Вы рождение детей (для женщин в возрасте 18-49 лет)?</span>
+                        <input value="Да" th:if="(*{childrenInfo.childrenPlans}) == 1" class="form-control font-weight-bold" readonly>
+                        <input value="Нет" th:if="(*{childrenInfo.childrenPlans}) == 2" class="form-control font-weight-bold" readonly>
+                        <input value="Затрудняюсь ответить" th:if="(*{childrenInfo.childrenPlans}) == 3" class="form-control font-weight-bold" readonly>
+                    </div>
+                    <div th:if="(*{childrenInfo.childrenPlans}) == 1" class="form-row mt-2">
+                        <div th:if="(*{childrenInfo.howManyChildrenDoYouWant}) != ''" class="col-6 p-0 mr-3">
+                            <span class="align-bottom mt-1">Укажите число планируемых детей:</span>
+                            <input class="form-control font-weight-bold" th:value="*{childrenInfo.howManyChildrenDoYouWant}" readonly/>
+                        </div>
+                        <div th:if="(*{childrenInfo.howManyChildrenDoYouWant}) == ''" class="col pl-0 pt-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" th:value="*{childrenInfo.dontKnowHowMany}" disabled>
+                                <label>число планируемых детей не определено</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div th:if="${personForView.isForeign} == true" class="bg-white p-5 mt-5" style="margin-left: 5%;margin-right: 5%">
+        <h3>Респондент (временно проживающий в РБ)</h3>
+        <hr/>
+
+        <form th:object="${personForView}" class="disabled">
+
+            <div class="form-row">
+                <span class="align-bottom mt-1">1. Фамилия</span>
+                <input class="form-control font-weight-bold" th:value="*{surname}" readonly/>
+                <span class="align-bottom mt-1 ml-3">Собственное имя</span>
+                <input class="form-control font-weight-bold" th:value="*{name}" readonly/>
+                <span th:if="(*{fathername}) != ''" class="align-bottom mt-1 ml-3">Отчество (если таковое имеется)</span>
+                <input th:if="(*{fathername}) != ''" class="form-control font-weight-bold" th:value="*{fathername}" readonly/>
+            </div>
+
+            <div class="form-row mt-2">
+                <div class="col-6 pl-0">
+                    <span class="align-bottom mt-1">2. Дата рождения (число, месяц, год)</span>
+                    <input class="form-control font-weight-bold" th:field="*{birthdayDate}" readonly>
+                </div>
+                <div class="col-3 pl-0">
+                    <span class="align-bottom mt-1">Число полных лет</span>
+                    <input class="form-control font-weight-bold" th:field="*{age}" readonly>
+                </div>
+            </div>
+
+            <div class="form-row w-25 mt-2">
+                <span class="align-bottom">3. Пол</span>
+                <input th:if="(*{gender}) == 1" class="form-control font-weight-bold" value="Мужской" readonly>
+                <input th:if="(*{gender}) == 2" class="form-control font-weight-bold" value="Женский" readonly>
+            </div>
+
+            <div class="form-row mt-2">
+                <div class="col p-0">
+                    <span class="align-bottom">4. Страна рождения</span>
+                    <input value="Республика Беларусь" th:if="(*{birthCountry}) == 1" class="form-control font-weight-bold" readonly>
+                    <input value="Другая страна" th:if="(*{birthCountry}) == 2" class="form-control font-weight-bold" readonly>
+                </div>
+                <div th:if="(*{birthCountry}) == 2" class="col-5 text-center">
+                    <small class="text-muted align-bottom">Укажите название страны</small>
+                    <input class="form-control font-weight-bold" th:field="*{nameOfBirthCountry}" readonly>
+                </div>
+            </div>
+
+            <div class="form-row mt-2">
+                <div class="col p-0">
+                    <span class="align-bottom">5. Ваше гражданство</span>
+                    <input value="Республика Беларусь" th:if="(*{citizenship}) == 1" class="form-control font-weight-bold" readonly>
+                    <input value="Гражданство другой страны" th:if="(*{citizenship}) == 2" class="form-control font-weight-bold" readonly>
+                    <input value="Без гражданства" th:if="(*{citizenship}) == 3" class="form-control font-weight-bold" readonly>
+                </div>
+                <div th:if="(*{citizenship}) == 2" class="col-5 text-center">
+                    <small class="text-muted align-bottom">Укажите название страны</small>
+                    <input class="form-control font-weight-bold" th:field="*{nameOfCitizenshipCountry}" readonly>
+                </div>
+            </div>
+
+            <div th:if="(*{citizenship}) == 1" class="form-row w-50">
+                <span class="align-bottom mt-1 ml-3">Идентификационный номер (указан в паспорте)</span>
+                <input class="form-control font-weight-bold" th:value="*{passportID}" readonly/>
+            </div>
+
+            <div class="form-row w-50">
+                <span class="align-bottom mt-1">6. Страна постоянного проживания</span>
+                <input class="form-control font-weight-bold" th:field="*{homeCountry}" readonly>
+            </div>
+
+            <div class="form-row mt-2">
+                <span class="align-bottom">7. Укажите основную причину приезда в Республику Беларусь</span>
+                <input value="Работа" th:if="(*{reasonForMigration}) == 1" class="form-control font-weight-bold" readonly>
+                <input value="Получение образования" th:if="(*{reasonForMigration}) == 2" class="form-control font-weight-bold" readonly>
+                <input value="Служебная или деловая встреча" th:if="(*{reasonForMigration}) == 3" class="form-control font-weight-bold" readonly>
+                <input value="Посещение родственников" th:if="(*{reasonForMigration}) == 4" class="form-control font-weight-bold" readonly>
+                <input value="Туризм, отдых или лечение" th:if="(*{reasonForMigration}) == 5" class="form-control font-weight-bold" readonly>
+                <input value="Транзит" th:if="(*{reasonForMigration}) == 6" class="form-control font-weight-bold" readonly>
+                <input value="Поиск убежища" th:if="(*{reasonForMigration}) == 7" class="form-control font-weight-bold" readonly>
+                <input value="Другая цель" th:if="(*{reasonForMigration}) == 8" class="form-control font-weight-bold" readonly>
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
